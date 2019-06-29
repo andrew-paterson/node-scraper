@@ -4,7 +4,9 @@ var request = require('request');
 var toMarkdown = require('to-markdown');
 var moment = require('moment');
 var fs = require('fs');
-
+var nodeUrl = require('url');
+var mkdirp = require('mkdirp');
+var path = require('path');
 var urlsFile = process.argv[2];
 var mapFile = process.argv[3];
 
@@ -21,6 +23,14 @@ fs.readFileSync(urlsFile, 'utf-8').split(/\r?\n/).forEach(line => {
   }
 });
 var object = {};
+
+function mkdirP(dirPath) {
+  mkdirp.sync(dirPath, err => {
+    if (err) {
+      console.error(err);
+    }
+  });
+}
 
 function processURL(url) {
   request({uri: url}, function(err, response, body){
@@ -60,9 +70,12 @@ function processURL(url) {
     final += '<!--more-->\n';
     final += object.full_text;
 
-    var directory ="test";
+    var directory ="output";
     var slug = url.substr(url.lastIndexOf('/') + 1);
-    var filepath = `${directory}/${slug}.md`
+    var fullPath = nodeUrl.parse(url).path;
+    var dirPath = path.dirname(fullPath);
+    mkdirP(`${directory}${dirPath}`);
+    var filepath = `${directory}${fullPath}.md`;
     fs.writeFile(filepath, final, function(err) {
       if(err) {
         return console.log(err);
@@ -70,5 +83,7 @@ function processURL(url) {
       console.log(`${slug} was saved!`);
     });
   });
+
+  
 }
 
