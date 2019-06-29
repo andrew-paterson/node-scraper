@@ -1,0 +1,30 @@
+{
+  "name": "scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.3.0",
+    "node-csv": "^0.1.2",
+    "moment": "^2.19.2",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "to-markdown": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew-paterson/node-scraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrew-paterson/node-scraper/issues"
+  },
+  "homepage": "https://github.com/andrew-paterson/node-scraper#readme"
+}
