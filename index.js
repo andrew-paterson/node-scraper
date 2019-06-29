@@ -9,10 +9,23 @@ var mkdirp = require('mkdirp');
 var path = require('path');
 var urlsFile = process.argv[2];
 var mapFile = process.argv[3];
-
+var parseString = require('xml2js').parseString;
 var map = require(mapFile).map; 
 
-fs.readFileSync(urlsFile, 'utf-8').split(/\r?\n/).forEach(line => {
+var urls;
+
+if (path.extname(urlsFile) === '.xml') {
+  var xml = fs.readFileSync(urlsFile, 'utf-8');
+  parseString(xml, function (err, result) {
+    urls = result.urlset.url.map(item => {
+      return item.loc[0];
+    });
+  });
+} else {
+  urls = fs.readFileSync(urlsFile, 'utf-8').split(/\r?\n/);
+}
+
+urls.forEach(line => {
   var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
   if (line.match(isUrl)) {
     processURL(line);
