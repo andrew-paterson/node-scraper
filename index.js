@@ -11,7 +11,7 @@ var urlsFile = process.argv[2];
 var mapFile = process.argv[3];
 var parseString = require('xml2js').parseString;
 var elementsMap = require(mapFile); 
-
+const chalk = require('chalk');
 var urls;
 
 if (path.extname(urlsFile) === '.xml') {
@@ -78,17 +78,14 @@ function createMD(object, url) {
       if(err) {
         return console.log(err);
       }
-      console.log(`${slug} was saved!`);
+      console.log(chalk.green('Succes! ') + `${filepath}` + chalk.green(' was saved!'));
     });
 }
 
-function parseContentItem(body, url, $) {
-  // console.log(body);
-  // console.log('----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
-  // singlePage(dom, window, $);
+function parseContentItem(test, url, $) {
   var object = {};
   elementsMap.map.forEach(item => {
-    var element = $(body).find(item.selector);
+    var element = $(test).find(item.selector);
     if (element.length === 0) { return; }
     var text = element.text().trim();
     var html = element.html().trim();
@@ -112,8 +109,16 @@ function parseContentItem(body, url, $) {
 function processURL(url) {
   request({uri: url}, function(err, response, body){
     //Just a basic error check
+    if (response.statusCode === 404){
+      console.log(chalk.red('404 error. No webpage was found at ') + url);
+      return;
+    }
+    if (response.statusCode === 401){
+      console.log(chalk.red('401 error. You are not authorised to access ') + url);
+      return;
+    }
     if(err && response.statusCode !== 200){
-      console.log('Request error.');
+      console.log(chalk.red(`Request error: ${err}`));
     }
     // These three lines allow the returned body element to be traversed with jQuery.
     const dom = new JSDOM(body).window.document;
@@ -123,8 +128,12 @@ function processURL(url) {
       var elements = $(elementsMap.containerSelector);
       $(elements).each((index, item) => {
         var html = $(item).html();
-        var filename = $(item).find(elementsMap.fileNameSelector).text().trim().replace(/[^a-zA-Z\d]/g, '-').toLowerCase();
+        var filename = $(item).find(elementsMap.fileNameSelector).text().trim().replace(/[^a-zA-Z\d]/g, '-').replace(/(-)\1+/g, '-').toLowerCase();
         var itemUrl = `${url}/${filename}`;
+        if ($(item).find(elementsMap.ignoreIfSelector).length > 0) {
+          console.log(chalk.cyan(`${filename} was skipped because it contained the ignoreIfSelector.`));
+          return true; //Don't do anything.
+        }
         parseContentItem(html, itemUrl, $);
       });
     } else {
