@@ -10,7 +10,7 @@ var path = require('path');
 var urlsFile = process.argv[2];
 var mapFile = process.argv[3];
 var parseString = require('xml2js').parseString;
-var map = require(mapFile).map; 
+var elementsMap = require(mapFile); 
 
 var urls;
 
@@ -35,7 +35,7 @@ urls.forEach(line => {
     }
   }
 });
-var object = {};
+
 
 function mkdirP(dirPath) {
   mkdirp.sync(dirPath, err => {
@@ -45,43 +45,28 @@ function mkdirP(dirPath) {
   });
 }
 
-function processURL(url) {
-  request({uri: url}, function(err, response, body){
-    //Just a basic error check
-    if(err && response.statusCode !== 200){
-      console.log('Request error.');
-    }
-    // These three lines allow the returned body element to be traversed with jQuery.
-    const dom = new JSDOM(body).window.document;
-    var window = dom.defaultView;
-    var $ = require('jquery')(window);
-    map.forEach(item => {
-      var element = $(item.selector);
-      if (element.length === 0) { return; }
-      var text = element.text().trim();
-      var html = element.html().trim();
-      var markdown = toMarkdown(html);
-      if (item.type === 'date') {
-        var dateObject = moment(text, item.sourceDateFormat);
-        text = `${moment(dateObject).format("YYYY-MM-DD")}T${moment(dateObject).format("HH:mm:ss")}+02:00`;
-      }
-      if (item.type === 'markdown') {
-        object[item.key] = markdown;
-      } else {
-        object[item.key] = text;
-      }
-    });
+function singlePage(dom, window, $) {
+  
+}
 
-    var final = '---\n';
+function createMD(object, url) {
+  var final = '---\n';
     for (var key in object) {
       if (key !== 'intro_text' && key !== 'full_text') {
         final += `${key}: ${object[key]} \n`;
       }
     }
     final += '---\n\n';
-    final += `${object.intro_text} \n`;
-    final += '<!--more-->\n';
-    final += object.full_text;
+    if (object.intro_text) {
+      final += `${object.intro_text} \n`;
+    }
+    if (object.intro_text && object.full_text) {
+      final += '<!--more-->\n';
+    }
+
+    if (object.full_text) {
+      final += object.full_text;
+    }
 
     var directory ="output";
     var slug = url.substr(url.lastIndexOf('/') + 1);
@@ -95,8 +80,56 @@ function processURL(url) {
       }
       console.log(`${slug} was saved!`);
     });
-  });
+}
 
-  
+function parseContentItem(body, url, $) {
+  // console.log(body);
+  // console.log('----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
+  // singlePage(dom, window, $);
+  var object = {};
+  elementsMap.map.forEach(item => {
+    var element = $(body).find(item.selector);
+    if (element.length === 0) { return; }
+    var text = element.text().trim();
+    var html = element.html().trim();
+    var src = element.attr('src');
+    var markdown = toMarkdown(html);
+    if (item.type === 'date') {
+      var dateObject = moment(text, item.sourceDateFormat);
+      text = `${moment(dateObject).format("YYYY-MM-DD")}T${moment(dateObject).format("HH:mm:ss")}+02:00`;
+    }
+    if (item.type === 'markdown') {
+      object[item.key] = markdown;
+    } else if (item.type === 'image') {
+      object[item.key] = src;
+    } else {
+      object[item.key] = text;
+    }
+  });
+  createMD(object, url);
+}
+
+function processURL(url) {
+  request({uri: url}, function(err, response, body){
+    //Just a basic error check
+    if(err && response.statusCode !== 200){
+      console.log('Request error.');
+    }
+    // These three lines allow the returned body element to be traversed with jQuery.
+    const dom = new JSDOM(body).window.document;
+    var window = dom.defaultView;
+    var $ = require('jquery')(window);
+    if (elementsMap.containerSelector) {
+      var elements = $(elementsMap.containerSelector);
+      $(elements).each((index, item) => {
+        var html = $(item).html();
+        var filename = $(item).find(elementsMap.fileNameSelector).text().trim().replace(/[^a-zA-Z\d]/g, '-').toLowerCase();
+        var itemUrl = `${url}/${filename}`;
+        parseContentItem(html, itemUrl, $);
+      });
+    } else {
+      parseContentItem(body, url, $);
+    }
+  });
 }
 

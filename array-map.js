@@ -1,9 +1,22 @@
 module.exports = {
+  containerSelector: '.catItemViewOuter',
+  fileNameSelector: '.catItemTitle', // The element that is used to create file name.
   map: [
     {
       selector: '.itemTitle',
       type: 'text',
       key: 'title'
+    },
+    {
+      selector: '.catItemTitle',
+      type: 'text',
+      key: 'title'
+    },
+    {
+      selector: '.catItemImage img',
+      type: 'image',
+      key: 'item_image',
+      attr: 'src',
     },
     {
       selector: '.itemDateCreated',
