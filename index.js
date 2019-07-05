@@ -45,10 +45,6 @@ function mkdirP(dirPath) {
   });
 }
 
-function singlePage(dom, window, $) {
-  
-}
-
 function createMD(object, url) {
   var final = '---\n';
     for (var key in object) {
