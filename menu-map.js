@@ -8,22 +8,22 @@ module.exports = [
   {
     menuSelector: '#footer-menu .block-outer:nth-child(1) ul',
     menuItemSelector: 'li',
-    menuName: 'quick_links.about_us'
+    menuName: 'about_us'
   },
   {
     menuSelector: '#footer-menu .block-outer:nth-child(2) ul',
     menuItemSelector: 'li',
-    menuName: 'quick_links.corporate'
+    menuName: 'corporate'
   },
   {
     menuSelector: '#footer-menu .block-outer:nth-child(3) ul',
     menuItemSelector: 'li',
-    menuName: 'quick_links.individuals'
+    menuName: 'individuals'
   },
   {
     menuSelector: '.copyright-inner ul',
     menuItemSelector: 'li',
-    menuName: 'footer'
+    menuName: 'footer.test'
   },
   
 ];

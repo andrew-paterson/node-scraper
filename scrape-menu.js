@@ -92,7 +92,7 @@ function parseMenu(html, $, menuName) {
   $(menuItems).each((index, menuItem) => {
     processMenuItem(menuItem, index, weightLevel);
   });
-  var menuObject = objectFromString(`${menuName}`, menuObjects);
+
   allMenus = addToObject(allMenus, menuObjects, `menu.${menuName}`);
   if (outputFormat === 'toml') {
     jsToToml(allMenus);
@@ -111,11 +111,10 @@ function jsToYaml(object) {
 }
 function jsToToml(object) {
   console.log('------------------');
-  console.log(tomlify.toToml(object, {space: 2}));
+  // console.log(tomlify.toToml(object, {space: 2}));
 }
 
 function processURL(url) {
-  console.log(url);
   request({uri: url}, function(err, response, body){
     //Just a basic error check
     if (response.statusCode === 404){
@@ -129,12 +128,16 @@ function processURL(url) {
     if(err && response.statusCode !== 200){
       console.log(chalk.red(`Request error: ${err}`));
     }
+    console.log(chalk.yellow(`HTML page successfully downloaded from ${url}.`));
     // These three lines allow the returned body element to be traversed with jQuery.
     const dom = new JSDOM(body).window.document;
     var window = dom.defaultView;
     var $ = require('jquery')(window);
 
     elementsMap.forEach(item => {
+      if (item.menuName.indexOf('.') > 0) {
+        console.log(chalk.red(`${item.menuName} was ignored because the menuName has dot characters, which are not allowed.`));
+      }
       if (item.menuSelector) {
         var elements = $(item.menuSelector);
         $(elements).each((index, element) => {
