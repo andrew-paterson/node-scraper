@@ -20,7 +20,15 @@ function objectFromString(str, val = {}) {
   }, val);
 }
 
-console.log(objectFromString('one.two.three', 'value'));
+function merge(str, val = {}) {
+  console.log(val);
+  return str.split('.').reduceRight((acc, currentValue) => {
+    console.log(acc);
+    return { [currentValue]: acc };
+  }, val);
+}
+
+console.log(merge('one.two.three', 'value'));
 return;
 
 var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
