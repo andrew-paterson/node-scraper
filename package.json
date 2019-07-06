@@ -8,11 +8,13 @@
     "cheerio": "^1.0.0-rc.2",
     "jquery": "^3.2.1",
     "jsdom": "^11.3.0",
+    "json2yaml": "^1.1.0",
     "moment": "^2.19.2",
     "node-csv": "^0.1.2",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "to-markdown": "^3.1.0",
+    "tomlify-j0.4": "^3.0.0",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {},

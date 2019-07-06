@@ -1,0 +1,1 @@
+`node scrape-menu.js ./menu-map.js yml https:/example.com`
