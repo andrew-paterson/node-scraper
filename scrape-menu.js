@@ -9,7 +9,7 @@ var elementsMap = require(mapFile);
 const chalk = require('chalk');
 var YAML = require('json2yaml');
 var tomlify = require('tomlify-j0.4');
-
+var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 var allMenus = { menu: {}};
 
 function objectFromString(str, val = {}) {
@@ -35,7 +35,10 @@ function addToObject(object, value, path) {
   return object;
 }
 
-var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+function immediateText(element, $) {
+  return $(element).clone().children().remove().end().text();
+}
+
 if (url.match(isUrl)) {
   processURL(url);
 } else {
@@ -44,8 +47,38 @@ if (url.match(isUrl)) {
   }
 }
 
-function immediateText(element, $) {
-  return $(element).clone().children().remove().end().text();
+function processURL(url) {
+  request({uri: url}, function(err, response, body){
+    //Just a basic error check
+    if (response.statusCode === 404){
+      console.log(chalk.red('404 error. No webpage was found at ') + url);
+      return;
+    }
+    if (response.statusCode === 401){
+      console.log(chalk.red('401 error. You are not authorised to access ') + url);
+      return;
+    }
+    if(err && response.statusCode !== 200){
+      console.log(chalk.red(`Request error: ${err}`));
+    }
+    console.log(chalk.yellow(`HTML page successfully downloaded from ${url}.`));
+    // These three lines allow the returned body element to be traversed with jQuery.
+    const dom = new JSDOM(body).window.document;
+    var window = dom.defaultView;
+    var $ = require('jquery')(window);
+
+    elementsMap.forEach(item => {
+      if (item.menuName.indexOf('.') > 0) {
+        console.log(chalk.red(`${item.menuName} was ignored because the menuName has dot characters, which are not allowed.`));
+      }
+      if (item.menuSelector) {
+        var elements = $(item.menuSelector);
+        $(elements).each((index, element) => {
+          parseMenu($(element).parent().html(), $, item.menuName);
+        });
+      }
+    });
+  });
 }
 
 
@@ -111,39 +144,6 @@ function jsToYaml(object) {
 }
 function jsToToml(object) {
   console.log('------------------');
-  // console.log(tomlify.toToml(object, {space: 2}));
+  console.log(tomlify.toToml(object, {space: 2}));
 }
 
-function processURL(url) {
-  request({uri: url}, function(err, response, body){
-    //Just a basic error check
-    if (response.statusCode === 404){
-      console.log(chalk.red('404 error. No webpage was found at ') + url);
-      return;
-    }
-    if (response.statusCode === 401){
-      console.log(chalk.red('401 error. You are not authorised to access ') + url);
-      return;
-    }
-    if(err && response.statusCode !== 200){
-      console.log(chalk.red(`Request error: ${err}`));
-    }
-    console.log(chalk.yellow(`HTML page successfully downloaded from ${url}.`));
-    // These three lines allow the returned body element to be traversed with jQuery.
-    const dom = new JSDOM(body).window.document;
-    var window = dom.defaultView;
-    var $ = require('jquery')(window);
-
-    elementsMap.forEach(item => {
-      if (item.menuName.indexOf('.') > 0) {
-        console.log(chalk.red(`${item.menuName} was ignored because the menuName has dot characters, which are not allowed.`));
-      }
-      if (item.menuSelector) {
-        var elements = $(item.menuSelector);
-        $(elements).each((index, element) => {
-          parseMenu($(element).parent().html(), $, item.menuName);
-        });
-      }
-    });
-  });
-}
