@@ -20,16 +20,22 @@ function objectFromString(str, val = {}) {
   }, val);
 }
 
-function merge(str, val = {}) {
-  console.log(val);
-  return str.split('.').reduceRight((acc, currentValue) => {
-    console.log(acc);
-    return { [currentValue]: acc };
-  }, val);
+function addToObject(object, value, path) {
+  var levels = path.split('.');
+  var acc = object;
+  levels.forEach((level, index) => {
+    var lastIteration = levels.length-1 === index;
+    if (!acc[level]) {
+      if (lastIteration) {
+        acc[level] = value;
+      } else {
+        acc[level] = {};
+      }
+    } 
+    acc = acc[level];
+  });
+  return object;
 }
-
-console.log(merge('one.two.three', 'value'));
-return;
 
 var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 if (url.match(isUrl)) {
