@@ -39,6 +39,27 @@ function immediateText(element, $) {
   return $(element).clone().children().remove().end().text();
 }
 
+function outPutResult(allMenus) {
+  var final;
+  if (outputFormat === 'toml') {
+    final = tomlify.toToml(allMenus, {space: 2});
+  } else if (outputFormat ==='yml' || outputFormat ==='yaml') {
+    final = YAML.stringify(allMenus);
+  } else {
+    if (outputFormat !=='json') {
+      console.log(chalk.red(`${outputFormat} is not a valid output format. Use 'toml', 'yml', 'yaml' ot 'json'. JSON has been used as the default.`));
+    }
+    final = JSON.stringify(allMenus);
+  }
+  var filepath = `menu-output.${outputFormat}`;
+  fs.writeFile(filepath, final, function(err) {
+    if(err) {
+      return console.log(err);
+    }
+    console.log(chalk.green(`Succes! ${filepath} was saved!`));
+  });
+}
+
 if (url.match(isUrl)) {
   processURL(url);
 } else {
@@ -70,25 +91,31 @@ function processURL(url) {
     elementsMap.forEach(item => {
       if (item.menuName.indexOf('.') > 0) {
         console.log(chalk.red(`${item.menuName} was ignored because the menuName has dot characters, which are not allowed.`));
+        return;
       }
       if (item.menuSelector) {
         var elements = $(item.menuSelector);
-        $(elements).each((index, element) => {
-          parseMenu($(element).parent().html(), $, item.menuName);
-        });
+        if (elements.length > 0) {
+          $(elements).each((index, element) => {
+            parseMenu($(element).parent().html(), $, item.menuName, item.menuItemSelector);
+          });
+        } else {
+          console.log(chalk.red(`The selector ${item.menuSelector} returned 0 elements.`));
+        }
       }
     });
+    outPutResult(allMenus);
   });
 }
 
 
-function parseMenu(html, $, menuName) {
-  var menuItems = $(html).children(elementsMap.menuItemSelector);
+function parseMenu(html, $, menuName, menuItemSelector) {
+  var menuItems = $(html).children(menuItemSelector);
   var menuObjects = [];
   var weightLevel = 1;
   var processMenuItem = (menuItem, index, weightLevel, parentIdentifier) => {
     var menuItemObject = {};
-    var hasChildren = $(menuItem).find(elementsMap.menuItemSelector).length > 0;
+    var hasChildren = $(menuItem).find(menuItemSelector).length > 0;
     var childMenu = $(menuItem).children('ul');
     var linkElement = $(menuItem).children('a').first();
     var href = $(linkElement).attr('href');
@@ -115,35 +142,17 @@ function parseMenu(html, $, menuName) {
     menuItemObject.weight = weightLevel + index;
     menuObjects.push(menuItemObject);
     if (hasChildren) {
-      var childMenuItems = $(childMenu).children(elementsMap.menuItemSelector)
+      var childMenuItems = $(childMenu).children(elementsMap.menuItemSelector);
       $(childMenuItems).each((index, childMenuItem) => {
         processMenuItem(childMenuItem, index, weightLevel*10, menuItemObject.identifier);
       });
     }
   };
-
   $(menuItems).each((index, menuItem) => {
     processMenuItem(menuItem, index, weightLevel);
   });
-
   allMenus = addToObject(allMenus, menuObjects, `menu.${menuName}`);
-  if (outputFormat === 'toml') {
-    jsToToml(allMenus);
-  } else if (outputFormat ==='yml' || outputFormat ==='yaml') {
-    jsToYaml(allMenus);
-  } else {
-    if (outputFormat !=='json') {
-      console.log(chalk.red(`${outputFormat} is not a valid output format. Use 'toml', 'yml', 'yaml' ot 'json'. JSON has been used as the default.`));
-    }
-    console.log(JSON.stringify(allMenus));
-  }
 }
 
-function jsToYaml(object) {
-  console.log(YAML.stringify(object));
-}
-function jsToToml(object) {
-  console.log('------------------');
-  console.log(tomlify.toToml(object, {space: 2}));
-}
+
 

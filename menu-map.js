@@ -23,7 +23,11 @@ module.exports = [
   {
     menuSelector: '.copyright-inner ul',
     menuItemSelector: 'li',
-    menuName: 'footer.test'
+    menuName: 'footer'
   },
-  
+  {
+    menuSelector: '.moduletable.services-menu ul',
+    menuItemSelector: 'li',
+    menuName: 'services'
+  },
 ];
