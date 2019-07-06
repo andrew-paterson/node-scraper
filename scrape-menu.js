@@ -10,12 +10,10 @@ const chalk = require('chalk');
 var YAML = require('json2yaml');
 var tomlify = require('tomlify-j0.4');
 
-var menuObject = { menu: {}};
+var allMenus = { menu: {}};
 
 function objectFromString(str, val = {}) {
-  console.log(val);
   return str.split('.').reduceRight((acc, currentValue) => {
-    console.log(acc);
     return { [currentValue]: acc };
   }, val);
 }
@@ -95,18 +93,16 @@ function parseMenu(html, $, menuName) {
     processMenuItem(menuItem, index, weightLevel);
   });
   var menuObject = objectFromString(`${menuName}`, menuObjects);
-  for (var key in menuObject) {
-    // console.log(key);
-  }
+  allMenus = addToObject(allMenus, menuObjects, `menu.${menuName}`);
   if (outputFormat === 'toml') {
-    jsToToml(menuObject);
+    jsToToml(allMenus);
   } else if (outputFormat ==='yml' || outputFormat ==='yaml') {
-    jsToYaml(menuObject);
+    jsToYaml(allMenus);
   } else {
     if (outputFormat !=='json') {
       console.log(chalk.red(`${outputFormat} is not a valid output format. Use 'toml', 'yml', 'yaml' ot 'json'. JSON has been used as the default.`));
     }
-    console.log(JSON.stringify(menuObject));
+    console.log(JSON.stringify(allMenus));
   }
 }
 
@@ -114,7 +110,8 @@ function jsToYaml(object) {
   console.log(YAML.stringify(object));
 }
 function jsToToml(object) {
-  // console.log(tomlify.toToml(object, {space: 2}));
+  console.log('------------------');
+  console.log(tomlify.toToml(object, {space: 2}));
 }
 
 function processURL(url) {
