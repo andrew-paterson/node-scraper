@@ -1,5 +1,4 @@
 module.exports = [
-  
   {
     menuSelector: '#main-nav ul',
     menuItemSelector: 'li',
