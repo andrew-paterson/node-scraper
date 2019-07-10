@@ -1,7 +1,7 @@
 module.exports = {
   map: {
     oneToOne: {
-      preserveOrderPages: [
+      preserveOrdrPages: [
         {
           url: 'https://mfwdurbanattorneys.co.za/people/attorneys',
           itemsSelector: 'h3.catItemTitle a',

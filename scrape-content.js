@@ -109,7 +109,7 @@ function getElementOrder(object) {
   // });
 // }
 var pageOrdering = [];
-if (preserveOrderPages.length > 0) {
+// if (preserveOrderPages.length > 0) {
   var itemPromises = preserveOrderPages.map(getElementOrder);
   Promise.all(itemPromises).then(results => {
     pageOrdering = results; 
@@ -117,9 +117,9 @@ if (preserveOrderPages.length > 0) {
   }).catch(err => {
     console.log(err);
   });
-} else {
-  processUrls();
-}
+// } else {
+//   processUrls();
+// }
 
 function processUrls() {
   urls.forEach(line => {
