@@ -8,16 +8,19 @@ var nodeUrl = require('url');
 var mkdirp = require('mkdirp');
 var path = require('path');
 var urlsFile = process.argv[2];
-var mapFile = process.argv[3];
+var scrapeConfigFile = process.argv[3];
 var frontMatterFormat = process.argv[4];
 var outputDirectory = process.argv[5];
 var parseString = require('xml2js').parseString;
 var YAML = require('json2yaml');
 var tomlify = require('tomlify-j0.4');
-var elementsMap = require(mapFile); 
+var scrapeConfig = require(scrapeConfigFile); 
 const chalk = require('chalk');
 var urls;
-var preserveOrderPages = elementsMap.map.preserveOrderPages || [];
+var preserveOrderPages = scrapeConfig.map.oneToOne.preserveOrderPages || [];
+var oneToOne = scrapeConfig.map.oneToOne;
+var oneToMany = scrapeConfig.map.oneToMany;
+
 
 if (path.extname(urlsFile) === '.xml') {
   var xml = fs.readFileSync(urlsFile, 'utf-8');
@@ -30,40 +33,84 @@ if (path.extname(urlsFile) === '.xml') {
   urls = fs.readFileSync(urlsFile, 'utf-8').split(/\r?\n/);
 }
 
-function fetchHTMLPromise(object) {
+function fetchHTMLPromise(url) {
   return new Promise(function(resolve, reject) { 
-    request({uri: object.url}, function(err, response, body){ 
+    request({uri: url}, function(err, response, body){ 
       if (response.statusCode === 200) {
-        const dom = new JSDOM(body).window.document;
-        var window = dom.defaultView;
-        var $ = require('jquery')(window);
-        var elements = $(object.itemsSelector);
-        var links = [];
-        $(elements).each((index, element) => {
-          var matchValue;
-          if (object.frontMatterKey === 'url') {
-            matchValue = $(element).attr('href').trim();
-          } else {
-            matchValue = $(element).text().trim();
-          }
-          links.push({
-            matchValue: matchValue,
-            weight: index
-          });
-        });
-      
-        resolve({sectionUrl: object.url, matchKey: object.frontMatterKey, items: links});  // fulfilled successfully
+        resolve(body);
       } else {
-        reject(err);  // error, rejected
+        var errorMessage;
+        if (response.statusCode === 404){
+          errorMessage = `404 error. No webpage was found at ${url}`;
+        } else if (response.statusCode === 401){
+          errorMessage = `401 error. You are not authorised to access ${url}`;
+        } else if (err && response.statusCode !== 200){
+          errorMessage = `Request error: ${err}`;
+        }
+        reject(errorMessage);
       }
     });
   });
 }
+
+function getElementOrder(object) {
+  return new Promise(function(resolve, reject) { 
+    fetchHTMLPromise(object.url).then(body => {
+      const dom = new JSDOM(body).window.document;
+      var window = dom.defaultView;
+      var $ = require('jquery')(window);
+      var elements = $(object.itemsSelector);
+      var links = [];
+      $(elements).each((index, element) => {
+        var matchValue;
+        if (object.frontMatterKey === 'url') {
+          matchValue = $(element).attr('href').trim();
+        } else {
+          matchValue = $(element).text().trim();
+        }
+        links.push({
+          matchValue: matchValue,
+          weight: index
+        });
+      });
+      resolve({sectionUrl: object.url, matchKey: object.frontMatterKey, items: links});
+    }).catch(err => {
+      reject(err);
+    });
+  });
+}
+
+  // return new Promise(function(resolve, reject) { 
+  //   request({uri: object.url}, function(err, response, body){ 
+  //     if (response.statusCode === 200) {
+  //       const dom = new JSDOM(body).window.document;
+  //       var window = dom.defaultView;
+  //       var $ = require('jquery')(window);
+  //       var elements = $(object.itemsSelector);
+  //       var links = [];
+  //       $(elements).each((index, element) => {
+  //         var matchValue;
+  //         if (object.frontMatterKey === 'url') {
+  //           matchValue = $(element).attr('href').trim();
+  //         } else {
+  //           matchValue = $(element).text().trim();
+  //         }
+  //         links.push({
+  //           matchValue: matchValue,
+  //           weight: index
+  //         });
+  //       });
+      
+  //       resolve({sectionUrl: object.url, matchKey: object.frontMatterKey, items: links});  // fulfilled successfully
+  //     } else {
+  //       reject(err);  // error, rejected
+  //     }
+  //   });
+  // });
+// }
 var pageOrdering = [];
 if (preserveOrderPages.length > 0) {
-  // singlePromiseFunction(single).then((val) => console.log("fulfilled:", val))  
-  //   .catch((err) => console.log("rejected:", err));
-  var itemPromises = preserveOrderPages.map(fetchHTMLPromise);
+  var itemPromises = preserveOrderPages.map(getElementOrder);
   Promise.all(itemPromises).then(results => {
     pageOrdering = results; 
     processUrls();
@@ -150,7 +197,7 @@ function parseContentItem(test, url, $) {
   var pathname = nodeUrl.parse(url).pathname;
   var frontMatterObject = {};
   var contentObject = {};
-  elementsMap.map.items.forEach(item => {
+  oneToOne.items.forEach(item => {
     var element = $(test).find(item.selector);
     if (element.length === 0) { return; }
     var text = element.text().trim();
@@ -173,21 +220,25 @@ function parseContentItem(test, url, $) {
   createMD(frontMatterObject, contentObject, url);
 }
 
+function parseOneToManyHTML($, url, body) {
+  // Applies to creating multiple md files from a list page
+  var elements = $(elementsMap.containerSelector);
+  $(elements).each((index, item) => {
+    var html = $(item).html();
+    var filename = $(item).find(elementsMap.fileNameSelector).text().trim().replace(/[^a-zA-Z\d]/g, '-').replace(/(-)\1+/g, '-').toLowerCase();
+    var itemUrl = `${url}/${filename}`;
+    if ($(item).find(elementsMap.ignoreIfSelector).length > 0) {
+      // Does not create an md file from an item that contains this- eg don't create if title contains a link.
+      console.log(chalk.cyan(`${filename} was skipped because it contained the ignoreIfSelector.`));
+      return true; //Don't do anything.
+    }
+    parseContentItem(html, itemUrl, $);
+  });
+}
+
 function parseHTML($, url, body) {
-  if (elementsMap.containerSelector) {
-    // Applies to creating multiple md files from a list page
-    var elements = $(elementsMap.containerSelector);
-    $(elements).each((index, item) => {
-      var html = $(item).html();
-      var filename = $(item).find(elementsMap.fileNameSelector).text().trim().replace(/[^a-zA-Z\d]/g, '-').replace(/(-)\1+/g, '-').toLowerCase();
-      var itemUrl = `${url}/${filename}`;
-      if ($(item).find(elementsMap.ignoreIfSelector).length > 0) {
-        // Does not create an md file from an item that contains this- eg don't create if title contains a link.
-        console.log(chalk.cyan(`${filename} was skipped because it contained the ignoreIfSelector.`));
-        return true; //Don't do anything.
-      }
-      parseContentItem(html, itemUrl, $);
-    });
+  if (scrapeConfig.containerSelector) {
+    
   } else {
     // For creating one md page per URL.
     parseContentItem(body, url, $);
