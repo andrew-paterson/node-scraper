@@ -52,20 +52,20 @@ function fetchHTMLPromise(object) {
           });
         });
       
-        resolve({name: object.url, matchKey: object.frontMatterKey, items: links});  // fulfilled successfully
+        resolve({sectionUrl: object.url, matchKey: object.frontMatterKey, items: links});  // fulfilled successfully
       } else {
         reject(err);  // error, rejected
       }
     });
   });
 }
-var orderData = [];
+var pageOrdering = [];
 if (preserveOrderPages.length > 0) {
   // singlePromiseFunction(single).then((val) => console.log("fulfilled:", val))  
   //   .catch((err) => console.log("rejected:", err));
   var itemPromises = preserveOrderPages.map(fetchHTMLPromise);
   Promise.all(itemPromises).then(results => {
-    orderData = results; 
+    pageOrdering = results; 
     processUrls();
   }).catch(err => {
     console.log(err);
@@ -135,14 +135,14 @@ function createMD(frontMatterObject, contentObject, url) {
 }
 
 function contentItemWeight(url, frontMatterObject) {
-  var orderDataItem = orderData.find(item => {
-    return url.indexOf(item.name) > -1;
+  console.log(url);
+  var pageOrderingSection = pageOrdering.find(section => {
+    return url.indexOf(section.sectionUrl) > -1;
   });
-  var array = orderDataItem.items;
-  var match = array.find(arrayItem => {
-    return arrayItem.matchValue === frontMatterObject[orderDataItem.matchKey];
+  var pageOrderingItem = pageOrderingSection.items.find(arrayItem => {
+    return arrayItem.matchValue === frontMatterObject[pageOrderingSection.matchKey];
   });
-  return match.weight;
+  return pageOrderingItem.weight;
 }
 
 function parseContentItem(test, url, $) {
@@ -168,7 +168,6 @@ function parseContentItem(test, url, $) {
     }
   });
   frontMatterObject.url = pathname;
-  
   frontMatterObject.weight = contentItemWeight(url, frontMatterObject);
   createMD(frontMatterObject, contentObject, url);
 }
