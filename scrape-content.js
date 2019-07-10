@@ -17,7 +17,7 @@ var tomlify = require('tomlify-j0.4');
 var elementsMap = require(mapFile); 
 const chalk = require('chalk');
 var urls;
-var preserveOrder = elementsMap.map.preserveOrder || [];
+var preserveOrderPages = elementsMap.map.preserveOrderPages || [];
 
 if (path.extname(urlsFile) === '.xml') {
   var xml = fs.readFileSync(urlsFile, 'utf-8');
@@ -29,27 +29,50 @@ if (path.extname(urlsFile) === '.xml') {
 } else {
   urls = fs.readFileSync(urlsFile, 'utf-8').split(/\r?\n/);
 }
-var test = 'https://mfwdurbanattorneys.co.za/people/attorneys/item/155-mike-williams';
 
-var p = new Promise(function(resolve, reject) { 
-  request({uri: test}, function(err, response, body){ 
-    if (response.statusCode === 200){
-      resolve(response.statusCode);  // fulfilled successfully
-    } else {
-      reject(err);  // error, rejected
-    }
+function fetchHTMLPromise(object) {
+  return new Promise(function(resolve, reject) { 
+    request({uri: object.url}, function(err, response, body){ 
+      if (response.statusCode === 200) {
+        const dom = new JSDOM(body).window.document;
+        var window = dom.defaultView;
+        var $ = require('jquery')(window);
+        var elements = $(object.itemsSelector);
+        var links = [];
+        $(elements).each((index, element) => {
+          var matchValue;
+          if (object.frontMatterKey === 'url') {
+            matchValue = $(element).attr('href').trim();
+          } else {
+            matchValue = $(element).text().trim();
+          }
+          links.push({
+            matchValue: matchValue,
+            weight: index
+          });
+        });
+      
+        resolve({name: object.url, matchKey: object.frontMatterKey, items: links});  // fulfilled successfully
+      } else {
+        reject(err);  // error, rejected
+      }
+    });
   });
-});
-
-if (preserveOrder.length > 0) {
-  console.log('get order');
-  p.then((val) => console.log("fulfilled:", val))  
-    .catch((err) => console.log("rejected:", err));
+}
+var orderData = [];
+if (preserveOrderPages.length > 0) {
+  // singlePromiseFunction(single).then((val) => console.log("fulfilled:", val))  
+  //   .catch((err) => console.log("rejected:", err));
+  var itemPromises = preserveOrderPages.map(fetchHTMLPromise);
+  Promise.all(itemPromises).then(results => {
+    orderData = results; 
+    processUrls();
+  }).catch(err => {
+    console.log(err);
+  });
 } else {
   processUrls();
 }
-
-
 
 function processUrls() {
   urls.forEach(line => {
@@ -63,8 +86,6 @@ function processUrls() {
     }
   });
 }
-
-
 
 function mkdirP(dirPath) {
   mkdirp.sync(dirPath, err => {
@@ -113,6 +134,17 @@ function createMD(frontMatterObject, contentObject, url) {
     });
 }
 
+function contentItemWeight(url, frontMatterObject) {
+  var orderDataItem = orderData.find(item => {
+    return url.indexOf(item.name) > -1;
+  });
+  var array = orderDataItem.items;
+  var match = array.find(arrayItem => {
+    return arrayItem.matchValue === frontMatterObject[orderDataItem.matchKey];
+  });
+  return match.weight;
+}
+
 function parseContentItem(test, url, $) {
   var pathname = nodeUrl.parse(url).pathname;
   var frontMatterObject = {};
@@ -136,6 +168,8 @@ function parseContentItem(test, url, $) {
     }
   });
   frontMatterObject.url = pathname;
+  
+  frontMatterObject.weight = contentItemWeight(url, frontMatterObject);
   createMD(frontMatterObject, contentObject, url);
 }
 

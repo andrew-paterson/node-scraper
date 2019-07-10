@@ -1,10 +1,15 @@
 module.exports = {
   map: {
-    preserveOrder: [
+    preserveOrderPages: [
       {
-        pathname: 'people/attorneys',
+        url: 'https://mfwdurbanattorneys.co.za/people/attorneys',
         itemsSelector: 'h3.catItemTitle a',
         frontMatterKey: 'url'
+      },
+      {
+        url: 'https://mfwdurbanattorneys.co.za/people/support-staff',
+        itemsSelector: 'h3.catItemTitle',
+        frontMatterKey: 'title'
       }
     ],
     items: [

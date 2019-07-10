@@ -3,6 +3,7 @@
   item_image: "/media/k2/items/cache/c10c64c27e0606d1654b81b9bb482558_L.jpg"
   position: "Director"
   url: "/people/attorneys/item/155-mike-williams"
+  weight: 0
 ---
 
 Mike specialises in Commercial Law and Litigation, Debt Recoveries, Labour & Employment Law, Alternative Dispute Resolutions, Family Law, Trusts, Wills & Estate Planning, Liquidations and Liquor Licence applications. 
