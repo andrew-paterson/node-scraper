@@ -34,8 +34,13 @@ if (path.extname(urlsFile) === '.xml') {
 }
 
 function fetchHTMLPromise(url) {
+  var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
   return new Promise(function(resolve, reject) { 
+    if (!url.match(isUrl)) {
+      reject(`Invalid url: ${url}`);
+    }
     request({uri: url}, function(err, response, body){ 
+      
       if (response.statusCode === 200) {
         resolve(body);
       } else {
@@ -109,17 +114,14 @@ function getElementOrder(object) {
   // });
 // }
 var pageOrdering = [];
-// if (preserveOrderPages.length > 0) {
-  var itemPromises = preserveOrderPages.map(getElementOrder);
-  Promise.all(itemPromises).then(results => {
-    pageOrdering = results; 
-    processUrls();
-  }).catch(err => {
-    console.log(err);
-  });
-// } else {
-//   processUrls();
-// }
+var itemPromises = preserveOrderPages.map(getElementOrder);
+Promise.all(itemPromises).then(results => {
+  pageOrdering = results; 
+  processUrls();
+}).catch(err => {
+  console.log(chalk.red(err));
+});
+
 
 function processUrls() {
   urls.forEach(line => {
@@ -128,7 +130,7 @@ function processUrls() {
       fetchHTML(line, 'createContent');
     } else {
       if (line.trim().split('').length > 0) {
-        console.log(`${line} was ignored because it is not a URL`);
+        // console.log(`${line} was ignored because it is not a URL`);
       }
     }
   });
