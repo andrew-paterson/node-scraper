@@ -17,10 +17,9 @@ var tomlify = require('tomlify-j0.4');
 var scrapeConfig = require(scrapeConfigFile); 
 const chalk = require('chalk');
 var urls;
-var preserveOrderPages = scrapeConfig.map.oneToOne.preserveOrderPages || [];
+var orderedPages = scrapeConfig.map.oneToOne.orderedPages || [];
 var oneToOne = scrapeConfig.map.oneToOne;
 var oneToMany = scrapeConfig.map.oneToMany;
-
 
 if (path.extname(urlsFile) === '.xml') {
   var xml = fs.readFileSync(urlsFile, 'utf-8');
@@ -40,7 +39,6 @@ function fetchHTMLPromise(url) {
       reject(`Invalid url: ${url}`);
     }
     request({uri: url}, function(err, response, body){ 
-      
       if (response.statusCode === 200) {
         resolve(body);
       } else {
@@ -58,12 +56,17 @@ function fetchHTMLPromise(url) {
   });
 }
 
+function loadDom(html) {
+  var dom = new JSDOM(html).window.document;
+  var window = dom.defaultView;
+  var $ = require('jquery')(window);
+  return $;
+}
+
 function getElementOrder(object) {
   return new Promise(function(resolve, reject) { 
-    fetchHTMLPromise(object.url).then(body => {
-      const dom = new JSDOM(body).window.document;
-      var window = dom.defaultView;
-      var $ = require('jquery')(window);
+    fetchHTMLPromise(object.url).then((body) => {
+      var $ = loadDom(body);
       var elements = $(object.itemsSelector);
       var links = [];
       $(elements).each((index, element) => {
@@ -85,54 +88,53 @@ function getElementOrder(object) {
   });
 }
 
-  // return new Promise(function(resolve, reject) { 
-  //   request({uri: object.url}, function(err, response, body){ 
-  //     if (response.statusCode === 200) {
-  //       const dom = new JSDOM(body).window.document;
-  //       var window = dom.defaultView;
-  //       var $ = require('jquery')(window);
-  //       var elements = $(object.itemsSelector);
-  //       var links = [];
-  //       $(elements).each((index, element) => {
-  //         var matchValue;
-  //         if (object.frontMatterKey === 'url') {
-  //           matchValue = $(element).attr('href').trim();
-  //         } else {
-  //           matchValue = $(element).text().trim();
-  //         }
-  //         links.push({
-  //           matchValue: matchValue,
-  //           weight: index
-  //         });
-  //       });
-      
-  //       resolve({sectionUrl: object.url, matchKey: object.frontMatterKey, items: links});  // fulfilled successfully
-  //     } else {
-  //       reject(err);  // error, rejected
-  //     }
-  //   });
-  // });
-// }
+function oneToManyPage(object) {
+  return new Promise(function(resolve, reject) { 
+    fetchHTMLPromise(object.url).then((body) => {
+      // Return an array of html elements, with the object.
+      var $ = loadDom(body);
+      var elements = $(object.containerSelector);
+      var test = $(elements).map((index, item) => {
+        var html = $(item).html();
+        var filename = $(item).find(object.fileNameSelector).text().trim().replace(/[^a-zA-Z\d]/g, '-').replace(/(-)\1+/g, '-').toLowerCase();
+        var itemUrl = `${object.url}/${filename}`;
+        if ($(item).find(object.ignoreIfSelector).length > 0) {
+          // Does not create an md file from an item that contains this- eg don't create if title contains a link.
+          console.log(chalk.cyan(`${filename} was skipped because it contained the ignoreIfSelector.`));
+          return true; //Don't do anything.
+        }
+        return parseContentItem(html, itemUrl, $);
+      });
+      resolve(test);
+    }).catch(err => {
+      reject(err);
+    });
+  });
+}
+
 var pageOrdering = [];
-var itemPromises = preserveOrderPages.map(getElementOrder);
-Promise.all(itemPromises).then(results => {
+var itemPromises = orderedPages.map(getElementOrder);
+Promise.all(itemPromises)
+.then(results => {
   pageOrdering = results; 
-  processUrls();
-}).catch(err => {
+})
+.then(() => {
+  var oneToManyPromises = oneToMany.map(oneToManyPage);
+  // processUrls();
+  Promise.all(oneToManyPromises).then(results => {
+    console.log(results);
+  }).catch(err => {
+    console.log(err)
+  });
+})
+.catch(err => {
   console.log(chalk.red(err));
 });
 
 
 function processUrls() {
   urls.forEach(line => {
-    var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
-    if (line.match(isUrl)) {
-      fetchHTML(line, 'createContent');
-    } else {
-      if (line.trim().split('').length > 0) {
-        // console.log(`${line} was ignored because it is not a URL`);
-      }
-    }
+    fetchHTML(line, 'createContent');
   });
 }
 
@@ -219,7 +221,12 @@ function parseContentItem(test, url, $) {
   });
   frontMatterObject.url = pathname;
   frontMatterObject.weight = contentItemWeight(url, frontMatterObject);
-  createMD(frontMatterObject, contentObject, url);
+  // createMD(frontMatterObject, contentObject, url);
+  return {
+    frontMatter: frontMatterObject,
+    contentObject: contentObject,
+    url: url
+  };
 }
 
 function parseOneToManyHTML($, url, body) {
