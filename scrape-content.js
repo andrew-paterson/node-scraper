@@ -135,13 +135,14 @@ function createMD(frontMatterObject, contentObject, url) {
 }
 
 function contentItemWeight(url, frontMatterObject) {
-  console.log(url);
   var pageOrderingSection = pageOrdering.find(section => {
     return url.indexOf(section.sectionUrl) > -1;
   });
-  var pageOrderingItem = pageOrderingSection.items.find(arrayItem => {
-    return arrayItem.matchValue === frontMatterObject[pageOrderingSection.matchKey];
+  if (!pageOrderingSection) { return; }
+  var pageOrderingItem = pageOrderingSection.items.find(item => {
+    return item.matchValue === frontMatterObject[pageOrderingSection.matchKey];
   });
+  if (!pageOrderingItem) { return; }
   return pageOrderingItem.weight;
 }
 
