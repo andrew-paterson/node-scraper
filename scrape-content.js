@@ -88,7 +88,7 @@ function getElementOrder(object) {
   });
 }
 
-function oneToManyPage(object) {
+function oneToManyPage(object, pageOrdering) {
   return new Promise(function(resolve, reject) { 
     fetchHTMLPromise(object.url).then((body) => {
       var elementsMap = oneToMany.find(item => {
@@ -108,7 +108,7 @@ function oneToManyPage(object) {
           return true; //Don't do anything.
         }
         
-        items.push(parseContentItem(html, elementsMap, itemUrl, $));
+        items.push(parseContentItem(html, elementsMap, itemUrl, $, pageOrdering));
       });
       resolve(items);
     }).catch(err => {
@@ -117,13 +117,13 @@ function oneToManyPage(object) {
   });
 }
 
-function oneToOnePage(url) {
-  console.log(url);
+function oneToOnePage(url, pageOrdering) {
+
   return new Promise(function(resolve, reject) { 
     fetchHTMLPromise(url).then((body) => {
       var elementsMap = oneToOne;
       var $ = loadDom(body);
-      resolve(parseContentItem(body, elementsMap, url, $));
+      resolve(parseContentItem(body, elementsMap, url, $, pageOrdering));
     }).catch(err => {
       reject(err);
     });
@@ -135,7 +135,17 @@ function createMDPromise(object) {
   var content = object.content || {};
   var url = object.url;
   return new Promise(function(resolve, reject) { 
+    var frontMatterDelimiter;
+    if (frontMatterFormat === 'toml') {
+      frontMatterDelimiter = '+++';
+    } else if (frontMatterFormat ==='yml' || frontMatterFormat ==='yaml') {
+      frontMatterDelimiter = '---';
+    }
     var final = '';
+    if (frontMatterFormat === 'toml') {
+      // Only for toml, because JSION doesn't have delimiters and with yml, the YAML dep adds the first delimiter for you.
+      final += `${frontMatterDelimiter}\n`;
+    }
     if (frontMatterFormat === 'toml') {
       final += tomlify.toToml(frontMatter, {space: 2});
     } else if (frontMatterFormat ==='yml' || frontMatterFormat ==='yaml') {
@@ -144,10 +154,17 @@ function createMDPromise(object) {
       if (frontMatterFormat !=='json') {
         console.log(chalk.red(`${frontMatterFormat} is not a valid output format. Use 'toml', 'yml', 'yaml' ot 'json'. JSON has been used as the default.`));
       }
-      final += JSON.stringify(frontMatter);
+      final += JSON.stringify(frontMatter, null, 2);
     }
-  
-    final += '---\n\n';
+    if (frontMatterFormat === 'toml') {
+      final += `\n${frontMatterDelimiter}\n\n`;
+    } else if (frontMatterFormat ==='yml' || frontMatterFormat ==='yaml') {
+      final += `${frontMatterDelimiter}\n\n`;
+    } else {
+      // When the frontMatter format is JSON, just add an empty line between the front matter and the content.
+      final += '\n\n';
+    }
+    
     if (content.intro_text) {
       final += `${content.intro_text} \n`;
     }
@@ -172,7 +189,6 @@ function createMDPromise(object) {
   });
 }
 
-var pageOrdering = [];
 var itemPromises = orderedPages.map(getElementOrder);
 console.log('P1 start')
 Promise.all(itemPromises)
@@ -192,8 +208,11 @@ Promise.all(itemPromises)
 })
 .then((object) => {
   console.log('P3 start')
-  var oneToManyPromises = urls.map(oneToOnePage);
-  return Promise.all(oneToManyPromises).then(results => {
+  var oneToOnePromises = [];
+  urls.forEach(url => {
+    oneToOnePromises.push(oneToOnePage(url, object.pageOrdering));
+  });
+  return Promise.all(oneToOnePromises).then(results => {
     console.log('P3 result')
     object.oneToOne = results;
     return object;
@@ -285,7 +304,7 @@ function createMD(frontMatterObject, contentObject, url) {
   });
 }
 
-function contentItemWeight(url, frontMatterObject) {
+function contentItemWeight(url, frontMatterObject, pageOrdering) {
   var pageOrderingSection = pageOrdering.find(section => {
     return url.indexOf(section.sectionUrl) > -1;
   });
@@ -297,7 +316,7 @@ function contentItemWeight(url, frontMatterObject) {
   return pageOrderingItem.weight;
 }
 
-function parseContentItem(object, elementsMap, url, $) {
+function parseContentItem(object, elementsMap, url, $, pageOrdering) {
   var pathname = nodeUrl.parse(url).pathname;
   var frontMatterObject = {};
   var contentObject = {};
@@ -320,7 +339,10 @@ function parseContentItem(object, elementsMap, url, $) {
     }
   });
   frontMatterObject.url = pathname;
-  frontMatterObject.weight = contentItemWeight(url, frontMatterObject);
+  if (pageOrdering) {
+    frontMatterObject.weight = contentItemWeight(url, frontMatterObject, pageOrdering);
+  }
+  
   return {
     frontMatter: frontMatterObject,
     content: contentObject,
