@@ -213,7 +213,7 @@ Promise.all(itemPromises)
       oneToManyItems.push(item);
     });
   });
-  var createMDpromises = test.map(createMDPromise);
+  var createMDpromises = oneToManyItems.map(createMDPromise);
   return Promise.all(createMDpromises).then(response => {
     console.log('P4 result')
     console.log(response);
@@ -222,6 +222,12 @@ Promise.all(itemPromises)
 })
 .then(object => {
   console.log('P5 start')
+  var createMD121promises = object.oneToOne.map(createMDPromise);
+  return Promise.all(createMD121promises).then(response => {
+    console.log('P5 result')
+    console.log(response);
+    return object;
+  });
 })
 .catch(err => {
   console.log(chalk.red(err));
