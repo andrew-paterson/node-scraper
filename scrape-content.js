@@ -91,10 +91,15 @@ function getElementOrder(object) {
 function oneToManyPage(object) {
   return new Promise(function(resolve, reject) { 
     fetchHTMLPromise(object.url).then((body) => {
+      console.log(object.url);
+      var elementsMap = oneToMany.find(item => {
+        return item.url === object.url;
+      })
       // Return an array of html elements, with the object.
       var $ = loadDom(body);
       var elements = $(object.containerSelector);
-      var test = $(elements).map((index, item) => {
+      var items = [];
+      $(elements).each((index, item) => {
         var html = $(item).html();
         var filename = $(item).find(object.fileNameSelector).text().trim().replace(/[^a-zA-Z\d]/g, '-').replace(/(-)\1+/g, '-').toLowerCase();
         var itemUrl = `${object.url}/${filename}`;
@@ -103,9 +108,10 @@ function oneToManyPage(object) {
           console.log(chalk.cyan(`${filename} was skipped because it contained the ignoreIfSelector.`));
           return true; //Don't do anything.
         }
-        return parseContentItem(html, itemUrl, $);
+        
+        items.push(parseContentItem(html, elementsMap, itemUrl, $));
       });
-      resolve(test);
+      resolve(items);
     }).catch(err => {
       reject(err);
     });
@@ -114,17 +120,32 @@ function oneToManyPage(object) {
 
 var pageOrdering = [];
 var itemPromises = orderedPages.map(getElementOrder);
+console.log('P1 start')
 Promise.all(itemPromises)
-.then(results => {
-  pageOrdering = results; 
+.then(pageOrdering => {
+  console.log('P1 result');
+  return {pageOrdering: pageOrdering};
+  
 })
-.then(() => {
+.then((object) => {
+  console.log('P2 start');
   var oneToManyPromises = oneToMany.map(oneToManyPage);
-  // processUrls();
-  Promise.all(oneToManyPromises).then(results => {
-    console.log(results);
-  }).catch(err => {
-    console.log(err)
+  return Promise.all(oneToManyPromises).then(results => {
+    console.log('P2 result')
+    object.oneToMany = results;
+    return object;
+    // results[0].forEach(result => {
+    //   console.log(result.frontMatter);
+    // });
+  });
+})
+.then((object) => {
+  console.log('P3 start')
+  fs.writeFile('test.json', JSON.stringify(object), function(err) {
+    if(err) {
+      return console.log(err);
+    }
+    console.log(chalk.green(`Succes!  was saved!`));
   });
 })
 .catch(err => {
@@ -197,12 +218,12 @@ function contentItemWeight(url, frontMatterObject) {
   return pageOrderingItem.weight;
 }
 
-function parseContentItem(test, url, $) {
+function parseContentItem(object, elementsMap, url, $) {
   var pathname = nodeUrl.parse(url).pathname;
   var frontMatterObject = {};
   var contentObject = {};
-  oneToOne.items.forEach(item => {
-    var element = $(test).find(item.selector);
+  elementsMap.items.forEach(item => {
+    var element = $(object).find(item.selector);
     if (element.length === 0) { return; }
     var text = element.text().trim();
     var html = element.html().trim();
