@@ -91,10 +91,9 @@ function getElementOrder(object) {
 function oneToManyPage(object) {
   return new Promise(function(resolve, reject) { 
     fetchHTMLPromise(object.url).then((body) => {
-      console.log(object.url);
       var elementsMap = oneToMany.find(item => {
         return item.url === object.url;
-      })
+      });
       // Return an array of html elements, with the object.
       var $ = loadDom(body);
       var elements = $(object.containerSelector);
@@ -118,6 +117,61 @@ function oneToManyPage(object) {
   });
 }
 
+function oneToOnePage(url) {
+  console.log(url);
+  return new Promise(function(resolve, reject) { 
+    fetchHTMLPromise(url).then((body) => {
+      var elementsMap = oneToOne;
+      var $ = loadDom(body);
+      resolve(parseContentItem(body, elementsMap, url, $));
+    }).catch(err => {
+      reject(err);
+    });
+  });
+}
+
+function createMDPromise(object) {
+  var frontMatter = object.frontMatter || {};
+  var content = object.content || {};
+  var url = object.url;
+  return new Promise(function(resolve, reject) { 
+    var final = '';
+    if (frontMatterFormat === 'toml') {
+      final += tomlify.toToml(frontMatter, {space: 2});
+    } else if (frontMatterFormat ==='yml' || frontMatterFormat ==='yaml') {
+      final += YAML.stringify(frontMatter);
+    } else {
+      if (frontMatterFormat !=='json') {
+        console.log(chalk.red(`${frontMatterFormat} is not a valid output format. Use 'toml', 'yml', 'yaml' ot 'json'. JSON has been used as the default.`));
+      }
+      final += JSON.stringify(frontMatter);
+    }
+  
+    final += '---\n\n';
+    if (content.intro_text) {
+      final += `${content.intro_text} \n`;
+    }
+    if (content.intro_text && content.full_text) {
+      final += '<!--more-->\n';
+    }
+    if (content.full_text) {
+      final += content.full_text;
+    }
+  
+    var directory = outputDirectory || "output";
+    var fullPath = nodeUrl.parse(url).path;
+    var dirPath = path.dirname(fullPath);
+    mkdirP(`${directory}${dirPath}`);
+    var filepath = `${directory}${fullPath}.md`;
+    fs.writeFile(filepath, final, function(err) {
+      if(err) {
+        reject(err);
+      }
+      resolve(`Succes! ${filepath} was saved!`);
+    });
+  });
+}
+
 var pageOrdering = [];
 var itemPromises = orderedPages.map(getElementOrder);
 console.log('P1 start')
@@ -134,19 +188,40 @@ Promise.all(itemPromises)
     console.log('P2 result')
     object.oneToMany = results;
     return object;
-    // results[0].forEach(result => {
-    //   console.log(result.frontMatter);
-    // });
   });
 })
 .then((object) => {
   console.log('P3 start')
+  var oneToManyPromises = urls.map(oneToOnePage);
+  return Promise.all(oneToManyPromises).then(results => {
+    console.log('P3 result')
+    object.oneToOne = results;
+    return object;
+  });
+})
+.then(object => {
+  console.log('P4 start')
   fs.writeFile('test.json', JSON.stringify(object), function(err) {
     if(err) {
       return console.log(err);
     }
     console.log(chalk.green(`Succes!  was saved!`));
   });
+  var oneToManyItems = [];
+  object.oneToMany.forEach(oneToManyPage => {
+    oneToManyPage.forEach(item => {
+      oneToManyItems.push(item);
+    });
+  });
+  var createMDpromises = test.map(createMDPromise);
+  return Promise.all(createMDpromises).then(response => {
+    console.log('P4 result')
+    console.log(response);
+    return object;
+  });
+})
+.then(object => {
+  console.log('P5 start')
 })
 .catch(err => {
   console.log(chalk.red(err));
@@ -169,41 +244,39 @@ function mkdirP(dirPath) {
 
 function createMD(frontMatterObject, contentObject, url) {
   var final = '';
-    if (frontMatterFormat === 'toml') {
-      final += tomlify.toToml(frontMatterObject, {space: 2});
-    } else if (frontMatterFormat ==='yml' || frontMatterFormat ==='yaml') {
-      final += YAML.stringify(frontMatterObject);
-    } else {
-      if (frontMatterFormat !=='json') {
-        console.log(chalk.red(`${frontMatterFormat} is not a valid output format. Use 'toml', 'yml', 'yaml' ot 'json'. JSON has been used as the default.`));
-      }
-      final += JSON.stringify(frontMatterObject);
+  if (frontMatterFormat === 'toml') {
+    final += tomlify.toToml(frontMatterObject, {space: 2});
+  } else if (frontMatterFormat ==='yml' || frontMatterFormat ==='yaml') {
+    final += YAML.stringify(frontMatterObject);
+  } else {
+    if (frontMatterFormat !=='json') {
+      console.log(chalk.red(`${frontMatterFormat} is not a valid output format. Use 'toml', 'yml', 'yaml' ot 'json'. JSON has been used as the default.`));
     }
+    final += JSON.stringify(frontMatterObject);
+  }
 
-    final += '---\n\n';
-    if (contentObject.intro_text) {
-      final += `${contentObject.intro_text} \n`;
-    }
-    if (contentObject.intro_text && contentObject.full_text) {
-      final += '<!--more-->\n';
-    }
+  final += '---\n\n';
+  if (contentObject.intro_text) {
+    final += `${contentObject.intro_text} \n`;
+  }
+  if (contentObject.intro_text && contentObject.full_text) {
+    final += '<!--more-->\n';
+  }
+  if (contentObject.full_text) {
+    final += contentObject.full_text;
+  }
 
-    if (contentObject.full_text) {
-      final += contentObject.full_text;
+  var directory = outputDirectory || "output";
+  var fullPath = nodeUrl.parse(url).path;
+  var dirPath = path.dirname(fullPath);
+  mkdirP(`${directory}${dirPath}`);
+  var filepath = `${directory}${fullPath}.md`;
+  fs.writeFile(filepath, final, function(err) {
+    if(err) {
+      return console.log(err);
     }
-
-    var directory = outputDirectory || "output";
-    
-    var fullPath = nodeUrl.parse(url).path;
-    var dirPath = path.dirname(fullPath);
-    mkdirP(`${directory}${dirPath}`);
-    var filepath = `${directory}${fullPath}.md`;
-    fs.writeFile(filepath, final, function(err) {
-      if(err) {
-        return console.log(err);
-      }
-      console.log(chalk.green(`Succes! ${filepath} was saved!`));
-    });
+    console.log(chalk.green(`Succes! ${filepath} was saved!`));
+  });
 }
 
 function contentItemWeight(url, frontMatterObject) {
@@ -242,10 +315,9 @@ function parseContentItem(object, elementsMap, url, $) {
   });
   frontMatterObject.url = pathname;
   frontMatterObject.weight = contentItemWeight(url, frontMatterObject);
-  // createMD(frontMatterObject, contentObject, url);
   return {
     frontMatter: frontMatterObject,
-    contentObject: contentObject,
+    content: contentObject,
     url: url
   };
 }

@@ -12,11 +12,11 @@ var tomlify = require('tomlify-j0.4');
 var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 var allMenus = { menu: {}};
 
-function objectFromString(str, val = {}) {
-  return str.split('.').reduceRight((acc, currentValue) => {
-    return { [currentValue]: acc };
-  }, val);
-}
+// function objectFromString(str, val = {}) {
+//   return str.split('.').reduceRight((acc, currentValue) => {
+//     return { [currentValue]: acc };
+//   }, val);
+// }
 
 function addToObject(object, value, path) {
   var levels = path.split('.');
