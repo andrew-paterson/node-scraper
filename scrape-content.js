@@ -88,7 +88,7 @@ function getElementOrder(object) {
   });
 }
 
-function oneToManyPage(object, pageOrdering) {
+function oneToManyPage(object) {
   return new Promise(function(resolve, reject) { 
     fetchHTMLPromise(object.url).then((body) => {
       var elementsMap = oneToMany.find(item => {
@@ -107,8 +107,7 @@ function oneToManyPage(object, pageOrdering) {
           console.log(chalk.cyan(`${filename} was skipped because it contained the ignoreIfSelector.`));
           return true; //Don't do anything.
         }
-        
-        items.push(parseContentItem(html, elementsMap, itemUrl, $, pageOrdering));
+        items.push(parseContentItem(html, elementsMap, itemUrl, $));
       });
       resolve(items);
     }).catch(err => {
@@ -118,7 +117,6 @@ function oneToManyPage(object, pageOrdering) {
 }
 
 function oneToOnePage(url, pageOrdering) {
-
   return new Promise(function(resolve, reject) { 
     fetchHTMLPromise(url).then((body) => {
       var elementsMap = oneToOne;
@@ -190,36 +188,36 @@ function createMDPromise(object) {
 }
 
 var itemPromises = orderedPages.map(getElementOrder);
-console.log('P1 start')
+console.log('Started fetching pages to use as an ordering reference.');
 Promise.all(itemPromises)
 .then(pageOrdering => {
-  console.log('P1 result');
+  console.log(chalk.green('Finished fetching pages to use as an ordering reference.'));
   return {pageOrdering: pageOrdering};
   
 })
 .then((object) => {
-  console.log('P2 start');
+  console.log('Started fetching pages to use in one to many mappings.');
   var oneToManyPromises = oneToMany.map(oneToManyPage);
   return Promise.all(oneToManyPromises).then(results => {
-    console.log('P2 result')
+    console.log(chalk.green('Finished fetching pages to use in one to many mappings.'));
     object.oneToMany = results;
     return object;
   });
 })
 .then((object) => {
-  console.log('P3 start')
+  console.log('Started fetching pages to use in one to one mappings.');
   var oneToOnePromises = [];
   urls.forEach(url => {
     oneToOnePromises.push(oneToOnePage(url, object.pageOrdering));
   });
   return Promise.all(oneToOnePromises).then(results => {
-    console.log('P3 result')
+    console.log(chalk.green('Finished fetching pages to use in one to one mappings.'));
     object.oneToOne = results;
     return object;
   });
 })
 .then(object => {
-  console.log('P4 start')
+  console.log('Started creating files for one to many mappings.');
   fs.writeFile('test.json', JSON.stringify(object), function(err) {
     if(err) {
       return console.log(err);
@@ -234,17 +232,17 @@ Promise.all(itemPromises)
   });
   var createMDpromises = oneToManyItems.map(createMDPromise);
   return Promise.all(createMDpromises).then(response => {
-    console.log('P4 result')
-    console.log(response);
+    console.log(chalk.green('Finished creating files for one to many mappings.'));
+    // console.log(response);
     return object;
   });
 })
 .then(object => {
-  console.log('P5 start')
+  console.log('Started creating files for one to one mappings.');
   var createMD121promises = object.oneToOne.map(createMDPromise);
   return Promise.all(createMD121promises).then(response => {
-    console.log('P5 result')
-    console.log(response);
+    console.log(chalk.green('Finished creating files for one to many mappings.'));
+    // console.log(response);
     return object;
   });
 })

@@ -88,6 +88,42 @@ module.exports = {
             key: 'position'
           },
         ]
+      },
+      {
+        url: 'https://mfwdurbanattorneys.co.za/news',
+        containerSelector: '.catItemViewOuter',
+        fileNameSelector: '.catItemTitle', // The element that is used to create file name.
+        ignoreIfSelector: '.catItemTitle a', // Don't save item if the element contains this selector.
+        items: [
+          {
+            selector: '.catItemTitle',
+            type: 'text',
+            key: 'title'
+          },
+          {
+            selector: '.catItemIntroText img',
+            type: 'image',
+            key: 'item_image',
+            attr: 'src',
+          },
+          {
+            selector: '.catItemDateCreated',
+            type: 'date',
+            sourceDateFormat: 'DD mm YYYY',
+            key: 'date'
+          },
+          {
+            selector: '.catItemDateCreated',
+            type: 'date',
+            sourceDateFormat: 'DD mm YYYY',
+            key: 'publishdate'
+          },
+          {
+            selector: '.catItemIntroText',
+            type: 'markdown',
+            key: 'intro_text'
+          }
+        ]
       }
     ]
   }

@@ -1,6 +1,6 @@
 ---Set ordering
 ---Quotes around frontmatter strings.
 ---Fix child menu issue with manu scraper.s
-Section pagesnd ignore one to one of the url is listed as a section page
-Add menuAdd weight for one to many
-frontMatter delimiters for tomla nd json
+Section pages and ignore one to one of the url is listed as a section page
+Add weight for one to many
+---frontMatter delimiters for toml and json
