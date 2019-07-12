@@ -1,20 +1,15 @@
-
-
-
 var fs = require('fs');
 var path = require('path');
 var urlsFile = process.argv[2];
 var scrapeConfigFile = process.argv[3];
-
 var parseString = require('xml2js').parseString;
 var scrapeConfig = require(scrapeConfigFile); 
 const chalk = require('chalk');
 var urls;
-var orderedPages = scrapeConfig.oneToOne.orderedPages || [];
+var sectionOrderingRefs = scrapeConfig.oneToOne.sectionOrderingRefs || [];
 var oneToOne = scrapeConfig.oneToOne;
 var oneToMany = scrapeConfig.oneToMany;
 var lib = require('./lib.js');
-
 
 // SEQUENCE OF EVENTS
 
@@ -30,7 +25,7 @@ if (path.extname(urlsFile) === '.xml') {
 }
 
 var itemPromises = [];
-orderedPages.forEach(item => {
+sectionOrderingRefs.forEach(item => {
   itemPromises.push(lib.getElementOrder(item));
 });
 console.log('Started fetching pages to use as an ordering reference.');

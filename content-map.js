@@ -1,7 +1,6 @@
 module.exports = {
-
     oneToOne: {
-      orderedPages: [
+      sectionOrderingRefs: [
         {
           url: 'https://mfwdurbanattorneys.co.za/people/attorneys',
           itemsSelector: 'h3.catItemTitle a',
@@ -67,7 +66,7 @@ module.exports = {
     oneToMany: [
       {
         url: 'https://mfwdurbanattorneys.co.za/people/support-staff',
-        containerSelector: '.catItemViewOuter',
+        itemSelector: '.catItemViewOuter',
         fileNameSelector: '.catItemTitle', // The element that is used to create file name.
         ignoreIfSelector: '.catItemTitle a', // Don't save item if the element contains this selector.
         preserveOrder: true,
@@ -92,7 +91,7 @@ module.exports = {
       },
       {
         url: 'https://mfwdurbanattorneys.co.za/news',
-        containerSelector: '.catItemViewOuter',
+        itemSelector: '.catItemViewOuter', // An array of elements, each of which will have it's own MD content item.
         fileNameSelector: '.catItemTitle', // The element that is used to create file name.
         ignoreIfSelector: '.catItemTitle a', // Don't save item if the element contains this selector.
         items: [

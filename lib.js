@@ -186,7 +186,7 @@ module.exports = {
         });
         // Return an array of html elements, with the object.
         var $ = this.loadDom(body);
-        var elements = $(object.containerSelector);
+        var elements = $(object.itemSelector);
         var items = [];
         $(elements).each((index, item) => {
           var html = $(item).html();
