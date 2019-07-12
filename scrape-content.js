@@ -138,9 +138,9 @@ Promise.all(itemPromises)
 .then(object => {
   console.log('Started creating file for menus.');
   var createFileMenuPromises = [];
-  object.sectionPages.forEach(item => {
+  object.menus.forEach(item => {
     var fileOutPutPath = lib.fileOutputPathfromUrl('/');
-    createFileMenuPromises.push(lib.createMenuFile(object.menus, fileOutPutPath));
+    createFileMenuPromises.push(lib.createMenuFile(item, fileOutPutPath));
   });
   return Promise.all(createFileMenuPromises).then(response => {
     console.log(chalk.green('Finished creating file for menus.'));
