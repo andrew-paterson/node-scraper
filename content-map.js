@@ -70,6 +70,7 @@ module.exports = {
         containerSelector: '.catItemViewOuter',
         fileNameSelector: '.catItemTitle', // The element that is used to create file name.
         ignoreIfSelector: '.catItemTitle a', // Don't save item if the element contains this selector.
+        preserveOrder: true,
         items: [
           {
             selector: '.catItemTitle',
