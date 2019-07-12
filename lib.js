@@ -13,6 +13,7 @@ var path = require('path');
 var fs = require('fs');
 const chalk = require('chalk');
 var allMenus = { menu: {}};
+const SitemapGenerator = require('sitemap-generator');
 
 module.exports = {
   contentItemWeight: function(url, frontMatterObject, pageOrdering) {
@@ -352,5 +353,29 @@ module.exports = {
         resolve(`Succes! ${filepath} was saved!`);
       });
     });
+  },
+  generateSiteMap: function(url, filePath) {
+    filePath = filePath || './sitemap.xml';
+    return new Promise((resolve, reject) => { 
+      // create generator
+      const generator = SitemapGenerator(url, {
+        stripQuerystring: false,
+        filepath: filePath,
+      });
+      
+      // register event listeners
+      generator.on('done', () => {
+        // sitemaps created
+        resolve('Sitemeps created');
+      });
+      generator.on('error', (error) => {
+        reject(error);
+        // => { code: 404, message: 'Not found.', url: 'http://example.com/foo' }
+      });
+      
+      // start the crawler
+      generator.start();
+    });
   }
+
 };

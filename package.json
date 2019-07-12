@@ -13,6 +13,7 @@
     "node-csv": "^0.1.2",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
+    "sitemap-generator": "^8.4.0",
     "to-markdown": "^3.1.0",
     "tomlify-j0.4": "^3.0.0",
     "xml2js": "^0.4.19"

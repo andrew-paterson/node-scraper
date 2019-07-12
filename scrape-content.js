@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
-var urlsFile = process.argv[2];
+// var urlsFile = process.argv[2];
+var siteUrl = process.argv[2];
 var scrapeConfigFile = process.argv[3];
 var parseString = require('xml2js').parseString;
 var scrapeConfig = require(scrapeConfigFile); 
@@ -12,26 +13,40 @@ var oneToMany = scrapeConfig.oneToMany;
 var sectionPages = scrapeConfig.sectionPages || [];
 var menus = scrapeConfig.menus;
 var lib = require('./lib.js');
+var urls;
 
-// SEQUENCE OF EVENTS
-if (path.extname(urlsFile) === '.xml') {
-  var xml = fs.readFileSync(urlsFile, 'utf-8');
+
+// // SEQUENCE OF EVENTS
+// if (path.extname(urlsFile) === '.xml') {
+//   var xml = fs.readFileSync(urlsFile, 'utf-8');
+//   parseString(xml, function (err, result) {
+//     urls = result.urlset.url.map(item => {
+//       return item.loc[0];
+//     });
+//   });
+// } else {
+//   urls = fs.readFileSync(urlsFile, 'utf-8').split(/\r?\n/);
+// }
+console.log(`Started generating sitemap for ${siteUrl}.`);
+
+lib.generateSiteMap(siteUrl)
+.then(response => {
+  console.log(chalk.green(`Finished generating sitemap for ${siteUrl}.`));
+  var itemPromises = [];
+  sectionOrderingRefs.forEach(item => {
+    itemPromises.push(lib.getElementOrder(item));
+  });
+  console.log('Started fetching pages to use as an ordering reference.');
+  Promise.all(itemPromises);
+})
+.then(pageOrdering => {
+  var xml = fs.readFileSync('./sitemap.xml', 'utf-8');
   parseString(xml, function (err, result) {
     urls = result.urlset.url.map(item => {
       return item.loc[0];
     });
   });
-} else {
-  urls = fs.readFileSync(urlsFile, 'utf-8').split(/\r?\n/);
-}
-
-var itemPromises = [];
-sectionOrderingRefs.forEach(item => {
-  itemPromises.push(lib.getElementOrder(item));
-});
-console.log('Started fetching pages to use as an ordering reference.');
-Promise.all(itemPromises)
-.then(pageOrdering => {
+  console.log(chalk.green('Created URLs from sitemap.'));
   console.log(chalk.green('Finished fetching pages to use as an ordering reference.'));
   return {pageOrdering: pageOrdering};
 })
