@@ -24,9 +24,4 @@ module.exports = [
     menuItemSelector: 'li',
     menuName: 'footer'
   },
-  {
-    menuSelector: '.moduletable.services-menu ul',
-    menuItemSelector: 'li',
-    menuName: 'services'
-  },
 ];

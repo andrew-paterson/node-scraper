@@ -10,10 +10,10 @@ var sectionOrderingRefs = scrapeConfig.oneToOne.sectionOrderingRefs || [];
 var oneToOne = scrapeConfig.oneToOne;
 var oneToMany = scrapeConfig.oneToMany;
 var sectionPages = scrapeConfig.sectionPages || [];
+var menus = scrapeConfig.menus;
 var lib = require('./lib.js');
 
 // SEQUENCE OF EVENTS
-
 if (path.extname(urlsFile) === '.xml') {
   var xml = fs.readFileSync(urlsFile, 'utf-8');
   parseString(xml, function (err, result) {
@@ -64,6 +64,18 @@ Promise.all(itemPromises)
     return object;
   });
 })
+.then((object) => {
+  console.log('Started fetching pages to use in menu mappings.');
+  var menuPromises = [];
+  menus.forEach(menuObject => {
+    menuPromises.push(lib.menuPromise(menuObject));
+  });
+  return Promise.all(menuPromises).then(results => {
+    console.log(chalk.green('Finished fetching pages to use in menu mappings.'));
+    object.menus = results;
+    return object;
+  });
+})
 .then(object => {
   var sectionPagePromises = [];
   sectionPages.forEach(sectionPageObject => {
@@ -77,7 +89,7 @@ Promise.all(itemPromises)
 })
 .then(object => {
   console.log('Started creating files for one to many mappings.');
-  fs.writeFile('test.json', JSON.stringify(object), function(err) {
+  fs.writeFile('test.json', JSON.stringify(object, null, 2), function(err) {
     if(err) {
       return console.log(err);
     }
@@ -120,6 +132,18 @@ Promise.all(itemPromises)
   });
   return Promise.all(createfileSectionPagepromises).then(response => {
     console.log(chalk.green('Finished creating files for section pages.'));
+    return object;
+  });
+})
+.then(object => {
+  console.log('Started creating file for menus.');
+  var createFileMenuPromises = [];
+  object.sectionPages.forEach(item => {
+    var fileOutPutPath = lib.fileOutputPathfromUrl('/');
+    createFileMenuPromises.push(lib.createMenuFile(object.menus, fileOutPutPath));
+  });
+  return Promise.all(createFileMenuPromises).then(response => {
+    console.log(chalk.green('Finished creating file for menus.'));
     return object;
   });
 })

@@ -12,6 +12,7 @@ var outputDirectory = process.argv[5];
 var path = require('path');
 var fs = require('fs');
 const chalk = require('chalk');
+var allMenus = { menu: {}};
 
 module.exports = {
   contentItemWeight: function(url, frontMatterObject, pageOrdering) {
@@ -232,6 +233,123 @@ module.exports = {
         resolve(this.parseContentItem(body, elementsMap, sectionPageObject.url, $));
       }).catch(err => {
         reject(err);
+      });
+    });
+  },
+
+  menuPromise: function(menuObject) {
+    return new Promise((resolve, reject) => { 
+      this.fetchHTML(menuObject.url).then((body) => {
+        var elementsMap = menuObject.items;
+        var $ = this.loadDom(body);
+        elementsMap.forEach(item => {
+          if (item.menuName.indexOf('.') > 0) {
+            console.log(chalk.red(`${item.menuName} was ignored because the menuName has dot characters, which are not allowed.`));
+            return;
+          }
+          if (item.menuSelector) {
+            var elements = $(item.menuSelector);
+            // console.log(elements);
+            if (elements.length > 0) {
+              $(elements).each((index, element) => {
+                this.parseMenu($(element).parent().html(), $, item.menuName, item.menuItemSelector, elementsMap);
+              });
+            } else {
+              console.log(chalk.red(`The selector ${item.menuSelector} returned 0 elements.`));
+            }
+          }
+        });
+        resolve(allMenus);
+      }).catch(err => {
+        reject(err);
+      });
+    });
+  },
+
+  parseMenu: function(html, $, menuName, menuItemSelector, elementsMap) {
+    var menuItems = $(html).children(menuItemSelector);
+    var menuObjects = [];
+    var weightLevel = 1;
+    var processMenuItem = (menuItem, index, weightLevel, parentIdentifier) => {
+      var menuItemObject = {};
+      var hasChildren = $(menuItem).find(menuItemSelector).length > 0;
+      var childMenu = $(menuItem).children('ul');
+      var linkElement = $(menuItem).children('a').first();
+      var href = $(linkElement).attr('href');
+      if (hasChildren) {
+        if (href) {
+          var identifier = href !== '#' ? href : $(linkElement).text().replace(/' '/g, '-').toLowerCase();
+            menuItemObject.identifier = identifier;
+        } else {
+          menuItemObject.identifier = this.immediateText(menuItem, $).replace(/' '/g, '-').toLowerCase();
+        }
+      }
+      if (href) {
+        if (href !== '#') {
+          menuItemObject.url = href;
+        }
+        menuItemObject.name = $(linkElement).text();
+      } else {
+        var name = this.immediateText(menuItem, $);
+        menuItemObject.name = name;
+      }
+      if (parentIdentifier) {
+        menuItemObject.parent = parentIdentifier;
+      }
+      menuItemObject.weight = weightLevel + index;
+      menuObjects.push(menuItemObject);
+      if (hasChildren) {
+        var childMenuItems = $(childMenu).children(elementsMap.menuItemSelector);
+        $(childMenuItems).each((index, childMenuItem) => {
+          processMenuItem(childMenuItem, index, weightLevel*10, menuItemObject.identifier);
+        });
+      }
+    };
+    $(menuItems).each((index, menuItem) => {
+      processMenuItem(menuItem, index, weightLevel);
+    });
+    allMenus = this.addToObject(allMenus, menuObjects, `menu.${menuName}`);
+  },
+
+  addToObject: function(object, value, path) {
+    var levels = path.split('.');
+    var acc = object;
+    levels.forEach((level, index) => {
+      var lastIteration = levels.length-1 === index;
+      if (!acc[level]) {
+        if (lastIteration) {
+          acc[level] = value;
+        } else {
+          acc[level] = {};
+        }
+      } 
+      acc = acc[level];
+    });
+    return object;
+  },
+  immediateText: function(element, $) {
+    return $(element).clone().children().remove().end().text();
+  },
+
+  createMenuFile: function(allMenus, fileOutPutPath) {
+    return new Promise((resolve, reject) => { 
+      var final;
+      if (frontMatterFormat === 'toml') {
+        final = tomlify.toToml(allMenus, {space: 2});
+      } else if (frontMatterFormat ==='yml' || frontMatterFormat ==='yaml') {
+        final = YAML.stringify(allMenus);
+      } else {
+        if (frontMatterFormat !=='json') {
+          console.log(chalk.red(`${frontMatterFormat} is not a valid output format. Use 'toml', 'yml', 'yaml' ot 'json'. JSON has been used as the default.`));
+        }
+        final = JSON.stringify(allMenus);
+      }
+      var filepath = `${outputDirectory}/menu-output.${frontMatterFormat}`;
+      fs.writeFile(filepath, final, function(err) {
+        if(err) {
+          reject(err);
+        }
+        resolve(`Succes! ${filepath} was saved!`);
       });
     });
   }

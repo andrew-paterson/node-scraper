@@ -4,7 +4,7 @@ module.exports = {
       {
         url: 'https://mfwdurbanattorneys.co.za/people/attorneys',
         itemsSelector: 'h3.catItemTitle a',
-        frontMatterKey: 'url'
+        frontMatterKey: 'url' // The frontmatter value fir this must match the value returned by itemsSelector to add the weight.
       },
       {
         url: 'https://mfwdurbanattorneys.co.za/people/support-staff',
@@ -126,46 +126,78 @@ module.exports = {
         ]
       }
     ],
-    sectionPages: [
-      {
-        url: 'https://mfwdurbanattorneys.co.za/people/attorneys', 
-        items: [
-          {
-            selector: '.itemListCategory h2',
-            type: 'text',
-            key: 'title'
-          }
-        ]
-      },
-      {
-        url: 'https://mfwdurbanattorneys.co.za/news', 
-        items: [
-          {
-            selector: '.itemListCategory h2',
-            type: 'text',
-            key: 'title'
-          }
-        ]
-      },
-      {
-        url: 'https://mfwdurbanattorneys.co.za/legally-speaking', 
-        items: [
-          {
-            selector: '.itemListCategory h2',
-            type: 'text',
-            key: 'title'
-          }
-        ]
-      },
-      {
-        url: 'https://mfwdurbanattorneys.co.za/people/support-staff', 
-        items: [
-          {
-            selector: '.itemListCategory h2',
-            type: 'text',
-            key: 'title'
-          }
-        ]
-      }
-    ]
-  };
+  sectionPages: [
+    {
+      url: 'https://mfwdurbanattorneys.co.za/people/attorneys', 
+      items: [
+        {
+          selector: '.itemListCategory h2',
+          type: 'text',
+          key: 'title'
+        }
+      ]
+    },
+    {
+      url: 'https://mfwdurbanattorneys.co.za/news', 
+      items: [
+        {
+          selector: '.itemListCategory h2',
+          type: 'text',
+          key: 'title'
+        }
+      ]
+    },
+    {
+      url: 'https://mfwdurbanattorneys.co.za/legally-speaking', 
+      items: [
+        {
+          selector: '.itemListCategory h2',
+          type: 'text',
+          key: 'title'
+        }
+      ]
+    },
+    {
+      url: 'https://mfwdurbanattorneys.co.za/people/support-staff', 
+      items: [
+        {
+          selector: '.itemListCategory h2',
+          type: 'text',
+          key: 'title'
+        }
+      ]
+    }
+  ],
+  menus: [
+    { 
+      url: 'https://mfwdurbanattorneys.co.za/',
+      items: [
+        {
+          menuSelector: '#main-nav ul',
+          menuItemSelector: 'li',
+          menuName: 'main'
+        },
+        {
+          menuSelector: '#footer-menu .block-outer:nth-child(1) ul',
+          menuItemSelector: 'li',
+          menuName: 'about_us'
+        },
+        {
+          menuSelector: '#footer-menu .block-outer:nth-child(2) ul',
+          menuItemSelector: 'li',
+          menuName: 'corporate'
+        },
+        {
+          menuSelector: '#footer-menu .block-outer:nth-child(3) ul',
+          menuItemSelector: 'li',
+          menuName: 'individuals'
+        },
+        {
+          menuSelector: '.copyright-inner ul',
+          menuItemSelector: 'li',
+          menuName: 'footer'
+        },
+      ]
+    }
+  ]
+};
