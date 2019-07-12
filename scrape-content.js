@@ -10,9 +10,9 @@ var parseString = require('xml2js').parseString;
 var scrapeConfig = require(scrapeConfigFile); 
 const chalk = require('chalk');
 var urls;
-var orderedPages = scrapeConfig.map.oneToOne.orderedPages || [];
-var oneToOne = scrapeConfig.map.oneToOne;
-var oneToMany = scrapeConfig.map.oneToMany;
+var orderedPages = scrapeConfig.oneToOne.orderedPages || [];
+var oneToOne = scrapeConfig.oneToOne;
+var oneToMany = scrapeConfig.oneToMany;
 var lib = require('./lib.js');
 
 

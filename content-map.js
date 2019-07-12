@@ -1,5 +1,5 @@
 module.exports = {
-  map: {
+
     oneToOne: {
       orderedPages: [
         {
@@ -127,5 +127,5 @@ module.exports = {
         ]
       }
     ]
-  }
+  
 };
