@@ -9,6 +9,7 @@ var urls;
 var sectionOrderingRefs = scrapeConfig.oneToOne.sectionOrderingRefs || [];
 var oneToOne = scrapeConfig.oneToOne;
 var oneToMany = scrapeConfig.oneToMany;
+var sectionPages = scrapeConfig.sectionPages || [];
 var lib = require('./lib.js');
 
 // SEQUENCE OF EVENTS
@@ -33,7 +34,6 @@ Promise.all(itemPromises)
 .then(pageOrdering => {
   console.log(chalk.green('Finished fetching pages to use as an ordering reference.'));
   return {pageOrdering: pageOrdering};
-  
 })
 .then((object) => {
   console.log('Started fetching pages to use in one to many mappings.');
@@ -51,7 +51,12 @@ Promise.all(itemPromises)
   console.log('Started fetching pages to use in one to one mappings.');
   var oneToOnePromises = [];
   urls.forEach(url => {
-    oneToOnePromises.push(lib.oneToOnePage(url, object.pageOrdering, oneToOne));
+    var sectionPage = sectionPages.find(sectionPage => {
+      return sectionPage.url === url;
+    });
+    if (!sectionPage) {
+      oneToOnePromises.push(lib.oneToOnePage(url, object.pageOrdering, oneToOne));
+    }
   });
   return Promise.all(oneToOnePromises).then(results => {
     console.log(chalk.green('Finished fetching pages to use in one to one mappings.'));
@@ -60,38 +65,61 @@ Promise.all(itemPromises)
   });
 })
 .then(object => {
+  var sectionPagePromises = [];
+  sectionPages.forEach(sectionPageObject => {
+    sectionPagePromises.push(lib.sectionPage(sectionPageObject));
+  });
+  return Promise.all(sectionPagePromises).then(results => {
+    console.log(chalk.green('Finished fetching pages to use in one to one mappings.'));
+    object.sectionPages = results;
+    return object;
+  });
+})
+.then(object => {
   console.log('Started creating files for one to many mappings.');
-  // fs.writeFile('test.json', JSON.stringify(object), function(err) {
-  //   if(err) {
-  //     return console.log(err);
-  //   }
-  //   console.log(chalk.green(`Succes!  was saved!`));
-  // });
+  fs.writeFile('test.json', JSON.stringify(object), function(err) {
+    if(err) {
+      return console.log(err);
+    }
+    console.log(chalk.green(`Created JSON file`));
+  });
   var oneToManyItems = [];
   object.oneToMany.forEach(oneToManyPage => {
     oneToManyPage.forEach(item => {
       oneToManyItems.push(item);
     });
   });
-  var createMDpromises = [];
+  var createfileOneToManypromises = [];
   oneToManyItems.forEach(item => {
-    createMDpromises.push(lib.createMDFile(item));
+    var fileOutPutPath = lib.fileOutputPathfromUrl(item.url);
+    createfileOneToManypromises.push(lib.createMDFile(item, fileOutPutPath));
   });
-  return Promise.all(createMDpromises).then(response => {
+  return Promise.all(createfileOneToManypromises).then(response => {
     console.log(chalk.green('Finished creating files for one to many mappings.'));
-    // console.log(response);
     return object;
   });
 })
 .then(object => {
   console.log('Started creating files for one to one mappings.');
-  var createMD121promises = [];
+  var createfileOneToOnepromises = [];
   object.oneToOne.forEach(item => {
-    createMD121promises.push(lib.createMDFile(item));
+    var fileOutPutPath = lib.fileOutputPathfromUrl(item.url);
+    createfileOneToOnepromises.push(lib.createMDFile(item, fileOutPutPath));
   });
-  return Promise.all(createMD121promises).then(response => {
+  return Promise.all(createfileOneToOnepromises).then(response => {
     console.log(chalk.green('Finished creating files for one to one mappings.'));
-    // console.log(response);
+    return object;
+  });
+})
+.then(object => {
+  console.log('Started creating files for section pages.');
+  var createfileSectionPagepromises = [];
+  object.sectionPages.forEach(item => {
+    var fileOutPutPath = lib.fileOutputPathfromUrl(item.url).replace('.md', '/_index.md');
+    createfileSectionPagepromises.push(lib.createMDFile(item, fileOutPutPath));
+  });
+  return Promise.all(createfileSectionPagepromises).then(response => {
+    console.log(chalk.green('Finished creating files for section pages.'));
     return object;
   });
 })

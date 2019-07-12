@@ -39,6 +39,7 @@ module.exports = {
       }
     });
   },
+
   parseContentItem: function(object, elementsMap, url, $, pageOrdering) {
     var pathname = nodeUrl.parse(url).pathname;
     var frontMatterObject = {};
@@ -71,6 +72,7 @@ module.exports = {
       url: url
     };
   },
+
   fetchHTML: function(url) {
     var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     return new Promise((resolve, reject) => { 
@@ -94,7 +96,8 @@ module.exports = {
       });
     });
   },
-  createMDFile: function(object) {
+
+  createMDFile: function(object, fileOutPutPath) {
     var frontMatter = object.frontMatter || {};
     var content = object.content || {};
     var url = object.url;
@@ -138,12 +141,9 @@ module.exports = {
       if (content.full_text) {
         final += content.full_text;
       }
-    
-      var directory = outputDirectory || "output";
-      var fullPath = nodeUrl.parse(url).path;
-      var dirPath = path.dirname(fullPath);
-      this.mkdirP(`${directory}${dirPath}`);
-      var filepath = `${directory}${fullPath}.md`;
+      var directoryOutPutPath = path.dirname(fileOutPutPath);
+      this.mkdirP(directoryOutPutPath);
+      var filepath = fileOutPutPath;
       fs.writeFile(filepath, final, function(err) {
         if(err) {
           reject(err);
@@ -151,6 +151,12 @@ module.exports = {
         resolve(`Succes! ${filepath} was saved!`);
       });
     });
+  },
+
+  fileOutputPathfromUrl: function(url) {
+    var directory = outputDirectory || "output";
+    var fullPath = nodeUrl.parse(url).path;
+    return `${directory}${fullPath}.md`;
   },
 
   getElementOrder: function(object) {
@@ -212,6 +218,18 @@ module.exports = {
         var elementsMap = oneToOne;
         var $ = this.loadDom(body);
         resolve(this.parseContentItem(body, elementsMap, url, $, pageOrdering));
+      }).catch(err => {
+        reject(err);
+      });
+    });
+  },
+
+  sectionPage: function(sectionPageObject) {
+    return new Promise((resolve, reject) => { 
+      this.fetchHTML(sectionPageObject.url).then((body) => {
+        var elementsMap = sectionPageObject;
+        var $ = this.loadDom(body);
+        resolve(this.parseContentItem(body, elementsMap, sectionPageObject.url, $));
       }).catch(err => {
         reject(err);
       });
