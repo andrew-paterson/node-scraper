@@ -63,13 +63,19 @@ module.exports = {
       }
     ]
   },
-  // listItemSelectors: [
-  //   {
-  //     selector: '.catItemViewOuter',
-  //     urlSelectors: [
-
-  //     ]
-  // ],
+  listItemSelectors: [
+    {
+      selector: '.catItemViewOuter',
+      urlSelectors: [
+        '.catItemTitle a'
+      ],
+      items: {
+        selector: '.catItemTitle',
+        type: 'text',
+        key: 'test'
+      },
+    }
+  ],
   oneToMany: [
       {
         url: 'https://mfwdurbanattorneys.co.za/people/support-staff',

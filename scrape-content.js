@@ -1,9 +1,6 @@
 var fs = require('fs');
-var path = require('path');
-// var urlsFile = process.argv[2];
-var siteUrl = process.argv[2];
+var source = process.argv[2];
 var scrapeConfigFile = process.argv[3];
-var parseString = require('xml2js').parseString;
 var scrapeConfig = require(scrapeConfigFile); 
 const chalk = require('chalk');
 var urls;
@@ -11,15 +8,32 @@ var sectionOrderingRefs = scrapeConfig.oneToOne.sectionOrderingRefs || [];
 var oneToOne = scrapeConfig.oneToOne;
 var oneToMany = scrapeConfig.oneToMany;
 var sectionPages = scrapeConfig.sectionPages || [];
+var listItemSelectors = scrapeConfig.listItemSelectors || [];
 var menus = scrapeConfig.menus;
 var lib = require('./lib.js');
 var urls;
 
 console.log(`Started generating urls to scrape.`);
-lib.generateUrls(siteUrl)
+lib.generateUrls(source)
 .then(response => {
   urls = response;
   console.log(chalk.green(`Finished generating urls to scrape.`));
+  return 'Created URLs';
+})
+.then(() => {
+  var fetchHTML2Promises = [];
+  urls.forEach(url => {
+    fetchHTML2Promises.push(lib.fetchHTML2(url));
+  });
+  return Promise.all(fetchHTML2Promises);
+})
+.then((response) => {
+  fs.writeFile('html.json', JSON.stringify(response, null, 2), function(err) {
+    if(err) {
+      console.log(err);
+    }
+    console.log(`Created 'html.json'`);
+  });
   var itemPromises = [];
   sectionOrderingRefs.forEach(item => {
     itemPromises.push(lib.getElementOrder(item));
@@ -46,18 +60,20 @@ lib.generateUrls(siteUrl)
 .then((object) => {
   console.log('Started fetching pages to use in one to one mappings.');
   var oneToOnePromises = [];
+  // urls.forEach(url => {
+  //   var sectionPage = sectionPages.find(sectionPage => {
+  //     return sectionPage.url === url;
+  //   });
+  //   if (!sectionPage) {
+  //     oneToOnePromises.push(lib.oneToOnePage(url, object.pageOrdering, oneToOne));
+  //   }
+  // });
   urls.forEach(url => {
-    var sectionPage = sectionPages.find(sectionPage => {
-      return sectionPage.url === url;
-    });
-    if (!sectionPage) {
-      oneToOnePromises.push(lib.oneToOnePage(url, object.pageOrdering, oneToOne));
-    }
+    oneToOnePromises.push(lib.oneToOnePage(url, object.pageOrdering, oneToOne, listItemSelectors));
   });
   return Promise.all(oneToOnePromises).then(results => {
     console.log(chalk.green('Finished fetching pages to use in one to one mappings.'));
     object.oneToOne = results;
-    lib.console.file(JSON.stringify(object, null, 2));
     return object;
   });
 })

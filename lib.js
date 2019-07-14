@@ -78,7 +78,6 @@ module.exports = {
   },
 
   fetchHTML: function(url) {
-    
     return new Promise((resolve, reject) => { 
       if (!url.match(isUrl)) {
         reject(`Invalid url: ${url}`);
@@ -216,12 +215,48 @@ module.exports = {
     });
   },
 
-  oneToOnePage: function(url, pageOrdering, oneToOne) {
+  fetchHTML2: function(url) {
+    return new Promise((resolve, reject) => { 
+      if (!url.match(isUrl)) {
+        reject(`Invalid url: ${url}`);
+      }
+      request({uri: url}, (err, response, body) => { 
+        if (response.statusCode === 200) {
+          resolve({
+            url: url,
+            body: body
+          });
+        } else {
+          var errorMessage;
+          if (response.statusCode === 404){
+            errorMessage = `404 error. No webpage was found at ${url}`;
+          } else if (response.statusCode === 401){
+            errorMessage = `401 error. You are not authorised to access ${url}`;
+          } else if (err && response.statusCode !== 200){
+            errorMessage = `Request error: ${err}`;
+          }
+          reject(errorMessage);
+        }
+      });
+    });
+  },
+
+  oneToOnePage: function(url, pageOrdering, oneToOne, listItemSelectors) {
     return new Promise((resolve, reject) => { 
       this.fetchHTML(url).then((body) => {
         var elementsMap = oneToOne;
         var $ = this.loadDom(body);
+        listItemSelectors.forEach(listItemSelector => {
+          var listItems = $(listItemSelector.selector) || [];
+          listItems.forEach(listItem => {
+            console.log('---' + url);
+            listItemSelector.urlSelectors.forEach(urlSelector => {
+              console.log($(listItems).find(urlSelector).attr(href));
+            });
+          });
+        });
         resolve(this.parseContentItem(body, elementsMap, url, $, pageOrdering));
+        // if ()
       }).catch(err => {
         reject(err);
       });
@@ -380,21 +415,18 @@ module.exports = {
     return urls;
   },
 
-  generateUrls: function(url, filePath) {
-    console.log(url);
-    
-
+  generateUrls: function(source) {
     return new Promise((resolve, reject) => { 
-      if (!url.match(isUrl)) {
-        if (path.extname(url) === '.xml') {
-          urls = this.urlsFromSitemap(filePath);
+      if (!source.match(isUrl)) {
+        if (path.extname(source) === '.xml') {
+          urls = this.urlsFromSitemap(source);
         } else {
-          urls = fs.readFileSync(url, 'utf-8').split(/\r?\n/);
+          urls = fs.readFileSync(source, 'utf-8').split(/\r?\n/);
         }
         if (urls) {
           resolve(urls);
         } else {
-          reject('GEnerating URLs failed.');
+          reject('Generating URLs failed.');
         }
         
       } else {
@@ -418,15 +450,15 @@ module.exports = {
     });
   },
 
-  console: {
-    file: function(content ) {
-      fs.writeFile('console.json', content, function(err) {
-        if(err) {
-          console.log(err);
-        }
-        console.log('Logged content to file');
-      });
-    }
-  }
+  // console: {
+  //   file: function(content ) {
+  //     fs.writeFile('console.json', content, function(err) {
+  //       if(err) {
+  //         console.log(err);
+  //       }
+  //       console.log('Logged content to file');
+  //     });
+  //   }
+  // }
 
 };
