@@ -4,7 +4,7 @@ module.exports = {
       {
         url: 'https://mfwdurbanattorneys.co.za/people/attorneys',
         itemsSelector: 'h3.catItemTitle a',
-        frontMatterKey: 'url' // The frontmatter value fir this must match the value returned by itemsSelector to add the weight.
+        frontMatterKey: 'url' // The frontmatter value for this must match the value returned by itemsSelector to add the weight.
       },
       {
         url: 'https://mfwdurbanattorneys.co.za/people/support-staff',
@@ -63,6 +63,13 @@ module.exports = {
       }
     ]
   },
+  // listItemSelectors: [
+  //   {
+  //     selector: '.catItemViewOuter',
+  //     urlSelectors: [
+
+  //     ]
+  // ],
   oneToMany: [
       {
         url: 'https://mfwdurbanattorneys.co.za/people/support-staff',

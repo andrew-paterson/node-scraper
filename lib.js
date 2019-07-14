@@ -14,6 +14,8 @@ var fs = require('fs');
 const chalk = require('chalk');
 var allMenus = { menu: {}};
 const SitemapGenerator = require('sitemap-generator');
+var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+var parseString = require('xml2js').parseString;
 
 module.exports = {
   contentItemWeight: function(url, frontMatterObject, pageOrdering) {
@@ -76,7 +78,7 @@ module.exports = {
   },
 
   fetchHTML: function(url) {
-    var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+    
     return new Promise((resolve, reject) => { 
       if (!url.match(isUrl)) {
         reject(`Invalid url: ${url}`);
@@ -226,6 +228,18 @@ module.exports = {
     });
   },
 
+  // listItemPromise: function(url, oneToMany) {
+  //   return new Promise((resolve, reject) => { 
+  //     this.fetchHTML(url).then((body) => {
+  //       var elementsMap = oneToMany;
+  //       var $ = this.loadDom(body);
+  //       resolve(this.parseContentItem(body, elementsMap, url, $, pageOrdering));
+  //     }).catch(err => {
+  //       reject(err);
+  //     });
+  //   });
+  // },
+
   sectionPage: function(sectionPageObject) {
     return new Promise((resolve, reject) => { 
       this.fetchHTML(sectionPageObject.url).then((body) => {
@@ -354,28 +368,65 @@ module.exports = {
       });
     });
   },
-  generateSiteMap: function(url, filePath) {
-    filePath = filePath || './sitemap.xml';
-    return new Promise((resolve, reject) => { 
-      // create generator
-      const generator = SitemapGenerator(url, {
-        stripQuerystring: false,
-        filepath: filePath,
+
+  urlsFromSitemap: function(filePath) {
+    var xml = fs.readFileSync(filePath, 'utf-8');
+    var urls;
+    parseString(xml, function (err, result) {
+      urls = result.urlset.url.map(item => {
+        return item.loc[0];
       });
-      
-      // register event listeners
-      generator.on('done', () => {
-        // sitemaps created
-        resolve('Sitemeps created');
-      });
-      generator.on('error', (error) => {
-        reject(error);
-        // => { code: 404, message: 'Not found.', url: 'http://example.com/foo' }
-      });
-      
-      // start the crawler
-      generator.start();
     });
+    return urls;
+  },
+
+  generateUrls: function(url, filePath) {
+    console.log(url);
+    
+
+    return new Promise((resolve, reject) => { 
+      if (!url.match(isUrl)) {
+        if (path.extname(url) === '.xml') {
+          urls = this.urlsFromSitemap(filePath);
+        } else {
+          urls = fs.readFileSync(url, 'utf-8').split(/\r?\n/);
+        }
+        if (urls) {
+          resolve(urls);
+        } else {
+          reject('GEnerating URLs failed.');
+        }
+        
+      } else {
+         // create generator
+         const generator = SitemapGenerator(url, {
+          stripQuerystring: false,
+          filepath: './temp/sitemap.xml',
+        });
+        // register event listeners
+        generator.on('done', () => {
+          // sitemaps created
+          resolve(this.urlsFromSitemap('./temp/sitemap.xml'));
+        });
+        generator.on('error', (error) => {
+          reject(error);
+          // => { code: 404, message: 'Not found.', url: 'http://example.com/foo' }
+        });
+        // start the crawler
+        generator.start();
+      }
+    });
+  },
+
+  console: {
+    file: function(content ) {
+      fs.writeFile('console.json', content, function(err) {
+        if(err) {
+          console.log(err);
+        }
+        console.log('Logged content to file');
+      });
+    }
   }
 
 };

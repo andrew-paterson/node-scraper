@@ -5,3 +5,9 @@
 ---Add weight for one to many
 ---frontMatter delimiters for toml and json
 Better way of doing this: .replace('.md', '/_index.md')
+content-map must support relative paths,
+pass array of urls for the section pages.
+auto recognise a page in a section [age and add that content.]
+
+
+node scrape-content.js https://sarahschafer.com ./content-map.js yml sarah-schafer

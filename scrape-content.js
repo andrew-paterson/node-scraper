@@ -15,38 +15,19 @@ var menus = scrapeConfig.menus;
 var lib = require('./lib.js');
 var urls;
 
-
-// // SEQUENCE OF EVENTS
-// if (path.extname(urlsFile) === '.xml') {
-//   var xml = fs.readFileSync(urlsFile, 'utf-8');
-//   parseString(xml, function (err, result) {
-//     urls = result.urlset.url.map(item => {
-//       return item.loc[0];
-//     });
-//   });
-// } else {
-//   urls = fs.readFileSync(urlsFile, 'utf-8').split(/\r?\n/);
-// }
-console.log(`Started generating sitemap for ${siteUrl}.`);
-
-lib.generateSiteMap(siteUrl)
+console.log(`Started generating urls to scrape.`);
+lib.generateUrls(siteUrl)
 .then(response => {
-  console.log(chalk.green(`Finished generating sitemap for ${siteUrl}.`));
+  urls = response;
+  console.log(chalk.green(`Finished generating urls to scrape.`));
   var itemPromises = [];
   sectionOrderingRefs.forEach(item => {
     itemPromises.push(lib.getElementOrder(item));
   });
   console.log('Started fetching pages to use as an ordering reference.');
-  Promise.all(itemPromises);
+  return Promise.all(itemPromises);
 })
 .then(pageOrdering => {
-  var xml = fs.readFileSync('./sitemap.xml', 'utf-8');
-  parseString(xml, function (err, result) {
-    urls = result.urlset.url.map(item => {
-      return item.loc[0];
-    });
-  });
-  console.log(chalk.green('Created URLs from sitemap.'));
   console.log(chalk.green('Finished fetching pages to use as an ordering reference.'));
   return {pageOrdering: pageOrdering};
 })
@@ -76,6 +57,7 @@ lib.generateSiteMap(siteUrl)
   return Promise.all(oneToOnePromises).then(results => {
     console.log(chalk.green('Finished fetching pages to use in one to one mappings.'));
     object.oneToOne = results;
+    lib.console.file(JSON.stringify(object, null, 2));
     return object;
   });
 })
