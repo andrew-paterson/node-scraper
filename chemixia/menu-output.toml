@@ -1,0 +1,36 @@
+[menu]
+
+  [[menu.main]]
+  url = "http://chemixia.cheeses-of-south-africa.com/"
+  name = "Chemixia"
+  weight = 1.0
+
+  [[menu.main]]
+  url = "http://chemixia.cheeses-of-south-africa.com/water-treatment/"
+  name = "Water Treatment"
+  weight = 2.0
+
+  [[menu.main]]
+  url = "http://chemixia.cheeses-of-south-africa.com/plastics-coatings/"
+  name = "Coatings"
+  weight = 3.0
+
+  [[menu.main]]
+  url = "http://chemixia.cheeses-of-south-africa.com/plastics/"
+  name = "Plastics"
+  weight = 4.0
+
+  [[menu.main]]
+  url = "http://chemixia.cheeses-of-south-africa.com/detergents/"
+  name = "Detergents"
+  weight = 5.0
+
+  [[menu.main]]
+  url = "http://chemixia.cheeses-of-south-africa.com/category/news/"
+  name = "News"
+  weight = 6.0
+
+  [[menu.main]]
+  url = "http://chemixia.cheeses-of-south-africa.com/agriculture/"
+  name = "Agriculture"
+  weight = 7.0

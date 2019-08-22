@@ -1,0 +1,248 @@
+[menu]
+
+  [[menu.main]]
+  url = "/"
+  name = "Home"
+  weight = 1.0
+
+  [[menu.main]]
+  identifier = "people"
+  name = "People"
+  weight = 2.0
+
+  [[menu.main]]
+  url = "/people/attorneys"
+  name = "Attorneys"
+  parent = "people"
+  weight = 10.0
+
+  [[menu.main]]
+  url = "/people/support-staff"
+  name = "Support Staff"
+  parent = "people"
+  weight = 11.0
+
+  [[menu.main]]
+  url = "/about-us"
+  name = "About Us"
+  weight = 3.0
+
+  [[menu.main]]
+  identifier = "services"
+  name = "Services"
+  weight = 4.0
+
+  [[menu.main]]
+  url = "/services/alternative-dispute-resolution"
+  name = "Alternative Dispute Resolution"
+  parent = "services"
+  weight = 10.0
+
+  [[menu.main]]
+  url = "/services/civil-litigation"
+  name = "Civil Litigation"
+  parent = "services"
+  weight = 11.0
+
+  [[menu.main]]
+  url = "/services/commercial-law"
+  name = "Commercial Law"
+  parent = "services"
+  weight = 12.0
+
+  [[menu.main]]
+  url = "/services/criminal-law"
+  name = "Criminal Law"
+  parent = "services"
+  weight = 13.0
+
+  [[menu.main]]
+  url = "/services/estates"
+  name = "Estates"
+  parent = "services"
+  weight = 14.0
+
+  [[menu.main]]
+  url = "/services/family-law"
+  name = "Family Law"
+  parent = "services"
+  weight = 15.0
+
+  [[menu.main]]
+  url = "/services/labour-and-employment"
+  name = "Labour and Employment Law"
+  parent = "services"
+  weight = 16.0
+
+  [[menu.main]]
+  url = "/services/liquor-licences"
+  name = "Liquor Licences"
+  parent = "services"
+  weight = 17.0
+
+  [[menu.main]]
+  url = "/services/property-conveyancing"
+  name = "Property – Conveyancing"
+  parent = "services"
+  weight = 18.0
+
+  [[menu.main]]
+  url = "/news"
+  name = "News"
+  weight = 5.0
+
+  [[menu.main]]
+  url = "/legally-speaking"
+  name = "Legally Speaking"
+  weight = 6.0
+
+  [[menu.main]]
+  url = "/contact"
+  name = "Contact"
+  weight = 7.0
+
+  [[menu.main]]
+  name = "Search"
+  weight = 8.0
+
+  [[menu.about_us]]
+  url = "/about-us"
+  name = "Mission Statement"
+  weight = 1.0
+
+  [[menu.about_us]]
+  url = "/about-us"
+  name = "Our Philosophy"
+  weight = 2.0
+
+  [[menu.about_us]]
+  url = "/people/attorneys"
+  name = "Our Attorneys"
+  weight = 3.0
+
+  [[menu.about_us]]
+  url = "/people/support-staff"
+  name = "Our Support Staff"
+  weight = 4.0
+
+  [[menu.about_us]]
+  url = "/news"
+  name = "General News"
+  weight = 5.0
+
+  [[menu.about_us]]
+  url = "/legally-speaking"
+  name = "Legally Speaking"
+  weight = 6.0
+
+  [[menu.about_us]]
+  url = "/law-dot-news"
+  name = "Law.News"
+  weight = 7.0
+
+  [[menu.corporate]]
+  url = "/services/alternative-dispute-resolution"
+  name = "Alternative Dispute Resolution"
+  weight = 1.0
+
+  [[menu.corporate]]
+  url = "/services/civil-litigation"
+  name = "Civil Litigation"
+  weight = 2.0
+
+  [[menu.corporate]]
+  url = "/services/commercial-law"
+  name = "Compliance"
+  weight = 3.0
+
+  [[menu.corporate]]
+  url = "/services/commercial-law"
+  name = "Contract Law"
+  weight = 4.0
+
+  [[menu.corporate]]
+  url = "/services/property-conveyancing"
+  name = "Conveyancing and Property Transactions"
+  weight = 5.0
+
+  [[menu.corporate]]
+  url = "/services/commercial-law"
+  name = "Formation of Corporate Entities"
+  weight = 6.0
+
+  [[menu.corporate]]
+  url = "/services/labour-and-employment"
+  name = "Labour & Employment Law"
+  weight = 7.0
+
+  [[menu.corporate]]
+  url = "/services/commercial-law"
+  name = "Liquidation and Business Rescue"
+  weight = 8.0
+
+  [[menu.corporate]]
+  url = "/services/liquor-licences"
+  name = "Liquor Licences"
+  weight = 9.0
+
+  [[menu.individuals]]
+  url = "/services/alternative-dispute-resolution"
+  name = "Alternative Dispute Resolution"
+  weight = 1.0
+
+  [[menu.individuals]]
+  url = "/services/civil-litigation"
+  name = "Arrear Rental Collections & Evictions"
+  weight = 2.0
+
+  [[menu.individuals]]
+  url = "/services/civil-litigation"
+  name = "Civil Litigation & Debt Recovery"
+  weight = 3.0
+
+  [[menu.individuals]]
+  url = "/services/civil-litigation"
+  name = "Consumer Protection Act"
+  weight = 4.0
+
+  [[menu.individuals]]
+  url = "/services/criminal-law"
+  name = "Criminal law"
+  weight = 5.0
+
+  [[menu.individuals]]
+  url = "/services/family-law"
+  name = "Family Law"
+  weight = 6.0
+
+  [[menu.individuals]]
+  url = "/services/labour-and-employment"
+  name = "Labour & Employment Law"
+  weight = 7.0
+
+  [[menu.individuals]]
+  url = "/services/civil-litigation"
+  name = "Motor Vehicle Accidents"
+  weight = 8.0
+
+  [[menu.individuals]]
+  url = "/services/civil-litigation"
+  name = "Personal Injury"
+  weight = 9.0
+
+  [[menu.individuals]]
+  url = "/services/estates"
+  name = "Wills & Estate Administration"
+  weight = 10.0
+
+  [[menu.footer]]
+  name = "© 2019 Morris Fuller Williams"
+  weight = 1.0
+
+  [[menu.footer]]
+  name = ""
+  weight = 2.0
+
+  [[menu.footer]]
+  name = "+27 31 267 7700"
+  weight = 3.0

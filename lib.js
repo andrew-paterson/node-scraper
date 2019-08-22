@@ -221,10 +221,11 @@ module.exports = {
         reject(`Invalid url: ${url}`);
       }
       request({uri: url}, (err, response, body) => { 
+        console.log(err);
         if (response.statusCode === 200) {
           resolve({
             url: url,
-            body: body
+            html: body
           });
         } else {
           var errorMessage;
@@ -248,15 +249,14 @@ module.exports = {
         var $ = this.loadDom(body);
         listItemSelectors.forEach(listItemSelector => {
           var listItems = $(listItemSelector.selector) || [];
-          listItems.forEach(listItem => {
+          $(listItems).each((index, listItem) => {
             console.log('---' + url);
             listItemSelector.urlSelectors.forEach(urlSelector => {
-              console.log($(listItems).find(urlSelector).attr(href));
+              console.log($(listItems).find(urlSelector).attr('href'));
             });
           });
         });
         resolve(this.parseContentItem(body, elementsMap, url, $, pageOrdering));
-        // if ()
       }).catch(err => {
         reject(err);
       });
@@ -431,7 +431,7 @@ module.exports = {
         
       } else {
          // create generator
-         const generator = SitemapGenerator(url, {
+         const generator = SitemapGenerator(source, {
           stripQuerystring: false,
           filepath: './temp/sitemap.xml',
         });

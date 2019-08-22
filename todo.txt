@@ -8,6 +8,8 @@ Better way of doing this: .replace('.md', '/_index.md')
 content-map must support relative paths,
 pass array of urls for the section pages.
 auto recognise a page in a section [age and add that content.]
+Get page meta
 
 
 node scrape-content.js https://sarahschafer.com ./content-map.js yml sarah-schafer
+node scrape-content.js https://mfwdurbanattorneys.co.za ./content-map.js yml mfw

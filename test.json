@@ -1,0 +1,876 @@
+{
+  "pageOrdering": [
+    {
+      "sectionUrl": "https://mfwdurbanattorneys.co.za/people/attorneys",
+      "matchKey": "url",
+      "items": [
+        {
+          "matchValue": "/people/attorneys/item/155-mike-williams",
+          "weight": 0
+        },
+        {
+          "matchValue": "/people/attorneys/item/217-chantele-schutzler",
+          "weight": 1
+        },
+        {
+          "matchValue": "/people/attorneys/item/212-morris-fuller",
+          "weight": 2
+        },
+        {
+          "matchValue": "/people/attorneys/item/140-andrew-leaker",
+          "weight": 3
+        },
+        {
+          "matchValue": "/people/attorneys/item/220-thuli-ngcobo",
+          "weight": 4
+        },
+        {
+          "matchValue": "/people/attorneys/item/219-samantha-van-rooyen",
+          "weight": 5
+        },
+        {
+          "matchValue": "/people/attorneys/item/218-sharon-mowat",
+          "weight": 6
+        },
+        {
+          "matchValue": "/people/attorneys/item/236-zahra-paruk",
+          "weight": 7
+        },
+        {
+          "matchValue": "/people/attorneys/item/237-muzi-kheswa",
+          "weight": 8
+        },
+        {
+          "matchValue": "/people/attorneys/item/239-roxanne-adams",
+          "weight": 9
+        },
+        {
+          "matchValue": "/people/attorneys/item/243-elizabeth-snyman",
+          "weight": 10
+        },
+        {
+          "matchValue": "/people/attorneys/item/246-martyn-lombard",
+          "weight": 11
+        },
+        {
+          "matchValue": "/people/attorneys/item/244-therusha-moodley",
+          "weight": 12
+        },
+        {
+          "matchValue": "/people/attorneys/item/227-yovaan-maghnath",
+          "weight": 13
+        }
+      ]
+    },
+    {
+      "sectionUrl": "https://mfwdurbanattorneys.co.za/people/support-staff",
+      "matchKey": "title",
+      "items": [
+        {
+          "matchValue": "Anona Morris",
+          "weight": 0
+        },
+        {
+          "matchValue": "Ayesha Moodley",
+          "weight": 1
+        },
+        {
+          "matchValue": "Denise Young",
+          "weight": 2
+        },
+        {
+          "matchValue": "Elaine Moodley",
+          "weight": 3
+        },
+        {
+          "matchValue": "Gayle Hodgson",
+          "weight": 4
+        },
+        {
+          "matchValue": "Jenna Phillips",
+          "weight": 5
+        },
+        {
+          "matchValue": "Karen Henn",
+          "weight": 6
+        },
+        {
+          "matchValue": "Lindiwe Dlamini",
+          "weight": 7
+        },
+        {
+          "matchValue": "Maudrey Mchunu",
+          "weight": 8
+        },
+        {
+          "matchValue": "Melissa Meyer",
+          "weight": 9
+        },
+        {
+          "matchValue": "Michelle Coombes",
+          "weight": 10
+        },
+        {
+          "matchValue": "Pauline Barker",
+          "weight": 11
+        },
+        {
+          "matchValue": "Razia Ebrahim",
+          "weight": 12
+        },
+        {
+          "matchValue": "Ronel Van As",
+          "weight": 13
+        },
+        {
+          "matchValue": "Roxanne Van As",
+          "weight": 14
+        },
+        {
+          "matchValue": "Ruth Msweli",
+          "weight": 15
+        },
+        {
+          "matchValue": "Sharene Kelsey",
+          "weight": 16
+        },
+        {
+          "matchValue": "Sharon O'Neill",
+          "weight": 17
+        },
+        {
+          "matchValue": "Tammie Van Zyl",
+          "weight": 18
+        },
+        {
+          "matchValue": "Taryn Swanepoel",
+          "weight": 19
+        },
+        {
+          "matchValue": "Tim Human",
+          "weight": 20
+        },
+        {
+          "matchValue": "Wendy Ras",
+          "weight": 21
+        }
+      ]
+    }
+  ],
+  "oneToMany": [
+    [
+      {
+        "frontMatter": {
+          "title": "Anona Morris",
+          "item_image": "/media/k2/items/cache/b8cc41f2c23fcd5970f74c3c49efafec_S.jpg",
+          "position": "Specialist Executor of Deceased Estates",
+          "url": "/people/support-staff/anona-morris"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/anona-morris"
+      },
+      {
+        "frontMatter": {
+          "title": "Ayesha Moodley",
+          "item_image": "/media/k2/items/cache/e7b279be6a862d254f0e7cc4dde2874e_S.jpg",
+          "position": "Secretary to Andrew Leaker",
+          "url": "/people/support-staff/ayesha-moodley"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/ayesha-moodley"
+      },
+      {
+        "frontMatter": {
+          "title": "Denise Young",
+          "item_image": "/media/k2/items/cache/0e09527b0f5edaa60cf5702119e6a0a2_S.jpg",
+          "position": "Conveyancing Paralegal",
+          "url": "/people/support-staff/denise-young"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/denise-young"
+      },
+      {
+        "frontMatter": {
+          "title": "Elaine Moodley",
+          "item_image": "/media/k2/items/cache/f7abac252ae5ed68121b92ba7a669d87_S.jpg",
+          "position": "Conveyancing Paralegal",
+          "url": "/people/support-staff/elaine-moodley"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/elaine-moodley"
+      },
+      {
+        "frontMatter": {
+          "title": "Gayle Hodgson",
+          "item_image": "/media/k2/items/cache/3d10c9c21f6f61faeefd4aa27b190def_S.jpg",
+          "position": "Secretary to Mike Williams",
+          "url": "/people/support-staff/gayle-hodgson"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/gayle-hodgson"
+      },
+      {
+        "frontMatter": {
+          "title": "Jenna Phillips",
+          "item_image": "/media/k2/items/cache/7a6409a35f8223f856dc99651cb33cb1_S.jpg",
+          "position": "Secretary",
+          "url": "/people/support-staff/jenna-phillips"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/jenna-phillips"
+      },
+      {
+        "frontMatter": {
+          "title": "Karen Henn",
+          "item_image": "/media/k2/items/cache/b320775de3c297425b69dccc362220a9_S.jpg",
+          "position": "Litigation Secretary and Secretary to Chantele Schutzler",
+          "url": "/people/support-staff/karen-henn"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/karen-henn"
+      },
+      {
+        "frontMatter": {
+          "title": "Lindiwe Dlamini",
+          "item_image": "/media/k2/items/cache/7293a47c0f4cdddd46ff10bcf3d23287_S.jpg",
+          "position": "Office Assistant",
+          "url": "/people/support-staff/lindiwe-dlamini"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/lindiwe-dlamini"
+      },
+      {
+        "frontMatter": {
+          "title": "Maudrey Mchunu",
+          "item_image": "/media/k2/items/cache/b6d7090a321aeca0f529ab265a288b1b_S.jpg",
+          "position": "Receptionist",
+          "url": "/people/support-staff/maudrey-mchunu"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/maudrey-mchunu"
+      },
+      {
+        "frontMatter": {
+          "title": "Melissa Meyer",
+          "item_image": "/media/k2/items/cache/82558bd755d4bf64f8b1324b360ed554_S.jpg",
+          "position": "Legal Assistant in Debt Recoveries",
+          "url": "/people/support-staff/melissa-meyer"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/melissa-meyer"
+      },
+      {
+        "frontMatter": {
+          "title": "Michelle Coombes",
+          "item_image": "/media/k2/items/cache/8e5f062e9750688c028aaa3058da9ec4_S.jpg",
+          "position": "Conveyancing Liaison",
+          "url": "/people/support-staff/michelle-coombes"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/michelle-coombes"
+      },
+      {
+        "frontMatter": {
+          "title": "Pauline Barker",
+          "item_image": "/media/k2/items/cache/171fc14b49a79ea979710de5b3402b30_S.jpg",
+          "position": "Administration Manager",
+          "url": "/people/support-staff/pauline-barker"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/pauline-barker"
+      },
+      {
+        "frontMatter": {
+          "title": "Razia Ebrahim",
+          "item_image": "/media/k2/items/cache/269b36e876e375e05083f78293992209_S.jpg",
+          "position": "Collections Paralegal",
+          "url": "/people/support-staff/razia-ebrahim"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/razia-ebrahim"
+      },
+      {
+        "frontMatter": {
+          "title": "Ronel Van As",
+          "item_image": "/media/k2/items/cache/0dc247c07eee71a72cf9409729fb3455_S.jpg",
+          "position": "Professional Assistant - Debt Recoveries, Liquor Licence",
+          "url": "/people/support-staff/ronel-van-as"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/ronel-van-as"
+      },
+      {
+        "frontMatter": {
+          "title": "Roxanne Van As",
+          "item_image": "/media/k2/items/cache/29766e2a37e979b18d18c428ff9c5aba_S.jpg",
+          "position": "Bond Registration Paralegal",
+          "url": "/people/support-staff/roxanne-van-as"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/roxanne-van-as"
+      },
+      {
+        "frontMatter": {
+          "title": "Ruth Msweli",
+          "item_image": "/media/k2/items/cache/3b3e749011568df066956f2034087c10_S.jpg",
+          "position": "Collections Paralegal",
+          "url": "/people/support-staff/ruth-msweli"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/ruth-msweli"
+      },
+      {
+        "frontMatter": {
+          "title": "Sharene Kelsey",
+          "item_image": "/media/k2/items/cache/471bd07fdaa7b040f7ab8b2a13f8f35b_S.jpg",
+          "position": "Conveyancing Paralegal",
+          "url": "/people/support-staff/sharene-kelsey"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/sharene-kelsey"
+      },
+      {
+        "frontMatter": {
+          "title": "Sharon O'Neill",
+          "item_image": "/media/k2/items/cache/5cf9cad94714c5577919c266171d935c_S.jpg",
+          "position": "Secretary to Shanan Taylor",
+          "url": "/people/support-staff/sharon-o-neill"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/sharon-o-neill"
+      },
+      {
+        "frontMatter": {
+          "title": "Tammie Van Zyl",
+          "item_image": "/media/k2/items/cache/461011bcaf5b5e723e897c33f049f169_S.jpg",
+          "position": "Financial Manager",
+          "url": "/people/support-staff/tammie-van-zyl"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/tammie-van-zyl"
+      },
+      {
+        "frontMatter": {
+          "title": "Taryn Swanepoel",
+          "item_image": "/media/k2/items/cache/ee68a9df1200997b07be8fb0bbdb9f29_S.jpg",
+          "position": "Conveyancing Paralegal",
+          "url": "/people/support-staff/taryn-swanepoel"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/taryn-swanepoel"
+      },
+      {
+        "frontMatter": {
+          "title": "Tim Human",
+          "item_image": "/media/k2/items/cache/fac9770ae986695c80dfb6c58f312f32_S.jpg",
+          "position": "Accountant",
+          "url": "/people/support-staff/tim-human"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/tim-human"
+      },
+      {
+        "frontMatter": {
+          "title": "Wendy Ras",
+          "item_image": "/media/k2/items/cache/da8a96cfc8ca1dd33bc42677c8b9c7c6_S.jpg",
+          "position": "Conveyancing Paralegal",
+          "url": "/people/support-staff/wendy-ras"
+        },
+        "content": {},
+        "url": "https://mfwdurbanattorneys.co.za/people/support-staff/wendy-ras"
+      }
+    ],
+    [
+      {
+        "frontMatter": {
+          "title": "Change of company name",
+          "item_image": "/images/mfw-news.jpg",
+          "date": "2018-01-06T00:20:00+02:00",
+          "publishdate": "2018-01-06T00:20:00+02:00",
+          "url": "/news/change-of-company-name"
+        },
+        "content": {
+          "intro_text": "![mfw news](/images/mfw-news.jpg)"
+        },
+        "url": "https://mfwdurbanattorneys.co.za/news/change-of-company-name"
+      },
+      {
+        "frontMatter": {
+          "title": "Child Welfare Crazy hats Fun Walk",
+          "item_image": "/images/news/mfww-fun-walk.jpg",
+          "date": "2017-01-10T00:20:00+02:00",
+          "publishdate": "2017-01-10T00:20:00+02:00",
+          "url": "/news/child-welfare-crazy-hats-fun-walk"
+        },
+        "content": {
+          "intro_text": "![mfww fun walk](/images/news/mfww-fun-walk.jpg)"
+        },
+        "url": "https://mfwdurbanattorneys.co.za/news/child-welfare-crazy-hats-fun-walk"
+      }
+    ]
+  ],
+  "oneToOne": [
+    {
+      "frontMatter": {
+        "url": "/"
+      },
+      "content": {
+        "full_text": "[![Okahandja](https://farm4.staticflickr.com/3837/14782515947_8737dfcba7_c.jpg)](https://www.flickr.com/photos/124897308@N04/14782515947 \"Okahandja by Sarah Schafer, on Flickr\")"
+      },
+      "url": "https://www.sarahschafer.com/"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/airbnb"
+      },
+      "content": {
+        "full_text": "![Airbnb_01](/images/photography/airbnb/small/Airbnb_01.jpg) ![Airbnb_02](/images/photography/airbnb/small/Airbnb_02.jpg) ![Airbnb_03](/images/photography/airbnb/small/Airbnb_03.jpg) ![Airbnb_04](/images/photography/airbnb/small/Airbnb_04.jpg) ![Airbnb_05](/images/photography/airbnb/small/Airbnb_05.jpg) ![Airbnb_06](/images/photography/airbnb/small/Airbnb_06.jpg) ![Airbnb_07](/images/photography/airbnb/small/Airbnb_07.jpg) ![Airbnb_08](/images/photography/airbnb/small/Airbnb_08.jpg) ![Airbnb_09](/images/photography/airbnb/small/Airbnb_09.jpg) ![Airbnb_10](/images/photography/airbnb/small/Airbnb_10.jpg) ![Airbnb_11](/images/photography/airbnb/small/Airbnb_11.jpg) ![Airbnb_12](/images/photography/airbnb/small/Airbnb_12.jpg) ![Airbnb_13](/images/photography/airbnb/small/Airbnb_13.jpg) ![Airbnb_14](/images/photography/airbnb/small/Airbnb_14.jpg) ![Airbnb_15](/images/photography/airbnb/small/Airbnb_15.jpg) ![Airbnb_16](/images/photography/airbnb/small/Airbnb_16.jpg) ![Airbnb_17](/images/photography/airbnb/small/Airbnb_17.jpg) ![Airbnb_18](/images/photography/airbnb/small/Airbnb_18.jpg) ![Airbnb_19](/images/photography/airbnb/small/Airbnb_19.jpg) ![Airbnb_20](/images/photography/airbnb/small/Airbnb_20.jpg) ![Airbnb_21](/images/photography/airbnb/small/Airbnb_21.jpg) ![Airbnb_22](/images/photography/airbnb/small/Airbnb_22.jpg) ![Airbnb_23](/images/photography/airbnb/small/Airbnb_23.jpg) ![Airbnb_24](/images/photography/airbnb/small/Airbnb_24.jpg) ![Airbnb_25](/images/photography/airbnb/small/Airbnb_25.jpg) ![Airbnb_26](/images/photography/airbnb/small/Airbnb_26.jpg) ![Airbnb_27](/images/photography/airbnb/small/Airbnb_27.jpg) ![Airbnb_28](/images/photography/airbnb/small/Airbnb_28.jpg) ![Airbnb_29](/images/photography/airbnb/small/Airbnb_29.jpg) ![Airbnb_30](/images/photography/airbnb/small/Airbnb_30.jpg) ![Airbnb_31](/images/photography/airbnb/small/Airbnb_31.jpg) ![Airbnb_32](/images/photography/airbnb/small/Airbnb_32.jpg) ![Airbnb_33](/images/photography/airbnb/small/Airbnb_33.jpg) ![Airbnb_34](/images/photography/airbnb/small/Airbnb_34.jpg) ![Airbnb_35](/images/photography/airbnb/small/Airbnb_35.jpg) ![Airbnb_36](/images/photography/airbnb/small/Airbnb_36.jpg) ![Airbnb_37](/images/photography/airbnb/small/Airbnb_37.jpg) ![Airbnb_38](/images/photography/airbnb/small/Airbnb_38.jpg) ![Airbnb_39](/images/photography/airbnb/small/Airbnb_39.jpg) ![Airbnb_40](/images/photography/airbnb/small/Airbnb_40.jpg) ![Airbnb_41](/images/photography/airbnb/small/Airbnb_41.jpg) ![Airbnb_42](/images/photography/airbnb/small/Airbnb_42.jpg) ![Airbnb_43](/images/photography/airbnb/small/Airbnb_43.jpg) ![Airbnb_44](/images/photography/airbnb/small/Airbnb_44.jpg) ![Airbnb_45](/images/photography/airbnb/small/Airbnb_45.jpg) ![Airbnb_46](/images/photography/airbnb/small/Airbnb_46.jpg) ![Airbnb_47](/images/photography/airbnb/small/Airbnb_47.jpg) ![Airbnb_48](/images/photography/airbnb/small/Airbnb_48.jpg) ![Airbnb_49](/images/photography/airbnb/small/Airbnb_49.jpg) ![Airbnb_50](/images/photography/airbnb/small/Airbnb_50.jpg) ![Airbnb_51](/images/photography/airbnb/small/Airbnb_51.jpg) ![Airbnb_52](/images/photography/airbnb/small/Airbnb_52.jpg) ![Airbnb_53](/images/photography/airbnb/small/Airbnb_53.jpg) ![Airbnb_54](/images/photography/airbnb/small/Airbnb_54.jpg) ![Airbnb_55](/images/photography/airbnb/small/Airbnb_55.jpg) ![Airbnb_56](/images/photography/airbnb/small/Airbnb_56.jpg) ![Airbnb_57](/images/photography/airbnb/small/Airbnb_57.jpg) ![Airbnb_58](/images/photography/airbnb/small/Airbnb_58.jpg) ![Airbnb_59](/images/photography/airbnb/small/Airbnb_59.jpg) ![Airbnb_60](/images/photography/airbnb/small/Airbnb_60.jpg) ![Airbnb_61](/images/photography/airbnb/small/Airbnb_61.jpg) ![Airbnb_62](/images/photography/airbnb/small/Airbnb_62.jpg)"
+      },
+      "url": "https://www.sarahschafer.com/photographs/airbnb"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/food"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/food"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/portraits"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/portraits"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/photo-stories"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/photo-stories"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/travel"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/travel"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/product"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/product"
+    },
+    {
+      "frontMatter": {
+        "title": "Contact",
+        "url": "/contact"
+      },
+      "content": {
+        "full_text": "If you are looking for a quote, or would like more information, please contact Sarah directly. \n\nEmail [<span class=\"cloaked_email ep_51bb647f\"><span data-ep-ad1ad=\"sarah\" data-ep-be22a=\"com\"><span data-ep-be22a=\"mail.\" data-ep-ad1ad=\".kate\"><span data-ep-ad1ad=\".scha\" data-ep-be22a=\"fer@g\"></span></span></span></span><script type=\"text/javascript\">emailProtector.addCloakedMailto(\"ep_51bb647f\", 0);</script>,](mailto:sarah.kate.schafer@gmail.com,) or phone +27 73 307 0637."
+      },
+      "url": "https://www.sarahschafer.com/contact"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/on-stage"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/on-stage"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/food/item/108-retreat"
+      },
+      "content": {
+        "full_text": "I had the absolute pleasure of photographing Daniel Jardim's second cook book. It went to print in March 2014, and has just began it's second print run. This is a selection of some of my favourite pictures."
+      },
+      "url": "https://www.sarahschafer.com/photographs/food/item/108-retreat"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/lifestyle"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/lifestyle"
+    },
+    {
+      "frontMatter": {
+        "title": "about Sarah",
+        "item_image": "/media/k2/items/cache/4ab4b6df96c060fa741e97b50eafb07c_S.jpg",
+        "url": "/about-sarah"
+      },
+      "content": {
+        "full_text": "I am a photographer and writer, based in the magnificent city of Cape Town. I completed a Bachelor of Journalism at Rhodes University, and have been self-employed for the past seven years. \n\nDocumentary photography and reportage will always be my first love, and its influence is clear in my work. When I arrived in Cape Town I was a padawan photography assistant for food photographer extraordinaire [Russel Wasserfall](http://www.rwasserfall.co.za/), who took me under his wing.\n\nI adore natural light, and strive to make the most of light that I'm given. When I shoot personal projects, I prefer shooting on film. Whether it's interiors or architecte; a wedding or a portrait, I aim to create images that are honest and beautiful, taken intuitively and simply. \n\nI'm currently studying digital curation at the University of Cape Town in the hope of merging my skills in this exciting new field where art and technology collide."
+      },
+      "url": "https://www.sarahschafer.com/about-sarah"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/129-clementine-mark"
+      },
+      "content": {
+        "full_text": "In December 2016, one of my childhood friends was married in the town we grew up in - Grahamstown. It was a typical overcast day, and their wedding was a wonderful celebration."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/129-clementine-mark"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/126-dominique-roger"
+      },
+      "content": {
+        "full_text": "The most beautiful wedding of them all! My sister and brother-in-law, Dominique and Roger had their wedding celebration weekend on the magnificent Eastern Cape coastline, at Cintsa. Friends and family from all around the world came for a weekend of festivities and a memorable celebration of love."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/126-dominique-roger"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/food/item/107-beautiful-dishes"
+      },
+      "content": {
+        "full_text": "Outrageously good food - it there more to say?"
+      },
+      "url": "https://www.sarahschafer.com/photographs/food/item/107-beautiful-dishes"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/130-nicole-stewart"
+      },
+      "content": {
+        "full_text": "I spent a lot of my childhood on Nicole's family farm, Thornkloof. It's just outside of Grahamstown, and is the epitome of raw Eastern Cape beauty. She and Stew live in Zimbabwe but came back for her wedding. Her mom made her dress from her German gradmother's lace tablecloth! It was a beautiful day, made more special by old friends."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/130-nicole-stewart"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/food/item/106-kitchen-reportage"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/food/item/106-kitchen-reportage"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/121-amy-sanjin"
+      },
+      "content": {
+        "full_text": "A late Summer wedding in Stellenbosch."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/121-amy-sanjin"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/127-caitlin-nick"
+      },
+      "content": {
+        "full_text": "Caitlin and Nick's wedding was a delightful daytime affair, with afternoon tea and all. It took place at the beautiful Bridge House school in Franschhoek, where Morag, Caitlin's sister works.\n\n[Johannes Coetzee](http://johancoetzee.com/) was my second shooter and assistant at the wedding."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/127-caitlin-nick"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/125-nicola-carl"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/125-nicola-carl"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/120-xanthe-timmy"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/120-xanthe-timmy"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/119-beth-walter"
+      },
+      "content": {
+        "full_text": "Beth and Walter arrived back in South Africa from London to celebrate their wedding in Cape Town. Beth's uncle and aunt, Alex and Barry, drove a Bentley from their farm in the Eastern Cape all the way down to Cape Town for the occasion, and the day was a the perfect celebration. The reception was held at Beth's family home, a beautiful property in Constantia.\n\nHer mother, Jane, had been preparing her garden for the occasion since the announcement, and it was truly spectacular. No detail was missed out - from wines and single malt whiskies carefully selected by Walter, to centre-piece flowers grown by the mother of the groom, and delicate flower-girls' coronets carefully created by Beth's aunt.\n\nBeth was the absolute epitome of graceful beauty in her dress, Walter couldn't wipe the smile from his face, and the 150 guests danced the night away in Jane's magnificent garden, magically lit up and twinkling with fairy lights."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/119-beth-walter"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/118-richard-anna"
+      },
+      "content": {
+        "full_text": "Richard and Anna decided to celebrate their wedding on two sides of the world - Anna is Swedish and Richard is South African, and their home is in Sweden. Their South African wedding celebration was a small affair that they shared with close friends and family.\n\nTheir beautiful children, Stella and Ludovic almost stole the show (and the attention of the photographer), a close friend was their officiator, and a gorgeous late afternoon on the grounds of Laborie in Paarl was the perfect setting for a wonderful celebration."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/118-richard-anna"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/115-gaby-bob"
+      },
+      "content": {
+        "full_text": "Gaby and Bob have been a couple for years, and decided to tie the knot before they leave South Africa for their adventures in Asia. A wedding in Grahamstown, Bob's home town and the place where they studied together, was a very fitting setting for their nuptials.\n\nWith a close friend and Rhodes University lecturer Alan Kirkaldy presiding over the ceremony, paper flowers, homemade food, cupcakes from heaven made by Bob's sister Catherine, and a close group of friends gathered around, Gaby and Bob's wedding day was poignant and beautiful.\n\nNobody in the world can write about love like Pablo Neruda, and Bob's reading of Neruda's Sonnet XVII from Cien Sonetos de Amor was perfectly, unfeignedly romantic. Bob's retro wedding suit - the suit that his father wore to his own wedding - was the proverbial icing on the (wedding) cake."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/115-gaby-bob"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/116-clare-lloyd"
+      },
+      "content": {
+        "full_text": "Clare and Lloyd had their wedding on a rainy winter weekend, but nobody seemed bothered by the weather. Clare is from Ireland, and has been working in Cape Town for a few years, which is how she met Lloyd. They share a love of the city, dancing, laughing, and each other. their wedding day was filled with happy family and friends, laughing and dancing (so much dancing!).\n\nThe reception took place at the quirky blue bird garage in Muizenberg - with great food and fantastic music, it was the perfect place to end the day off."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/116-clare-lloyd"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/114-jenny-elmar"
+      },
+      "content": {
+        "full_text": "The beautiful wedding of Jenny and Elmar took place at the wonderful restaurant and wedding venue, the Table at De Meye (the restaurant has since changed to Overgaauw Restaurant). The setting was simply idyllic - gorgeous fragrant roses adorning every surface, happy guests and incredible food.\n\nI had photographed the pair previously, and it's always wonderful working with such a relaxed couple. They live in Bonn in Germany, but decided to have their wedding in South Africa, where Jenny's mother Beate lives.\n\nIt was a small wedding party, less than 50 people, which was lovely and intimate. Friends of the couple travelled from across the world to be at the ceremony, and guests took off their shoes and started dancing on the lawns before the meal has even ended. Surrounded by vineyards, Camilla's amazing food, happy people and a flawless late Summer's evening, it was an absolutely wonderful day."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/114-jenny-elmar"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/113-karen-pete"
+      },
+      "content": {
+        "full_text": "The tiny little town of Botrivier set the scene perfectly for Karen and Pete's beautiful wedding. The charming Beaumont wine farm was the perfect place, with it's historic water mill, fantastic wines and spectacular views of the Overberg mountains.\n\nKaren's exquisite vintage beaded dress, found by her sister Sara on her travels, was topped off with a feather headpiece that belonged to her grandmother, and the bride was simply gorgeous. Fresh herbs as confetti, a group of fabulous friends, delicious food and an abundance of love were the order of the day. and just like their bottles of bubbly were labelled, it was a day of ridiculous happiness."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/113-karen-pete"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/117-asanda-cherie"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/117-asanda-cherie"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/111-claire-simon"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/111-claire-simon"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/112-lesley-david"
+      },
+      "content": {
+        "full_text": "Lesley and David are one of those couples that make even the most hardened cynic’s heart get a little warm and fuzzy. They celebrated their wedding on their seventh anniversary, surrounded by happy family and friends.\n\nLynda, Lesley’s aunt, was the officiator of the non-religious ceremony, and her words captured Lesley and David’s relationship wonderfully. Helped by Mr Shakespeare’s sonnet, ‘Let me not to the marriage of true minds admit impediment’, it was a lovely service.\n\nIt turns out that winter in Kwa-Zulu Natal is not actually Winter at all. The weather was absolutely beautiful, and played its part perfectly for the sunny outdoor wedding on David’s family’s sugar cane farm.\n\nLesley was simply beautiful. I’ve been searching for the right phrase to describe how exquisite she looked, but I don’t think that the words actually exist. As she walked down the garden aisle to Bob Dylan’s ‘Make me Feel your Love’, sung by friend Lizzie, everything was just right. Royal blue and yellow were the colours of the day – sunflowers and shweshwe were perfectly joyful.\n\nLesley’s mother, Penny’s words were powerful and eloquent (as always) and Best Man Paddy had everyone in hysterics. David, however, made it impossible for any man to ever live up to the new standard set for wedding speeches. When he broke out in song (Lou Reed’s ‘Take a Walk on the Wild Side’), accompanied by musician friends in the audience, I think every guest there, including Lesley, was lost for words.\n\nPerhaps it was the full moon, but I think that it was the infectious happiness overflowing that made Lesley and David’s wedding so special. Dancing and merry-making continued long into the clear Zululand night, and I don’t think that any of us guests will remember that day without an enormous smile.\n\nPostscript. bridesmaid and photographer duties were tricky to juggle, but I’m grateful to [Adrian Jennings](http://www.ady-jennings-photography.com) and some delicious Steenberg 1682 MCC, who made it manageable and incredibly fun."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/112-lesley-david"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/people-getting-married/item/109-leigh-rob"
+      },
+      "content": {
+        "full_text": "Leigh and Robert Cobban tied the knot with an intimate wedding in Observatory, Cape Town. The ceremony took place in Leigh's sister, Gaby's house in Obs, and was small and authentic. Sans church, the wedding was refreshingly different.\n\nIt was happy and relaxed, with champagne popping in the outside courtyard all afternoon until the group went to enjoy a proper Cape Town night at the Brass Bell in Kalk Bay."
+      },
+      "url": "https://www.sarahschafer.com/photographs/people-getting-married/item/109-leigh-rob"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/portraits/item/105-not-so-corporate"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/portraits/item/105-not-so-corporate"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/portraits/item/99-candid"
+      },
+      "content": {},
+      "url": "https://www.sarahschafer.com/photographs/portraits/item/99-candid"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/photo-stories/item/103-flanders"
+      },
+      "content": {
+        "full_text": "Beyond the pommes frites and mayonnaise, politics, beer, waffles and chocolate, Belgium isn’t one of the more celebrated countries in Western Europe – actually, it is probably one of the most vilipended. Perhaps it’s because of the interesting political system, its liberal moral laws or a less-than-perfect colonising history, but whatever the reasoning, the stereotypes miss something big.\n\nFrom the cosmopolitan and historically rich capital city of Brussels, to the dynamic cultural hub of Antwerp, and the medieval, fairytale-esque streets of Bruges, the Flanders region in Belgium is a wonderful area to visit. A political hotspot in Europe, Flanders is also rich in history and culture."
+      },
+      "url": "https://www.sarahschafer.com/photographs/photo-stories/item/103-flanders"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/photo-stories/item/104-a-meditation-on-time"
+      },
+      "content": {
+        "full_text": "Bedford is a small town in the Eastern Cape that you might miss completely if you drove past. Its main reason for existing at all is because of the 1820 Settlers who arrived here nearly two centuries ago. Houses with beautiful facades, proud old buildings that echo the prosperity of the colonisers, and town traditions that belong in a small English town are some of its features. Bedford is a town oblivious to the continuation of time, or perhaps time is oblivious.\n\n‘Watchmaker and Jeweller’ proclaims the shopfront of an unassuming little blue building in Hope Street. Its paint is weathered, its windows are dusty, its glass door stands open, and the shop appears empty. On entering, though, a strange hum surrounds and then envelopes the visitor, creeping up so gently that it soon slips into the back of one’s mind. The interminable ticking of clocks. The small space purrs and resonates with the sound of hundreds of second-hands perpetually ticking time softly away. The reverberance, close to a vibration, causes the building to buzz with a singular vivacity.\n\nThe idea of a machine that records time is one that fascinates people, ever since the ancients stuck a stick into the ground and measured time from the shadow that the sun cast at different stages of the day.  Today thousands of timepieces of all kinds are made daily, most people wear a wristwatch or consult their cellphones, and we are more bound by the measurement of time than the generations before us.  Yet horology is not just about measurement – it involves an appreciation for beauty in balance and accuracy.  But it is more than aesthetics because it requires the skills of science and mechanics. It is a craft in equilibrium between science and art.\n\nAnthony Mauer is behind the counter at his workbench, working on some intricate detail of a timepiece that a customer has brought to him. He works his now-rare craft in a building next door to where his father plied his same trade. He was interested in mechanics from a young age, when he started fiddling with things in his father’s workshop. Horology was “a natural progression”, he says, one that he could easily slip into. Now, decades later, Mauer is a renowned and highly respected horologist.\n\nDespite the sporadic flow customers, Mauer is at work every morning, opening the shop by 8:30, and leaves when the chimes and clangs of a hundred clocks tell him that it is five o’clock. At lunch time he meets with his wife, Isabel, a pharmacist, who works at the Bedford Pharmacy, and they usually take the two minute walk home to have a lunch break. Routine is something that swathes Bedford.  It is like an old cardigan – not unattractive, definitely not exciting, maybe with a few holes, but it is the most comfortable thing you own, which is why you will never throw it away. “Nothing exciting happens in a small town”, he says, but this seems to be what appeals to him. Time passes steadily, the days and weeks and months going by without ceasing. Hair goes grey, clothes acquire holes, dust settles, but all so slowly and steady that nothing really comes as a great shock. Mauer’s vocation is an ancient one – one that began thousands of years ago when our ancestors made calculations of the days between full moons. In a town like Bedford, though, nothing appears to occur rapidly, and so it is an apt trade.\n\nA customer enters, an elderly woman, with a complaint about her wristwatch. She hands it to Mauer, who inspects it and finds the source of the problem, replacing the miniscule screw that was causing the problem. She thanks him, and asks what the charge is, but Mauer dismisses, saying “no, please don’t worry, I need the practice”. This is the attitude that Mauer has toward his local customers – nine times out of ten, he won’t charge them, and if he does, they tease him for undercharging.\n\nMidday arrives with a crescendo of noises, like a motley choir finally unleashed at the pinnacle of a hymn. Tolling bells, chimes, cuckoos and cymbals join together in a cacophony announcing the onset of noon. Because many of the clocks in the shop are there for repair and so do not keep perfect time, this goes on for longer than the stroke of the hour, in fact throughout the day one can hear a confused clock or two chiming the incorrect time.\n\nWhy, today, when a watch can be made in a factory that churns out thousands of timekeepers a day, or people simply consult their cellphones or computer screens, would a person devote a lifetime to that antique craft?  Why indeed would one spend such precious time merely creating something whose sole purpose is to remind you how time ticks past irretrievably? After all small quartz watch bought at a supermarket can be more accurate than a clock born out of hours toiled over it.  Yet it does not retain the true soul of a clock created by a master horologist. It is for this reason that watchmakers still exist to spend hours upon hours on a single timepiece. Mauer’s specialty is skeleton clocks, of which he has made several. For this type of clock, the parts that conceal the inner workings of the mechanism are removed or significantly modified so that the inner parts are displayed. The intricate workmanship and precision can be observed, and the constant, mesmerising movement creates a beautiful exhibition of accuracy.\n\nNothing has changed in the shop since the 1960s when the shop was first bought, besides the build-up of the debris of time – old lifeless watches, heaps of dead batteries, broken watch straps, screws, cogs, innards, and unrecognisable parts litter every available surface. Walls and ceilings that that were white now gather dirt and damp seeps under the paint. These are records of the debris of time, and the flotsam and jetsam of years gone by. Mauer himself works at his own pace, doesn’t hurry, and always has time for a mid-morning cup of tea.  People send Mauer clocks and watches from all around the world. Recently, a clock was sent to him from Canada – it was made in 1688 and is worth a small fortune, yet sits among other clocks in the shop, contentedly ticking away. What is time, anyway, to a device that has been ticking it away for three hundred and twenty one years.\n\nThe ticking of a clock is such a simple sound, steadily moving, impervious to the rest of the world, as if it could continue right into infinity. Time is the glue that holds us all and places us in the dimension that we call existence. A timepiece is not the true keeper of time – they just remind us how powerless we are to its effects. Time is our master, and we it’s slave. Time is impassive and unbiased. Time is the only constant that we have - it is all we can rely on.\n\nA Japanese electronic clock waits on Mauer’s wall to be fixed – another patient among hundreds. “That clock” he says disparagingly “... I haven’t checked to see exactly what’s wrong with it, but it tocks. I don’t mind a tick, but I don’t like a tock”."
+      },
+      "url": "https://www.sarahschafer.com/photographs/photo-stories/item/104-a-meditation-on-time"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/photo-stories/item/102-grafseismo"
+      },
+      "content": {
+        "full_text": "Grüezi mitenand!” (hello everyone) booms the lilting Swiss German voice from the corner as visitors tentatively poke their heads through the door of the tiny shop. Through the doors of the colourful shop front overflows a veritable smorgasbord of beautiful objects waiting for new owners. Frank Keller, better known as Grafseismo, is crouching at the back, strumming on a beautiful old banjo.  \nGrafseismo’s vintage store is a wonderful introduction to the Swiss city that sits on the border of France and Germany. It represents what so many Baslers love about their city – a wonderful melting pot of people and cultures. Basel isn’t the typical Swiss city, and although it has the compulsory quaint cobblestone streets, a medieval old town centre and the pristine Rhine rushing through it’s heart, it is also home to a thriving artistic and alternative scene."
+      },
+      "url": "https://www.sarahschafer.com/photographs/photo-stories/item/102-grafseismo"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/photo-stories/item/100-honey-guide"
+      },
+      "content": {
+        "full_text": "People thought I was saying “Honey Guy” when I was working on the Honey Guide story about Mark Farah. It’s quite fitting actually. Mark is The Honey Guy. He loves what he does. It glows in his eyes when he speaks.\n\nChatting about his bees and the honey they make for him, Mark brings his mountain apiaries into the trading hall of the Neighbourgoods Market. In doing this, he typifies what the market does so elegantly, drawing the city and it’s surrounds together into a feast for the senses. You can’t necessarily see the hives - or trout dams, pastures, olive groves, ovens, stone mills of the vendors -but they are there in spirit.\n\nI wanted to see that spirit world made flesh, and asked if I could spend some time creating a little photo essay with Mark at one of his mountain sites. On the day, we were joined near Constantia Nek by market manager Ben Cox. Ben gets pollen from Honeyguide every Saturday, and just as curious as I about the provenance of Mark’s fabulous raw honey, jumped at the chance to see the man at work.\n\nPreparing his equipment in the clearing below the hives, Mark is unhurried but meticulous, patient and attentive. He readies everything for our walk up to the bees where we are transported into his world of buzzing alchemy.   \n\nMark gently scoops up a handful of bees as he prises the lid off a hive. They flow down his arm before he flicks them to the ground. There the mass evanesces and resolves into a roiling, humming cloud.\n\nA bee hatches as we watch. A perfect, delicate creature wriggles its way out of an alveolus, slightly shaky at first. She takes her first few hesitant steps, then she’s being fussed over by nearby bees. Soon she is indistinguishable from her countless peers. Not to Honey Guy. He points out the old bees, the hungry ones and the angry ones. ‘That guy’s just checking you out, he’s investigating’, he reassures me as my nose becomes a point of orbit.\n\nBees have personalities, and colonies have moods. Mark knows his bees, and he senses subtle fluctuations. ‘Hear that?’, he asks as the buzzing near a hive crescendos. ‘They’re getting a little worried’.\n\nIt doesn’t seem right to call Mark’s processes ‘simple’, although when he explains what he does it just makes sense. To understand colonies, work with hives, ensure that your bees are healthy, and collect honey without upsetting a natural balance is no small feat.\n\nEthical farming isn’t straightforward when it comes to bees, and bad practice isn’t as obvious as with large mammals. This is mostly because we don’t understand bees. Mark seems to, though. Bees get manipulated, taken advantage of, and produce honey of an inferior quality, all in the name of lowering costs and increasing yield. Ersatz honey, the stuff we find on supermarket shelves, is made by bees who forage from Eucalyptus or fruit orchards, and whose foraging is engineered and controlled. The bees are manipulated, and the resulting honey is one-dimensional.\n\nThe honey, propolis and pollen that Mark collects from his indigenous bees is completely different. His management techniques are eco-sensitive, and his bees forage in uncontaminated environments around the Cape. Mark produces and sells raw, unprocessed honey, beeswax, propolis and pollen under his Honeyguide label. It is one of few brands that sells pollen, which is a little-recognised, complete superfood.\n\nThere’s a wonderful tale by Roald Dahl called Royal Jelly, a whimsical warning to parents, where a baby is fed too much propolis and begins morphing into a bee-creature. I don’t reckon that Ben will sprout wings anytime soon, but deep down, I wouldn’t be surprised if Roald Dahl was onto something, and the Honey Guy knows it. There’s real magic in bees."
+      },
+      "url": "https://www.sarahschafer.com/photographs/photo-stories/item/100-honey-guide"
+    }
+  ],
+  "menus": [
+    {
+      "menu": {
+        "main": [
+          {
+            "url": "/",
+            "name": "Home",
+            "weight": 1
+          },
+          {
+            "identifier": "people",
+            "name": "People",
+            "weight": 2
+          },
+          {
+            "url": "/people/attorneys",
+            "name": "Attorneys",
+            "parent": "people",
+            "weight": 10
+          },
+          {
+            "url": "/people/support-staff",
+            "name": "Support Staff",
+            "parent": "people",
+            "weight": 11
+          },
+          {
+            "url": "/about-us",
+            "name": "About Us",
+            "weight": 3
+          },
+          {
+            "identifier": "services",
+            "name": "Services",
+            "weight": 4
+          },
+          {
+            "url": "/services/alternative-dispute-resolution",
+            "name": "Alternative Dispute Resolution",
+            "parent": "services",
+            "weight": 10
+          },
+          {
+            "url": "/services/civil-litigation",
+            "name": "Civil Litigation",
+            "parent": "services",
+            "weight": 11
+          },
+          {
+            "url": "/services/commercial-law",
+            "name": "Commercial Law",
+            "parent": "services",
+            "weight": 12
+          },
+          {
+            "url": "/services/criminal-law",
+            "name": "Criminal Law",
+            "parent": "services",
+            "weight": 13
+          },
+          {
+            "url": "/services/estates",
+            "name": "Estates",
+            "parent": "services",
+            "weight": 14
+          },
+          {
+            "url": "/services/family-law",
+            "name": "Family Law",
+            "parent": "services",
+            "weight": 15
+          },
+          {
+            "url": "/services/labour-and-employment",
+            "name": "Labour and Employment Law",
+            "parent": "services",
+            "weight": 16
+          },
+          {
+            "url": "/services/liquor-licences",
+            "name": "Liquor Licences",
+            "parent": "services",
+            "weight": 17
+          },
+          {
+            "url": "/services/property-conveyancing",
+            "name": "Property – Conveyancing",
+            "parent": "services",
+            "weight": 18
+          },
+          {
+            "url": "/news",
+            "name": "News",
+            "weight": 5
+          },
+          {
+            "url": "/legally-speaking",
+            "name": "Legally Speaking",
+            "weight": 6
+          },
+          {
+            "url": "/contact",
+            "name": "Contact",
+            "weight": 7
+          },
+          {
+            "name": "Search",
+            "weight": 8
+          }
+        ]
+      }
+    }
+  ],
+  "sectionPages": [
+    {
+      "frontMatter": {
+        "title": "Attorneys",
+        "url": "/people/attorneys"
+      },
+      "content": {},
+      "url": "https://mfwdurbanattorneys.co.za/people/attorneys"
+    },
+    {
+      "frontMatter": {
+        "title": "News",
+        "url": "/news"
+      },
+      "content": {},
+      "url": "https://mfwdurbanattorneys.co.za/news"
+    },
+    {
+      "frontMatter": {
+        "title": "Legally Speaking",
+        "url": "/legally-speaking"
+      },
+      "content": {},
+      "url": "https://mfwdurbanattorneys.co.za/legally-speaking"
+    },
+    {
+      "frontMatter": {
+        "title": "Support Staff",
+        "url": "/people/support-staff"
+      },
+      "content": {},
+      "url": "https://mfwdurbanattorneys.co.za/people/support-staff"
+    }
+  ]
+}

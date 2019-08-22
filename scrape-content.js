@@ -46,6 +46,10 @@ lib.generateUrls(source)
   return {pageOrdering: pageOrdering};
 })
 .then((object) => {
+  if (!oneToMany) { 
+    object.oneToMany = [];
+    return object; 
+  }
   console.log('Started fetching pages to use in one to many mappings.');
   var oneToManyPromises = [];
   oneToMany.forEach(item => {
@@ -100,30 +104,30 @@ lib.generateUrls(source)
     return object;
   });
 })
-.then(object => {
-  console.log('Started creating files for one to many mappings.');
-  fs.writeFile('test.json', JSON.stringify(object, null, 2), function(err) {
-    if(err) {
-      return console.log(err);
-    }
-    console.log(chalk.green(`Created JSON file`));
-  });
-  var oneToManyItems = [];
-  object.oneToMany.forEach(oneToManyPage => {
-    oneToManyPage.forEach(item => {
-      oneToManyItems.push(item);
-    });
-  });
-  var createfileOneToManypromises = [];
-  oneToManyItems.forEach(item => {
-    var fileOutPutPath = lib.fileOutputPathfromUrl(item.url);
-    createfileOneToManypromises.push(lib.createMDFile(item, fileOutPutPath));
-  });
-  return Promise.all(createfileOneToManypromises).then(response => {
-    console.log(chalk.green('Finished creating files for one to many mappings.'));
-    return object;
-  });
-})
+// .then(object => {
+//   console.log('Started creating files for one to many mappings.');
+//   fs.writeFile('test.json', JSON.stringify(object, null, 2), function(err) {
+//     if(err) {
+//       return console.log(err);
+//     }
+//     console.log(chalk.green(`Created JSON file`));
+//   });
+//   var oneToManyItems = [];
+//   object.oneToMany.forEach(oneToManyPage => {
+//     oneToManyPage.forEach(item => {
+//       oneToManyItems.push(item);
+//     });
+//   });
+//   var createfileOneToManypromises = [];
+//   oneToManyItems.forEach(item => {
+//     var fileOutPutPath = lib.fileOutputPathfromUrl(item.url);
+//     createfileOneToManypromises.push(lib.createMDFile(item, fileOutPutPath));
+//   });
+//   return Promise.all(createfileOneToManypromises).then(response => {
+//     console.log(chalk.green('Finished creating files for one to many mappings.'));
+//     return object;
+//   });
+// })
 .then(object => {
   console.log('Started creating files for one to one mappings.');
   var createfileOneToOnepromises = [];
@@ -162,4 +166,10 @@ lib.generateUrls(source)
 })
 .catch(err => {
   console.log(chalk.red(err));
+  fs.writeFile('console.json', err, function(error) {
+    if(error) {
+      console.log(error);
+    }
+    console.log('Logged content to file');
+  });
 });
