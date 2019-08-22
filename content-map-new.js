@@ -1,17 +1,5 @@
 module.exports = {
   oneToOne: {
-    // sectionOrderingRefs: [
-    //   {
-    //     url: 'https://mfwdurbanattorneys.co.za/people/attorneys',
-    //     itemsSelector: 'h3.catItemTitle a',
-    //     frontMatterKey: 'url' // The frontmatter value for this must match the value returned by itemsSelector to add the weight.
-    //   },
-    //   {
-    //     url: 'https://mfwdurbanattorneys.co.za/people/support-staff',
-    //     itemsSelector: 'h3.catItemTitle',
-    //     frontMatterKey: 'title'
-    //   }
-    // ],
     items: [
       {
         selector: '.itemTitle',
@@ -65,6 +53,34 @@ module.exports = {
         selector: '.itemListCategory h2',
         type: 'text',
         key: 'title'
+      },
+      {
+        selector: '.catItemTitle',
+        type: 'text',
+        key: 'title'
+      },
+      {
+        selector: '.catItemImage img',
+        type: 'image',
+        key: 'item_image',
+        attr: 'src',
+      },
+      {
+        selector: '.catItemDateCreated',
+        type: 'date',
+        sourceDateFormat: 'DD mm YYYY',
+        key: 'date'
+      },
+      {
+        selector: '.catItemDateCreated',
+        type: 'date',
+        sourceDateFormat: 'DD mm YYYY',
+        key: 'publishdate'
+      },
+      {
+        selector: '.catItemIntroText',
+        type: 'markdown',
+        key: 'intro_text'
       }
     ]
   },
@@ -75,7 +91,7 @@ module.exports = {
       items: [{
         selector: '.catItemTitle',
         type: 'text',
-        key: 'test'
+        key: 'title'
       },
       {
         selector: '.catItemImage img',
@@ -102,35 +118,29 @@ module.exports = {
       }]
     }
   ],
-  menus: [
-    { 
-      items: [
-        {
-          menuSelector: '#main-nav ul',
-          menuItemSelector: 'li',
-          menuName: 'main'
-        },
-        {
-          menuSelector: '#footer-menu .block-outer:nth-child(1) ul',
-          menuItemSelector: 'li',
-          menuName: 'about_us'
-        },
-        {
-          menuSelector: '#footer-menu .block-outer:nth-child(2) ul',
-          menuItemSelector: 'li',
-          menuName: 'corporate'
-        },
-        {
-          menuSelector: '#footer-menu .block-outer:nth-child(3) ul',
-          menuItemSelector: 'li',
-          menuName: 'individuals'
-        },
-        {
-          menuSelector: '.copyright-inner ul',
-          menuItemSelector: 'li',
-          menuName: 'footer'
-        },
-      ]
-    }
-  ]
+  menus: [{
+      menuSelector: '#main-nav ul',
+      menuItemSelector: 'li',
+      menuName: 'main'
+    },
+    {
+      menuSelector: '#footer-menu .block-outer:nth-child(1) ul',
+      menuItemSelector: 'li',
+      menuName: 'about_us'
+    },
+    {
+      menuSelector: '#footer-menu .block-outer:nth-child(2) ul',
+      menuItemSelector: 'li',
+      menuName: 'corporate'
+    },
+    {
+      menuSelector: '#footer-menu .block-outer:nth-child(3) ul',
+      menuItemSelector: 'li',
+      menuName: 'individuals'
+    },
+    {
+      menuSelector: '.copyright-inner ul',
+      menuItemSelector: 'li',
+      menuName: 'footer'
+    }]
 };

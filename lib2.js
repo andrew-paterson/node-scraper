@@ -44,12 +44,12 @@ module.exports = {
     });
   },
 
-  parseContentItem: function(object, elementsMap, url, $, pageOrdering) {
-    var pathname = nodeUrl.parse(url).pathname;
+  parseContentItem: function(object, elementsMap, $, pageOrdering) {
+    // var pathname = nodeUrl.parse(url).pathname;
     var frontMatterObject = {};
     var contentObject = {};
     elementsMap.items.forEach(item => {
-      var element = $(object).find(item.selector);
+      var element = $(object.html).find(item.selector);
       if (element.length === 0) { return; }
       var text = element.text().trim();
       var html = element.html().trim();
@@ -66,38 +66,15 @@ module.exports = {
         frontMatterObject[item.key] = text;
       }
     });
-    frontMatterObject.url = pathname;
-    if (pageOrdering) {
-      frontMatterObject.weight = this.contentItemWeight(url, frontMatterObject, pageOrdering);
+    // frontMatterObject.url = object.url;
+    if (object.weight) {
+      frontMatterObject.weight = object.weight;
     }
     return {
       frontMatter: frontMatterObject,
       content: contentObject,
-      url: url
+      url: object.url
     };
-  },
-
-  fetchHTML: function(url) {
-    return new Promise((resolve, reject) => { 
-      if (!url.match(isUrl)) {
-        reject(`Invalid url: ${url}`);
-      }
-      request({uri: url}, (err, response, body) => { 
-        if (response.statusCode === 200) {
-          resolve(body);
-        } else {
-          var errorMessage;
-          if (response.statusCode === 404){
-            errorMessage = `404 error. No webpage was found at ${url}`;
-          } else if (response.statusCode === 401){
-            errorMessage = `401 error. You are not authorised to access ${url}`;
-          } else if (err && response.statusCode !== 200){
-            errorMessage = `Request error: ${err}`;
-          }
-          reject(errorMessage);
-        }
-      });
-    });
   },
 
   createMDFile: function(object, fileOutPutPath) {
@@ -162,30 +139,30 @@ module.exports = {
     return `${directory}${fullPath}.md`;
   },
 
-  getElementOrder: function(object) {
-    return new Promise((resolve, reject) => { 
-      this.fetchHTML(object.url).then((body) => {
-        var $ = this.loadDom(body);
-        var elements = $(object.itemsSelector);
-        var links = [];
-        $(elements).each((index, element) => {
-          var matchValue;
-          if (object.frontMatterKey === 'url') {
-            matchValue = $(element).attr('href').trim();
-          } else {
-            matchValue = $(element).text().trim();
-          }
-          links.push({
-            matchValue: matchValue,
-            weight: index
-          });
-        });
-        resolve({sectionUrl: object.url, matchKey: object.frontMatterKey, items: links});
-      }).catch(err => {
-        reject(err);
-      });
-    });
-  },
+  // getElementOrder: function(object) {
+  //   return new Promise((resolve, reject) => { 
+  //     this.fetchHTML(object.url).then((body) => {
+  //       var $ = this.loadDom(body);
+  //       var elements = $(object.itemsSelector);
+  //       var links = [];
+  //       $(elements).each((index, element) => {
+  //         var matchValue;
+  //         if (object.frontMatterKey === 'url') {
+  //           matchValue = $(element).attr('href').trim();
+  //         } else {
+  //           matchValue = $(element).text().trim();
+  //         }
+  //         links.push({
+  //           matchValue: matchValue,
+  //           weight: index
+  //         });
+  //       });
+  //       resolve({sectionUrl: object.url, matchKey: object.frontMatterKey, items: links});
+  //     }).catch(err => {
+  //       reject(err);
+  //     });
+  //   });
+  // },
 
   // oneToManyPage: function(object, oneToMany) {
   //   return new Promise((resolve, reject) => { 
@@ -242,59 +219,32 @@ module.exports = {
     });
   },
 
-  
-
-  // listItemPromise: function(url, oneToMany) {
-  //   return new Promise((resolve, reject) => { 
-  //     this.fetchHTML(url).then((body) => {
-  //       var elementsMap = oneToMany;
-  //       var $ = this.loadDom(body);
-  //       resolve(this.parseContentItem(body, elementsMap, url, $, pageOrdering));
-  //     }).catch(err => {
-  //       reject(err);
-  //     });
-  //   });
-  // },
-
-  sectionPage: function(sectionPageObject) {
-    return new Promise((resolve, reject) => { 
-      this.fetchHTML(sectionPageObject.url).then((body) => {
-        var elementsMap = sectionPageObject;
-        var $ = this.loadDom(body);
-        resolve(this.parseContentItem(body, elementsMap, sectionPageObject.url, $));
-      }).catch(err => {
-        reject(err);
-      });
-    });
-  },
-
-  menuPromise: function(menuObject) {
-    return new Promise((resolve, reject) => { 
-      this.fetchHTML(menuObject.url).then((body) => {
-        var elementsMap = menuObject.items;
-        var $ = this.loadDom(body);
-        elementsMap.forEach(item => {
-          if (item.menuName.indexOf('.') > 0) {
-            console.log(chalk.red(`${item.menuName} was ignored because the menuName has dot characters, which are not allowed.`));
+  doMenus(htmlMap, menus) {
+    htmlMap.forEach(item => {
+      var $ = this.loadDom(item.html);
+      menus.forEach(menuConfig => {
+        if (!menuConfig.found) {
+          if (menuConfig.menuName.indexOf('.') > 0) {
+            console.log(chalk.red(`${menuConfig.menuName} was ignored because the menuName has dot characters, which are not allowed.`));
             return;
           }
-          if (item.menuSelector) {
-            var elements = $(item.menuSelector);
-            // console.log(elements);
+          if (menuConfig.menuSelector) {
+            menuConfig.found = true;
+            var elements = $(menuConfig.menuSelector);
             if (elements.length > 0) {
               $(elements).each((index, element) => {
-                this.parseMenu($(element).parent().html(), $, item.menuName, item.menuItemSelector, elementsMap);
+                var menuObjects = this.parseMenu($(element).parent().html(), $, menuConfig.menuName, menuConfig.menuItemSelector, menus);
+                allMenus = this.addToObject(allMenus, menuObjects, `menu.${menuConfig.menuName}`);
+                
               });
             } else {
-              console.log(chalk.red(`The selector ${item.menuSelector} returned 0 elements.`));
+              console.log(chalk.red(`The selector ${menuConfig.menuSelector} returned 0 elements.`));
             }
           }
-        });
-        resolve(allMenus);
-      }).catch(err => {
-        reject(err);
+        }
       });
     });
+    return allMenus;
   },
 
   parseMenu: function(html, $, menuName, menuItemSelector, elementsMap) {
@@ -339,7 +289,9 @@ module.exports = {
     $(menuItems).each((index, menuItem) => {
       processMenuItem(menuItem, index, weightLevel);
     });
-    allMenus = this.addToObject(allMenus, menuObjects, `menu.${menuName}`);
+    return menuObjects;
+    
+
   },
 
   addToObject: function(object, value, path) {
@@ -476,34 +428,8 @@ module.exports = {
     htmlMap.forEach(item => {
       var elementsMap = oneToOne;
       var $ = this.loadDom(item.html);
-      parsed.push(this.parseContentItem(item.html, elementsMap, item.url, $));
+      parsed.push(this.parseContentItem(item, elementsMap, $));
     });
     return parsed;
-  },
-
-
-
-  oneToOnePage: function(url, pageOrdering, oneToOne, listItemSelectors) {
-    return new Promise((resolve, reject) => { 
-      this.fetchHTML(url).then((body) => {
-        var elementsMap = oneToOne;
-        var $ = this.loadDom(body);
-        resolve(this.parseContentItem(body, elementsMap, url, $, pageOrdering));
-      }).catch(err => {
-        reject(err);
-      });
-    });
-  },
-
-  // console: {
-  //   file: function(content ) {
-  //     fs.writeFile('console.json', content, function(err) {
-  //       if(err) {
-  //         console.log(err);
-  //       }
-  //       console.log('Logged content to file');
-  //     });
-  //   }
-  // }
-
+  }
 };

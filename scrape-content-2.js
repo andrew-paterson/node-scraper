@@ -4,10 +4,7 @@ var scrapeConfigFile = process.argv[3];
 var scrapeConfig = require(scrapeConfigFile); 
 const chalk = require('chalk');
 var urls;
-var sectionOrderingRefs = scrapeConfig.oneToOne.sectionOrderingRefs || [];
 var oneToOne = scrapeConfig.oneToOne;
-var oneToMany = scrapeConfig.oneToMany;
-var sectionPages = scrapeConfig.sectionPages || [];
 var listItemSelectors = scrapeConfig.listItemSelectors || [];
 var menus = scrapeConfig.menus;
 var lib = require('./lib2.js');
@@ -27,42 +24,30 @@ lib.generateUrls(source)
   });
   return Promise.all(fetchHTML2Promises);
 })
-// .then((response) => {
-  // fs.writeFile('html2.json', JSON.stringify(response, null, 2), function(err) {
-  //   if(err) {
-  //     console.log(err);
-  //   }
-  //   console.log(`Created 'html2.json'`);
-  // });
-//   return response;
-// })
 .then(htmlMap => {
-  // console.log(htmlMap);
-  var combinedHTMLMap = lib.doListItems(htmlMap, listItemSelectors, oneToOne);
-  fs.writeFile('combinedhtml3.json', JSON.stringify(combinedHTMLMap, null, 2), function(err) { //TODO remove
-    if(err) {
-      console.log(err);
-    }
-    console.log(`Created 'combinedhtml3.json'`);
-  });
-  return combinedHTMLMap;
+  return {
+    pages: lib.doListItems(htmlMap, listItemSelectors, oneToOne),
+    menus: lib.doMenus(htmlMap, menus)
+  };
 })
 .then(object => {
   console.log('Started creating files for one to one mappings.');
   var createfileOneToOnepromises = [];
-  object.forEach(item => {
+  object.pages.forEach(item => {
     var fileOutPutPath = lib.fileOutputPathfromUrl(item.url);
     createfileOneToOnepromises.push(lib.createMDFile(item, fileOutPutPath));
   });
+  var fileOutPutPath = lib.fileOutputPathfromUrl('/');
+  createfileOneToOnepromises.push(lib.createMenuFile(object.menus, fileOutPutPath));
   return Promise.all(createfileOneToOnepromises).then(response => {
     console.log(chalk.green('Finished creating files for one to one mappings.'));
-    return object;
+    // return htmlMap;
   });
 })
 .catch(err => {
   console.log(err);
 });
-return;
+
 
 
 
