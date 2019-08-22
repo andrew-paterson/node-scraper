@@ -105,14 +105,7 @@ module.exports = {
         final += '<!--more-->\n';
       }
       if (content.full_text) {
-        if (object.frontMatter.url === '/photographs/people-getting-married/item/112-lesley-david') {
-          console.log(content.intro_text);
-          console.log('-------------------------------');
-          console.log((content.full_text).replace((content.intro_text).trim(), ''));
-          console.log('-------------------------------');
-        }
-        
-        final += content.full_text;
+        final += (content.full_text).replace(content.intro_text, '').trim();
       }
       var directoryOutPutPath = path.dirname(fileOutPutPath);
       this.mkdirP(directoryOutPutPath);
@@ -355,7 +348,7 @@ module.exports = {
         return listItem.url === htmlMapItem.url;
       });
       if (corresopondingHTMLMapItem) {
-        corresopondingHTMLMapItem.html += '--------------' + listItem.html;
+        corresopondingHTMLMapItem.html += listItem.html;
         corresopondingHTMLMapItem.weight = listItem.weight;
       } else {
         htmlMap.push(listItem);

@@ -2,11 +2,127 @@
   "pages": [
     {
       "frontMatter": {
-        "title": "People Getting Married",
-        "url": "/photographs/people-getting-married/"
+        "url": "/"
+      },
+      "content": {
+        "full_text": "[![Okahandja](https://farm4.staticflickr.com/3837/14782515947_8737dfcba7_c.jpg)](https://www.flickr.com/photos/124897308@N04/14782515947 \"Okahandja by Sarah Schafer, on Flickr\")"
+      },
+      "url": "/"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/airbnb"
+      },
+      "content": {
+        "full_text": "![Airbnb_01](/images/photography/airbnb/small/Airbnb_01.jpg) ![Airbnb_02](/images/photography/airbnb/small/Airbnb_02.jpg) ![Airbnb_03](/images/photography/airbnb/small/Airbnb_03.jpg) ![Airbnb_04](/images/photography/airbnb/small/Airbnb_04.jpg) ![Airbnb_05](/images/photography/airbnb/small/Airbnb_05.jpg) ![Airbnb_06](/images/photography/airbnb/small/Airbnb_06.jpg) ![Airbnb_07](/images/photography/airbnb/small/Airbnb_07.jpg) ![Airbnb_08](/images/photography/airbnb/small/Airbnb_08.jpg) ![Airbnb_09](/images/photography/airbnb/small/Airbnb_09.jpg) ![Airbnb_10](/images/photography/airbnb/small/Airbnb_10.jpg) ![Airbnb_11](/images/photography/airbnb/small/Airbnb_11.jpg) ![Airbnb_12](/images/photography/airbnb/small/Airbnb_12.jpg) ![Airbnb_13](/images/photography/airbnb/small/Airbnb_13.jpg) ![Airbnb_14](/images/photography/airbnb/small/Airbnb_14.jpg) ![Airbnb_15](/images/photography/airbnb/small/Airbnb_15.jpg) ![Airbnb_16](/images/photography/airbnb/small/Airbnb_16.jpg) ![Airbnb_17](/images/photography/airbnb/small/Airbnb_17.jpg) ![Airbnb_18](/images/photography/airbnb/small/Airbnb_18.jpg) ![Airbnb_19](/images/photography/airbnb/small/Airbnb_19.jpg) ![Airbnb_20](/images/photography/airbnb/small/Airbnb_20.jpg) ![Airbnb_21](/images/photography/airbnb/small/Airbnb_21.jpg) ![Airbnb_22](/images/photography/airbnb/small/Airbnb_22.jpg) ![Airbnb_23](/images/photography/airbnb/small/Airbnb_23.jpg) ![Airbnb_24](/images/photography/airbnb/small/Airbnb_24.jpg) ![Airbnb_25](/images/photography/airbnb/small/Airbnb_25.jpg) ![Airbnb_26](/images/photography/airbnb/small/Airbnb_26.jpg) ![Airbnb_27](/images/photography/airbnb/small/Airbnb_27.jpg) ![Airbnb_28](/images/photography/airbnb/small/Airbnb_28.jpg) ![Airbnb_29](/images/photography/airbnb/small/Airbnb_29.jpg) ![Airbnb_30](/images/photography/airbnb/small/Airbnb_30.jpg) ![Airbnb_31](/images/photography/airbnb/small/Airbnb_31.jpg) ![Airbnb_32](/images/photography/airbnb/small/Airbnb_32.jpg) ![Airbnb_33](/images/photography/airbnb/small/Airbnb_33.jpg) ![Airbnb_34](/images/photography/airbnb/small/Airbnb_34.jpg) ![Airbnb_35](/images/photography/airbnb/small/Airbnb_35.jpg) ![Airbnb_36](/images/photography/airbnb/small/Airbnb_36.jpg) ![Airbnb_37](/images/photography/airbnb/small/Airbnb_37.jpg) ![Airbnb_38](/images/photography/airbnb/small/Airbnb_38.jpg) ![Airbnb_39](/images/photography/airbnb/small/Airbnb_39.jpg) ![Airbnb_40](/images/photography/airbnb/small/Airbnb_40.jpg) ![Airbnb_41](/images/photography/airbnb/small/Airbnb_41.jpg) ![Airbnb_42](/images/photography/airbnb/small/Airbnb_42.jpg) ![Airbnb_43](/images/photography/airbnb/small/Airbnb_43.jpg) ![Airbnb_44](/images/photography/airbnb/small/Airbnb_44.jpg) ![Airbnb_45](/images/photography/airbnb/small/Airbnb_45.jpg) ![Airbnb_46](/images/photography/airbnb/small/Airbnb_46.jpg) ![Airbnb_47](/images/photography/airbnb/small/Airbnb_47.jpg) ![Airbnb_48](/images/photography/airbnb/small/Airbnb_48.jpg) ![Airbnb_49](/images/photography/airbnb/small/Airbnb_49.jpg) ![Airbnb_50](/images/photography/airbnb/small/Airbnb_50.jpg) ![Airbnb_51](/images/photography/airbnb/small/Airbnb_51.jpg) ![Airbnb_52](/images/photography/airbnb/small/Airbnb_52.jpg) ![Airbnb_53](/images/photography/airbnb/small/Airbnb_53.jpg) ![Airbnb_54](/images/photography/airbnb/small/Airbnb_54.jpg) ![Airbnb_55](/images/photography/airbnb/small/Airbnb_55.jpg) ![Airbnb_56](/images/photography/airbnb/small/Airbnb_56.jpg) ![Airbnb_57](/images/photography/airbnb/small/Airbnb_57.jpg) ![Airbnb_58](/images/photography/airbnb/small/Airbnb_58.jpg) ![Airbnb_59](/images/photography/airbnb/small/Airbnb_59.jpg) ![Airbnb_60](/images/photography/airbnb/small/Airbnb_60.jpg) ![Airbnb_61](/images/photography/airbnb/small/Airbnb_61.jpg) ![Airbnb_62](/images/photography/airbnb/small/Airbnb_62.jpg)"
+      },
+      "url": "/photographs/airbnb"
+    },
+    {
+      "frontMatter": {
+        "title": "Food",
+        "url": "/photographs/food"
       },
       "content": {},
-      "url": "/photographs/people-getting-married/"
+      "url": "/photographs/food"
+    },
+    {
+      "frontMatter": {
+        "title": "People Getting Married",
+        "url": "/photographs/people-getting-married"
+      },
+      "content": {},
+      "url": "/photographs/people-getting-married"
+    },
+    {
+      "frontMatter": {
+        "title": "Portraits",
+        "url": "/photographs/portraits"
+      },
+      "content": {},
+      "url": "/photographs/portraits"
+    },
+    {
+      "frontMatter": {
+        "title": "Photo Stories",
+        "url": "/photographs/photo-stories"
+      },
+      "content": {},
+      "url": "/photographs/photo-stories"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/product"
+      },
+      "content": {},
+      "url": "/photographs/product"
+    },
+    {
+      "frontMatter": {
+        "title": "about Sarah",
+        "item_image": "/media/k2/items/cache/4ab4b6df96c060fa741e97b50eafb07c_S.jpg",
+        "url": "/about-sarah"
+      },
+      "content": {
+        "full_text": "I am a photographer and writer, based in the magnificent city of Cape Town. I completed a Bachelor of Journalism at Rhodes University, and have been self-employed for the past seven years. \n\nDocumentary photography and reportage will always be my first love, and its influence is clear in my work. When I arrived in Cape Town I was a padawan photography assistant for food photographer extraordinaire [Russel Wasserfall](http://www.rwasserfall.co.za/), who took me under his wing.\n\nI adore natural light, and strive to make the most of light that I'm given. When I shoot personal projects, I prefer shooting on film. Whether it's interiors or architecte; a wedding or a portrait, I aim to create images that are honest and beautiful, taken intuitively and simply. \n\nI'm currently studying digital curation at the University of Cape Town in the hope of merging my skills in this exciting new field where art and technology collide."
+      },
+      "url": "/about-sarah"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/on-stage"
+      },
+      "content": {},
+      "url": "/photographs/on-stage"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/travel"
+      },
+      "content": {},
+      "url": "/photographs/travel"
+    },
+    {
+      "frontMatter": {
+        "url": "/photographs/lifestyle"
+      },
+      "content": {},
+      "url": "/photographs/lifestyle"
+    },
+    {
+      "frontMatter": {
+        "title": "Contact",
+        "url": "/contact"
+      },
+      "content": {
+        "full_text": "If you are looking for a quote, or would like more information, please contact Sarah directly. \n\nEmail [<span class=\"cloaked_email ep_3e8dd392\"><span data-ep-aabe3=\"sarah\" data-ep-b7388=\"com\"><span data-ep-b7388=\"mail.\" data-ep-aabe3=\".kate\"><span data-ep-aabe3=\".scha\" data-ep-b7388=\"fer@g\"></span></span></span></span><script type=\"text/javascript\">emailProtector.addCloakedMailto(\"ep_3e8dd392\", 0);</script>,](mailto:sarah.kate.schafer@gmail.com,) or phone +27 73 307 0637."
+      },
+      "url": "/contact"
+    },
+    {
+      "frontMatter": {
+        "title": "Retreat",
+        "item_image": "/media/k2/items/cache/948378d6a67ac0d7c7c6728581b072ab_L.jpg",
+        "url": "/photographs/food/item/108-retreat"
+      },
+      "content": {
+        "full_text": "I had the absolute pleasure of photographing Daniel Jardim's second cook book. It went to print in March 2014, and has just began it's second print run. This is a selection of some of my favourite pictures.",
+        "intro_text": "I had the absolute pleasure of photographing Daniel Jardim's second cook book. It went to print in March 2014, and has just began it's second print run. This is a selection of some of my favourite images.\n\nFind out more about the book [here](http://www.jacana.co.za/component/virtuemart/retreat-the-joy-of-conscious-eating-detail?Itemid=0) and get in touch with Daniel [here](https://www.facebook.com/seasonalcookery)."
+      },
+      "url": "/photographs/food/item/108-retreat"
+    },
+    {
+      "frontMatter": {
+        "title": "Clementine & Mark",
+        "item_image": "/media/k2/items/cache/8da476f72f06a276b1f930cdb28c21f1_L.jpg",
+        "url": "/photographs/people-getting-married/item/129-clementine-mark",
+        "weight": 1
+      },
+      "content": {
+        "full_text": "In December 2016, one of my childhood friends was married in the town we grew up in - Grahamstown. It was a typical overcast day, and their wedding was a wonderful celebration.",
+        "intro_text": "In December 2016, one of my childhood friends was married in the town we grew up in - Grahamstown. It was a typical overcast day, and their wedding was a wonderful celebration."
+      },
+      "url": "/photographs/people-getting-married/item/129-clementine-mark"
     },
     {
       "frontMatter": {
@@ -22,16 +138,28 @@
     },
     {
       "frontMatter": {
-        "title": "Clementine & Mark",
-        "item_image": "/media/k2/items/cache/8da476f72f06a276b1f930cdb28c21f1_L.jpg",
-        "url": "/photographs/people-getting-married/item/129-clementine-mark",
+        "title": "Kitchen Reportage",
+        "item_image": "/media/k2/items/cache/d6e7bc44feb1613d041d5385e5745b10_L.jpg",
+        "url": "/photographs/food/item/106-kitchen-reportage",
+        "weight": 2
+      },
+      "content": {
+        "intro_text": "Documenting the people and the stories that make delicious food."
+      },
+      "url": "/photographs/food/item/106-kitchen-reportage"
+    },
+    {
+      "frontMatter": {
+        "title": "Beautiful Dishes",
+        "item_image": "/media/k2/items/cache/938a195f8810cb9b31c6503221891897_L.jpg",
+        "url": "/photographs/food/item/107-beautiful-dishes",
         "weight": 1
       },
       "content": {
-        "full_text": "In December 2016, one of my childhood friends was married in the town we grew up in - Grahamstown. It was a typical overcast day, and their wedding was a wonderful celebration.",
-        "intro_text": "In December 2016, one of my childhood friends was married in the town we grew up in - Grahamstown. It was a typical overcast day, and their wedding was a wonderful celebration."
+        "full_text": "Outrageously good food - it there more to say?",
+        "intro_text": "Outrageously good food - is there more to say?"
       },
-      "url": "/photographs/people-getting-married/item/129-clementine-mark"
+      "url": "/photographs/food/item/107-beautiful-dishes"
     },
     {
       "frontMatter": {
@@ -158,7 +286,6 @@
         "weight": 11
       },
       "content": {
-        "full_text": "Gaby and Bob have been a couple for years, and decided to tie the knot before they leave South Africa for their adventures in Asia. A wedding in Grahamstown, Bob's home town and the place where they studied together, was a very fitting setting for their nuptials.\n\nWith a close friend and Rhodes University lecturer Alan Kirkaldy presiding over the ceremony, paper flowers, homemade food, cupcakes from heaven made by Bob's sister Catherine, and a close group of friends gathered around, Gaby and Bob's wedding day was poignant and beautiful.\n\nNobody in the world can write about love like Pablo Neruda, and Bob's reading of Neruda's Sonnet XVII from Cien Sonetos de Amor was perfectly, unfeignedly romantic. Bob's retro wedding suit - the suit that his father wore to his own wedding - was the proverbial icing on the (wedding) cake.",
         "intro_text": "Gaby and Bob got married in Grahamstown, Bob's home town and the place where they studied together."
       },
       "url": "/photographs/people-getting-married/item/115-gaby-bob"
@@ -175,32 +302,6 @@
         "intro_text": "Jenny and Elmar's wedding took place at the Table at De Meye. The setting was simply idyllic - gorgeous fragrant roses adorning every surface, happy guests and incredible food."
       },
       "url": "/photographs/people-getting-married/item/114-jenny-elmar"
-    },
-    {
-      "frontMatter": {
-        "title": "Leigh & Rob",
-        "item_image": "/media/k2/items/cache/73608782f50eb6af17bb69bdcd662692_L.jpg",
-        "url": "/photographs/people-getting-married/item/109-leigh-rob",
-        "weight": 16
-      },
-      "content": {
-        "full_text": "Leigh and Robert Cobban tied the knot with an intimate wedding in Observatory, Cape Town. The ceremony took place in Leigh's sister, Gaby's house in Obs, and was small and authentic. Sans church, the wedding was refreshingly different.\n\nIt was happy and relaxed, with champagne popping in the outside courtyard all afternoon until the group went to enjoy a proper Cape Town night at the Brass Bell in Kalk Bay.",
-        "intro_text": "Leigh and Robert tied the knot with an intimate wedding in Observatory, Cape Town. Sans church, the wedding was refreshingly different."
-      },
-      "url": "/photographs/people-getting-married/item/109-leigh-rob"
-    },
-    {
-      "frontMatter": {
-        "title": "Claire & Simon",
-        "item_image": "/media/k2/items/cache/b8292acafd72142128a3481ac4b0abff_L.jpg",
-        "url": "/photographs/people-getting-married/item/111-claire-simon",
-        "weight": 15
-      },
-      "content": {
-        "full_text": "When Claire contacted me to photograph her wedding in Zambia, I jumped at the chance. Her family owns a lodge right on the border of the South Luangwa National Park, and guests arrived from across the world to spend some time at Marula Lodge, catch up with Simon and Claire, get to know each other, and have a holiday in the Waterhouse's own slice of heaven.\n\nWith hippos munching in the garden at night, elephants destroying the flower arrangements, a hot Zambian (mid-Winter!) sun and a fantastic array of people, Claire and Simon's wedding was extraordinary. They suit each other effortlessly, and the amazing crowd of people who travelled across the world to be with them for their marriage was a real testament to their love.",
-        "intro_text": "When Claire contacted me to photograph her wedding in Zambia, I jumped at the chance."
-      },
-      "url": "/photographs/people-getting-married/item/111-claire-simon"
     },
     {
       "frontMatter": {
@@ -227,6 +328,105 @@
         "intro_text": "Lesley and David are one of those couples that make even the most hardened cynic’s heart get a little warm and fuzzy."
       },
       "url": "/photographs/people-getting-married/item/112-lesley-david"
+    },
+    {
+      "frontMatter": {
+        "title": "Claire & Simon",
+        "item_image": "/media/k2/items/cache/b8292acafd72142128a3481ac4b0abff_L.jpg",
+        "url": "/photographs/people-getting-married/item/111-claire-simon",
+        "weight": 15
+      },
+      "content": {
+        "full_text": "When Claire contacted me to photograph her wedding in Zambia, I jumped at the chance. Her family owns a lodge right on the border of the South Luangwa National Park, and guests arrived from across the world to spend some time at Marula Lodge, catch up with Simon and Claire, get to know each other, and have a holiday in the Waterhouse's own slice of heaven.\n\nWith hippos munching in the garden at night, elephants destroying the flower arrangements, a hot Zambian (mid-Winter!) sun and a fantastic array of people, Claire and Simon's wedding was extraordinary. They suit each other effortlessly, and the amazing crowd of people who travelled across the world to be with them for their marriage was a real testament to their love.",
+        "intro_text": "When Claire contacted me to photograph her wedding in Zambia, I jumped at the chance."
+      },
+      "url": "/photographs/people-getting-married/item/111-claire-simon"
+    },
+    {
+      "frontMatter": {
+        "title": "Leigh & Rob",
+        "item_image": "/media/k2/items/cache/73608782f50eb6af17bb69bdcd662692_L.jpg",
+        "url": "/photographs/people-getting-married/item/109-leigh-rob",
+        "weight": 16
+      },
+      "content": {
+        "full_text": "Leigh and Robert Cobban tied the knot with an intimate wedding in Observatory, Cape Town. The ceremony took place in Leigh's sister, Gaby's house in Obs, and was small and authentic. Sans church, the wedding was refreshingly different.\n\nIt was happy and relaxed, with champagne popping in the outside courtyard all afternoon until the group went to enjoy a proper Cape Town night at the Brass Bell in Kalk Bay.",
+        "intro_text": "Leigh and Robert tied the knot with an intimate wedding in Observatory, Cape Town. Sans church, the wedding was refreshingly different."
+      },
+      "url": "/photographs/people-getting-married/item/109-leigh-rob"
+    },
+    {
+      "frontMatter": {
+        "title": "Candid Portraits",
+        "item_image": "/media/k2/items/cache/063ee9aeb9f60efa02823e51450f82ce_L.jpg",
+        "url": "/photographs/portraits/item/99-candid",
+        "weight": 1
+      },
+      "content": {
+        "intro_text": "It's one thing being commissioned to take a portrait, but _asking_ someone if you can photograph them is one of the most terrifying things that I had to learn as a student. These are some of my favourite unconventional portraits."
+      },
+      "url": "/photographs/portraits/item/99-candid"
+    },
+    {
+      "frontMatter": {
+        "title": "Not-So-Corporate Portraits",
+        "item_image": "/media/k2/items/cache/048731097de322302aff7e52151c991d_L.jpg",
+        "url": "/photographs/portraits/item/105-not-so-corporate"
+      },
+      "content": {
+        "intro_text": "A selection of portraits commissioned for magazines or individuals. I believe that portraits should never be boring - even 'corporate' portraits."
+      },
+      "url": "/photographs/portraits/item/105-not-so-corporate"
+    },
+    {
+      "frontMatter": {
+        "title": "A Meditation on Time",
+        "item_image": "/media/k2/items/cache/a42a2aa6c7440291c38ba9adc5892a56_L.jpg",
+        "url": "/photographs/photo-stories/item/104-a-meditation-on-time"
+      },
+      "content": {
+        "intro_text": "Bedford is a small town in the Eastern Cape that you might miss completely if you drove past. Its main reason for existing at all is because of the 1820 Settlers who arrived here nearly two centuries ago. Houses with beautiful facades, proud old buildings that echo the prosperity of the colonisers, and town traditions that belong in a small English town are some of its features."
+      },
+      "url": "/photographs/photo-stories/item/104-a-meditation-on-time"
+    },
+    {
+      "frontMatter": {
+        "title": "Grafseismo",
+        "item_image": "/media/k2/items/cache/75b44b0e9c2e5d305fa323c6c51d3476_L.jpg",
+        "url": "/photographs/photo-stories/item/102-grafseismo",
+        "weight": 2
+      },
+      "content": {
+        "full_text": "Grüezi mitenand!” (hello everyone) booms the lilting Swiss German voice from the corner as visitors tentatively poke their heads through the door of the tiny shop. Through the doors of the colourful shop front overflows a veritable smorgasbord of beautiful objects waiting for new owners. Frank Keller, better known as Grafseismo, is crouching at the back, strumming on a beautiful old banjo.  \nGrafseismo’s vintage store is a wonderful introduction to the Swiss city that sits on the border of France and Germany. It represents what so many Baslers love about their city – a wonderful melting pot of people and cultures. Basel isn’t the typical Swiss city, and although it has the compulsory quaint cobblestone streets, a medieval old town centre and the pristine Rhine rushing through it’s heart, it is also home to a thriving artistic and alternative scene.",
+        "intro_text": "Grüezi mitenand!” (hello everyone) booms the lilting Swiss German voice from the corner as visitors tentatively poke their heads through the door of the tiny shop. Through the doors of the colourful shop front overflows a veritable smorgasbord of beautiful objects waiting for new owners. Frank Keller, better known as Grafseismo, is crouching at the back, strumming on a beautiful old banjo."
+      },
+      "url": "/photographs/photo-stories/item/102-grafseismo"
+    },
+    {
+      "frontMatter": {
+        "title": "Flanders",
+        "item_image": "/media/k2/items/cache/aaa036e4cb16038f90e128d8e39c714f_L.jpg",
+        "url": "/photographs/photo-stories/item/103-flanders",
+        "weight": 1
+      },
+      "content": {
+        "full_text": "Beyond the pommes frites and mayonnaise, politics, beer, waffles and chocolate, Belgium isn’t one of the more celebrated countries in Western Europe – actually, it is probably one of the most vilipended. Perhaps it’s because of the interesting political system, its liberal moral laws or a less-than-perfect colonising history, but whatever the reasoning, the stereotypes miss something big.\n\nFrom the cosmopolitan and historically rich capital city of Brussels, to the dynamic cultural hub of Antwerp, and the medieval, fairytale-esque streets of Bruges, the Flanders region in Belgium is a wonderful area to visit. A political hotspot in Europe, Flanders is also rich in history and culture.",
+        "intro_text": "Beyond the pommes frites and mayonnaise, politics, beer, waffles and chocolate, Belgium isn’t one of the more celebrated countries in Western Europe – actually, it is probably one of the most vilipended. Perhaps it’s because of the interesting political system, its liberal moral laws or a less-than-perfect colonising history, but whatever the reasoning, the stereotypes miss something big."
+      },
+      "url": "/photographs/photo-stories/item/103-flanders"
+    },
+    {
+      "frontMatter": {
+        "title": "Honey Guide",
+        "item_image": "/media/k2/items/cache/a63cd9e38964634741a5a3fe89055308_L.jpg",
+        "url": "/photographs/photo-stories/item/100-honey-guide",
+        "weight": 3
+      },
+      "content": {
+        "full_text": "People thought I was saying “Honey Guy” when I was working on the Honey Guide story about Mark Farah. It’s quite fitting actually. Mark is The Honey Guy. He loves what he does. It glows in his eyes when he speaks.\n\nChatting about his bees and the honey they make for him, Mark brings his mountain apiaries into the trading hall of the Neighbourgoods Market. In doing this, he typifies what the market does so elegantly, drawing the city and it’s surrounds together into a feast for the senses. You can’t necessarily see the hives - or trout dams, pastures, olive groves, ovens, stone mills of the vendors -but they are there in spirit.\n\nI wanted to see that spirit world made flesh, and asked if I could spend some time creating a little photo essay with Mark at one of his mountain sites. On the day, we were joined near Constantia Nek by market manager Ben Cox. Ben gets pollen from Honeyguide every Saturday, and just as curious as I about the provenance of Mark’s fabulous raw honey, jumped at the chance to see the man at work.\n\nPreparing his equipment in the clearing below the hives, Mark is unhurried but meticulous, patient and attentive. He readies everything for our walk up to the bees where we are transported into his world of buzzing alchemy.   \n\nMark gently scoops up a handful of bees as he prises the lid off a hive. They flow down his arm before he flicks them to the ground. There the mass evanesces and resolves into a roiling, humming cloud.\n\nA bee hatches as we watch. A perfect, delicate creature wriggles its way out of an alveolus, slightly shaky at first. She takes her first few hesitant steps, then she’s being fussed over by nearby bees. Soon she is indistinguishable from her countless peers. Not to Honey Guy. He points out the old bees, the hungry ones and the angry ones. ‘That guy’s just checking you out, he’s investigating’, he reassures me as my nose becomes a point of orbit.\n\nBees have personalities, and colonies have moods. Mark knows his bees, and he senses subtle fluctuations. ‘Hear that?’, he asks as the buzzing near a hive crescendos. ‘They’re getting a little worried’.\n\nIt doesn’t seem right to call Mark’s processes ‘simple’, although when he explains what he does it just makes sense. To understand colonies, work with hives, ensure that your bees are healthy, and collect honey without upsetting a natural balance is no small feat.\n\nEthical farming isn’t straightforward when it comes to bees, and bad practice isn’t as obvious as with large mammals. This is mostly because we don’t understand bees. Mark seems to, though. Bees get manipulated, taken advantage of, and produce honey of an inferior quality, all in the name of lowering costs and increasing yield. Ersatz honey, the stuff we find on supermarket shelves, is made by bees who forage from Eucalyptus or fruit orchards, and whose foraging is engineered and controlled. The bees are manipulated, and the resulting honey is one-dimensional.\n\nThe honey, propolis and pollen that Mark collects from his indigenous bees is completely different. His management techniques are eco-sensitive, and his bees forage in uncontaminated environments around the Cape. Mark produces and sells raw, unprocessed honey, beeswax, propolis and pollen under his Honeyguide label. It is one of few brands that sells pollen, which is a little-recognised, complete superfood.\n\nThere’s a wonderful tale by Roald Dahl called Royal Jelly, a whimsical warning to parents, where a baby is fed too much propolis and begins morphing into a bee-creature. I don’t reckon that Ben will sprout wings anytime soon, but deep down, I wouldn’t be surprised if Roald Dahl was onto something, and the Honey Guy knows it. There’s real magic in bees.",
+        "intro_text": "People thought I was saying “Honey Guy” when I was working on the Honey Guide story about Mark Farah. It’s quite fitting actually. Mark is The Honey Guy. He loves what he does. It glows in his eyes when he speaks."
+      },
+      "url": "/photographs/photo-stories/item/100-honey-guide"
     }
   ],
   "menus": {

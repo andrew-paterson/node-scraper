@@ -1,13 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.sarahschafer.com/photographs/people-getting-married/</loc>
+    <loc>https://www.sarahschafer.com/</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/airbnb</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/food</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/people-getting-married</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/portraits</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/photo-stories</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/product</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/about-sarah</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/on-stage</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/travel</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/lifestyle</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/contact</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/food/item/108-retreat</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/129-clementine-mark</loc>
   </url>
   <url>
     <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/130-nicole-stewart</loc>
   </url>
   <url>
-    <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/129-clementine-mark</loc>
+    <loc>https://www.sarahschafer.com/photographs/food/item/106-kitchen-reportage</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/food/item/107-beautiful-dishes</loc>
   </url>
   <url>
     <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/126-dominique-roger</loc>
@@ -43,15 +85,33 @@
     <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/114-jenny-elmar</loc>
   </url>
   <url>
-    <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/109-leigh-rob</loc>
+    <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/113-karen-pete</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/112-lesley-david</loc>
   </url>
   <url>
     <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/111-claire-simon</loc>
   </url>
   <url>
-    <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/113-karen-pete</loc>
+    <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/109-leigh-rob</loc>
   </url>
   <url>
-    <loc>https://www.sarahschafer.com/photographs/people-getting-married/item/112-lesley-david</loc>
+    <loc>https://www.sarahschafer.com/photographs/portraits/item/99-candid</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/portraits/item/105-not-so-corporate</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/photo-stories/item/104-a-meditation-on-time</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/photo-stories/item/102-grafseismo</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/photo-stories/item/103-flanders</loc>
+  </url>
+  <url>
+    <loc>https://www.sarahschafer.com/photographs/photo-stories/item/100-honey-guide</loc>
   </url>
 </urlset>
