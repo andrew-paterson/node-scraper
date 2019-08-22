@@ -4,9 +4,10 @@ var scrapeConfigFile = process.argv[3];
 var scrapeConfig = require(scrapeConfigFile); 
 const chalk = require('chalk');
 var urls;
-var oneToOne = scrapeConfig.oneToOne;
+var contentMap = scrapeConfig.contentMap;
 var listItemSelectors = scrapeConfig.listItemSelectors || [];
 var menus = scrapeConfig.menus;
+var ignoreSelectors = scrapeConfig.ignoreSelectors;
 var lib = require('./lib2.js');
 var urls;
 
@@ -22,55 +23,42 @@ lib.generateUrls(source)
   urls.forEach(url => {
     fetchHTML2Promises.push(lib.fetchHTML2(url));
   });
+  console.log(`Started downloading HTML pages as files.`);
   return Promise.all(fetchHTML2Promises);
 })
 .then(htmlMap => {
+  console.log(chalk.green(`Finished downloading HTML pages as files.`));
+  console.log(`Started parsing downloaded HTML files.`);
   return {
-    pages: lib.doListItems(htmlMap, listItemSelectors, oneToOne),
+    pages: lib.doListItems(htmlMap, listItemSelectors, contentMap, ignoreSelectors),
     menus: lib.doMenus(htmlMap, menus)
   };
 })
 .then(object => {
-  console.log('Started creating files for one to one mappings.');
-  var createfileOneToOnepromises = [];
+  fs.writeFile('console.json', JSON.stringify(object, null, 2), function(error) {
+    if(error) {
+      console.log(error);
+    }
+    console.log('Logged content to file');
+  });
+  console.log(chalk.green(`Finished  parsing downloaded HTML files.`));
+  console.log('Started creating files.');
+  var createFilePromises = [];
   object.pages.forEach(item => {
     var fileOutPutPath = lib.fileOutputPathfromUrl(item.url);
-    createfileOneToOnepromises.push(lib.createMDFile(item, fileOutPutPath));
+    createFilePromises.push(lib.createMDFile(item, fileOutPutPath));
   });
-  var fileOutPutPath = lib.fileOutputPathfromUrl('/');
-  createfileOneToOnepromises.push(lib.createMenuFile(object.menus, fileOutPutPath));
-  return Promise.all(createfileOneToOnepromises).then(response => {
-    console.log(chalk.green('Finished creating files for one to one mappings.'));
-    // return htmlMap;
+  createFilePromises.push(lib.createMenuFile(object.menus, lib.fileOutputPathfromUrl('/')));
+  return Promise.all(createFilePromises).then(response => {
+    console.log(chalk.green('Finished creating files.'));
   });
 })
 .catch(err => {
-  console.log(err);
+  console.log(chalk.red(err));
+  fs.writeFile('console.json', err, function(error) {
+    if(error) {
+      console.log(error);
+    }
+    console.log('Logged content to file');
+  });
 });
-
-
-
-
-
-
-// .then(object => {
-//   console.log('Started creating file for menus.');
-//   var createFileMenuPromises = [];
-//   object.menus.forEach(item => {
-//     var fileOutPutPath = lib.fileOutputPathfromUrl('/');
-//     createFileMenuPromises.push(lib.createMenuFile(item, fileOutPutPath));
-//   });
-//   return Promise.all(createFileMenuPromises).then(response => {
-//     console.log(chalk.green('Finished creating file for menus.'));
-//     return object;
-//   });
-// })
-// .catch(err => {
-//   console.log(chalk.red(err));
-//   fs.writeFile('console.json', err, function(error) {
-//     if(error) {
-//       console.log(error);
-//     }
-//     console.log('Logged content to file');
-//   });
-// });

@@ -1,1 +1,331 @@
-undefined
+{
+  "pages": [
+    {
+      "frontMatter": {
+        "title": "People Getting Married",
+        "url": "/photographs/people-getting-married/"
+      },
+      "content": {},
+      "url": "/photographs/people-getting-married/"
+    },
+    {
+      "frontMatter": {
+        "title": "Nicole & Stewart",
+        "item_image": "/media/k2/items/cache/ee842e3019fee30e4ca87cc93974d54b_L.jpg",
+        "url": "/photographs/people-getting-married/item/130-nicole-stewart"
+      },
+      "content": {
+        "full_text": "I spent a lot of my childhood on Nicole's family farm, Thornkloof. It's just outside of Grahamstown, and is the epitome of raw Eastern Cape beauty. She and Stew live in Zimbabwe but came back for her wedding. Her mom made her dress from her German gradmother's lace tablecloth! It was a beautiful day, made more special by old friends.",
+        "intro_text": "I spent a lot of my childhood on Nicole's family farm, Thornkloof. It's just outside of Grahamstown, and is the epitome of raw Eastern Cape beauty."
+      },
+      "url": "/photographs/people-getting-married/item/130-nicole-stewart"
+    },
+    {
+      "frontMatter": {
+        "title": "Clementine & Mark",
+        "item_image": "/media/k2/items/cache/8da476f72f06a276b1f930cdb28c21f1_L.jpg",
+        "url": "/photographs/people-getting-married/item/129-clementine-mark",
+        "weight": 1
+      },
+      "content": {
+        "full_text": "In December 2016, one of my childhood friends was married in the town we grew up in - Grahamstown. It was a typical overcast day, and their wedding was a wonderful celebration.",
+        "intro_text": "In December 2016, one of my childhood friends was married in the town we grew up in - Grahamstown. It was a typical overcast day, and their wedding was a wonderful celebration."
+      },
+      "url": "/photographs/people-getting-married/item/129-clementine-mark"
+    },
+    {
+      "frontMatter": {
+        "title": "Dominique & Roger",
+        "item_image": "/media/k2/items/cache/8dc425b2acbf9c68064b8a63eae1ffbc_L.jpg",
+        "url": "/photographs/people-getting-married/item/126-dominique-roger",
+        "weight": 2
+      },
+      "content": {
+        "full_text": "The most beautiful wedding of them all! My sister and brother-in-law, Dominique and Roger had their wedding celebration weekend on the magnificent Eastern Cape coastline, at Cintsa. Friends and family from all around the world came for a weekend of festivities and a memorable celebration of love.",
+        "intro_text": "The most beautiful wedding of them all! My sister and brother-in-law, Dominique and Roger had their wedding celebration weekend on the magnificent Eastern Cape coastline, at Cintsa."
+      },
+      "url": "/photographs/people-getting-married/item/126-dominique-roger"
+    },
+    {
+      "frontMatter": {
+        "title": "Nicola & Carl",
+        "item_image": "/media/k2/items/cache/dc9e231f652301f80ea8e901bd9ec18a_L.jpg",
+        "url": "/photographs/people-getting-married/item/125-nicola-carl",
+        "weight": 3
+      },
+      "content": {
+        "full_text": "Nicola and Carl had their wedding at [Silvermist Mountain Lodge and Wine Estate](https://www.google.co.za/search?q=silvermist&oq=silvermist&aqs=chrome..69i57j69i60l3j69i65j69i60.1360j0j7&sourceid=chrome&ie=UTF-8) in April, on a perfect Autumn afternoon.\n\n[Johannes Coetzee](http://johancoetzee.com/) was my second shooter and assistant at the wedding.",
+        "intro_text": "Nicola and Carl had their wedding at Silvermist Mountain Lodge and Wine Estate in April, on a perfect Autumn afternoon."
+      },
+      "url": "/photographs/people-getting-married/item/125-nicola-carl"
+    },
+    {
+      "frontMatter": {
+        "title": "Caitlin & Nick",
+        "item_image": "/media/k2/items/cache/9ded0288e863fbe79d863f606cb05c21_L.jpg",
+        "url": "/photographs/people-getting-married/item/127-caitlin-nick",
+        "weight": 4
+      },
+      "content": {
+        "full_text": "Caitlin and Nick's wedding was a delightful daytime affair, with afternoon tea and all. It took place at the beautiful Bridge House school in Franschhoek, where Morag, Caitlin's sister works.\n\n[Johannes Coetzee](http://johancoetzee.com/) was my second shooter and assistant at the wedding.",
+        "intro_text": "Caitlin and Nick's wedding was a delightful daytime affair, with afternoon tea and all. It took place at the beautiful Bridge House school in Franschhoek, where Morag, Caitlin's sister works."
+      },
+      "url": "/photographs/people-getting-married/item/127-caitlin-nick"
+    },
+    {
+      "frontMatter": {
+        "title": "Amy & Sanjin",
+        "item_image": "/media/k2/items/cache/474f4cdd4383ff91fd1d98bcb039d93b_L.jpg",
+        "url": "/photographs/people-getting-married/item/121-amy-sanjin",
+        "weight": 5
+      },
+      "content": {
+        "full_text": "A late Summer wedding in Stellenbosch.",
+        "intro_text": "A late Summer wedding in Stellenbosch."
+      },
+      "url": "/photographs/people-getting-married/item/121-amy-sanjin"
+    },
+    {
+      "frontMatter": {
+        "title": "Xanthe & Timmy",
+        "item_image": "/media/k2/items/cache/0c758c944f0062609b2677e28107bc5e_L.jpg",
+        "url": "/photographs/people-getting-married/item/120-xanthe-timmy",
+        "weight": 6
+      },
+      "content": {
+        "full_text": "Xanthe and Tim have been a couple for many years, and celebrated their nuptials with an extraordinarily beautiful wedding in Kalmoesfontein. A forest ceremony, food to die for and a setting so perfect, made it a wonderfully special wedding to document.",
+        "intro_text": "Xanthe and Tim celebrated their nuptials with an extraordinarily beautiful wedding in Kalmoesfontein. A forest ceremony and food to die for made it a special wedding to document."
+      },
+      "url": "/photographs/people-getting-married/item/120-xanthe-timmy"
+    },
+    {
+      "frontMatter": {
+        "title": "Beth & Walter",
+        "item_image": "/media/k2/items/cache/47e29f9fe96a1771642fb05ac8a8fd00_L.jpg",
+        "url": "/photographs/people-getting-married/item/119-beth-walter",
+        "weight": 7
+      },
+      "content": {
+        "full_text": "Beth and Walter arrived back in South Africa from London to celebrate their wedding in Cape Town. Beth's uncle and aunt, Alex and Barry, drove a Bentley from their farm in the Eastern Cape all the way down to Cape Town for the occasion, and the day was a the perfect celebration. The reception was held at Beth's family home, a beautiful property in Constantia.\n\nHer mother, Jane, had been preparing her garden for the occasion since the announcement, and it was truly spectacular. No detail was missed out - from wines and single malt whiskies carefully selected by Walter, to centre-piece flowers grown by the mother of the groom, and delicate flower-girls' coronets carefully created by Beth's aunt.\n\nBeth was the absolute epitome of graceful beauty in her dress, Walter couldn't wipe the smile from his face, and the 150 guests danced the night away in Jane's magnificent garden, magically lit up and twinkling with fairy lights.",
+        "intro_text": "Beth and Walter arrived back in South Africa from London to celebrate their wedding in Cape Town. The reception was held at Beth's family home, a beautiful property in Constantia."
+      },
+      "url": "/photographs/people-getting-married/item/119-beth-walter"
+    },
+    {
+      "frontMatter": {
+        "title": "Richard & Anna",
+        "item_image": "/media/k2/items/cache/1ea804dbf6a45ba977293c237ecc1b08_L.jpg",
+        "url": "/photographs/people-getting-married/item/118-richard-anna",
+        "weight": 8
+      },
+      "content": {
+        "full_text": "Richard and Anna decided to celebrate their wedding on two sides of the world - Anna is Swedish and Richard is South African, and their home is in Sweden. Their South African wedding celebration was a small affair that they shared with close friends and family.\n\nTheir beautiful children, Stella and Ludovic almost stole the show (and the attention of the photographer), a close friend was their officiator, and a gorgeous late afternoon on the grounds of Laborie in Paarl was the perfect setting for a wonderful celebration.",
+        "intro_text": "Richard and Anna decided to celebrate their wedding on two sides of the world. Their South African wedding celebration was a small affair that they shared with close friends and family."
+      },
+      "url": "/photographs/people-getting-married/item/118-richard-anna"
+    },
+    {
+      "frontMatter": {
+        "title": "Asanda & Cherie",
+        "item_image": "/media/k2/items/cache/39a27618f1dc54b80987c6706135e6b7_L.jpg",
+        "url": "/photographs/people-getting-married/item/117-asanda-cherie",
+        "weight": 9
+      },
+      "content": {
+        "full_text": "Cherie and Asanda's six hundred guest strong wedding ceremony in Mfuleni was an absolute pleasure to photograph. Cherie is originally from Canda, and her and Asanda's families and friends had the time of their lives in a truly wonderful celebration of the couple's love.",
+        "intro_text": "Cherie and Asanda's six hundred guest strong wedding ceremony in Mfuleni was an absolute pleasure to photograph."
+      },
+      "url": "/photographs/people-getting-married/item/117-asanda-cherie"
+    },
+    {
+      "frontMatter": {
+        "title": "Clare & Lloyd",
+        "item_image": "/media/k2/items/cache/7a6fe08027b80ee08bda1ed60d73e334_L.jpg",
+        "url": "/photographs/people-getting-married/item/116-clare-lloyd",
+        "weight": 10
+      },
+      "content": {
+        "full_text": "Clare and Lloyd had their wedding on a rainy winter weekend, but nobody seemed bothered by the weather. Clare is from Ireland, and has been working in Cape Town for a few years, which is how she met Lloyd. They share a love of the city, dancing, laughing, and each other. their wedding day was filled with happy family and friends, laughing and dancing (so much dancing!).\n\nThe reception took place at the quirky blue bird garage in Muizenberg - with great food and fantastic music, it was the perfect place to end the day off.",
+        "intro_text": "Clare and Lloyd had their wedding on a rainy winter weekend, but nobody seemed bothered by the weather."
+      },
+      "url": "/photographs/people-getting-married/item/116-clare-lloyd"
+    },
+    {
+      "frontMatter": {
+        "title": "Gaby & Bob",
+        "item_image": "/media/k2/items/cache/45e8f4939bc3bd36e4b87ab1e324d227_L.jpg",
+        "url": "/photographs/people-getting-married/item/115-gaby-bob",
+        "weight": 11
+      },
+      "content": {
+        "full_text": "Gaby and Bob have been a couple for years, and decided to tie the knot before they leave South Africa for their adventures in Asia. A wedding in Grahamstown, Bob's home town and the place where they studied together, was a very fitting setting for their nuptials.\n\nWith a close friend and Rhodes University lecturer Alan Kirkaldy presiding over the ceremony, paper flowers, homemade food, cupcakes from heaven made by Bob's sister Catherine, and a close group of friends gathered around, Gaby and Bob's wedding day was poignant and beautiful.\n\nNobody in the world can write about love like Pablo Neruda, and Bob's reading of Neruda's Sonnet XVII from Cien Sonetos de Amor was perfectly, unfeignedly romantic. Bob's retro wedding suit - the suit that his father wore to his own wedding - was the proverbial icing on the (wedding) cake.",
+        "intro_text": "Gaby and Bob got married in Grahamstown, Bob's home town and the place where they studied together."
+      },
+      "url": "/photographs/people-getting-married/item/115-gaby-bob"
+    },
+    {
+      "frontMatter": {
+        "title": "Jenny & Elmar",
+        "item_image": "/media/k2/items/cache/cd66a7a18d37d7e5dd969c249e9a1ecb_L.jpg",
+        "url": "/photographs/people-getting-married/item/114-jenny-elmar",
+        "weight": 12
+      },
+      "content": {
+        "full_text": "The beautiful wedding of Jenny and Elmar took place at the wonderful restaurant and wedding venue, the Table at De Meye (the restaurant has since changed to Overgaauw Restaurant). The setting was simply idyllic - gorgeous fragrant roses adorning every surface, happy guests and incredible food.\n\nI had photographed the pair previously, and it's always wonderful working with such a relaxed couple. They live in Bonn in Germany, but decided to have their wedding in South Africa, where Jenny's mother Beate lives.\n\nIt was a small wedding party, less than 50 people, which was lovely and intimate. Friends of the couple travelled from across the world to be at the ceremony, and guests took off their shoes and started dancing on the lawns before the meal has even ended. Surrounded by vineyards, Camilla's amazing food, happy people and a flawless late Summer's evening, it was an absolutely wonderful day.",
+        "intro_text": "Jenny and Elmar's wedding took place at the Table at De Meye. The setting was simply idyllic - gorgeous fragrant roses adorning every surface, happy guests and incredible food."
+      },
+      "url": "/photographs/people-getting-married/item/114-jenny-elmar"
+    },
+    {
+      "frontMatter": {
+        "title": "Leigh & Rob",
+        "item_image": "/media/k2/items/cache/73608782f50eb6af17bb69bdcd662692_L.jpg",
+        "url": "/photographs/people-getting-married/item/109-leigh-rob",
+        "weight": 16
+      },
+      "content": {
+        "full_text": "Leigh and Robert Cobban tied the knot with an intimate wedding in Observatory, Cape Town. The ceremony took place in Leigh's sister, Gaby's house in Obs, and was small and authentic. Sans church, the wedding was refreshingly different.\n\nIt was happy and relaxed, with champagne popping in the outside courtyard all afternoon until the group went to enjoy a proper Cape Town night at the Brass Bell in Kalk Bay.",
+        "intro_text": "Leigh and Robert tied the knot with an intimate wedding in Observatory, Cape Town. Sans church, the wedding was refreshingly different."
+      },
+      "url": "/photographs/people-getting-married/item/109-leigh-rob"
+    },
+    {
+      "frontMatter": {
+        "title": "Claire & Simon",
+        "item_image": "/media/k2/items/cache/b8292acafd72142128a3481ac4b0abff_L.jpg",
+        "url": "/photographs/people-getting-married/item/111-claire-simon",
+        "weight": 15
+      },
+      "content": {
+        "full_text": "When Claire contacted me to photograph her wedding in Zambia, I jumped at the chance. Her family owns a lodge right on the border of the South Luangwa National Park, and guests arrived from across the world to spend some time at Marula Lodge, catch up with Simon and Claire, get to know each other, and have a holiday in the Waterhouse's own slice of heaven.\n\nWith hippos munching in the garden at night, elephants destroying the flower arrangements, a hot Zambian (mid-Winter!) sun and a fantastic array of people, Claire and Simon's wedding was extraordinary. They suit each other effortlessly, and the amazing crowd of people who travelled across the world to be with them for their marriage was a real testament to their love.",
+        "intro_text": "When Claire contacted me to photograph her wedding in Zambia, I jumped at the chance."
+      },
+      "url": "/photographs/people-getting-married/item/111-claire-simon"
+    },
+    {
+      "frontMatter": {
+        "title": "Karen & Pete",
+        "item_image": "/media/k2/items/cache/85b62d4a27ea43297eb1ab349b6e06c6_L.jpg",
+        "url": "/photographs/people-getting-married/item/113-karen-pete",
+        "weight": 13
+      },
+      "content": {
+        "full_text": "The tiny little town of Botrivier set the scene perfectly for Karen and Pete's beautiful wedding. The charming Beaumont wine farm was the perfect place, with it's historic water mill, fantastic wines and spectacular views of the Overberg mountains.\n\nKaren's exquisite vintage beaded dress, found by her sister Sara on her travels, was topped off with a feather headpiece that belonged to her grandmother, and the bride was simply gorgeous. Fresh herbs as confetti, a group of fabulous friends, delicious food and an abundance of love were the order of the day. and just like their bottles of bubbly were labelled, it was a day of ridiculous happiness.",
+        "intro_text": "The tiny little town of Botrivier set the scene perfectly for Karen and Pete's beautiful wedding."
+      },
+      "url": "/photographs/people-getting-married/item/113-karen-pete"
+    },
+    {
+      "frontMatter": {
+        "title": "Lesley & David",
+        "item_image": "/media/k2/items/cache/e7c0584255fa6f2981e510285a9e9e4f_L.jpg",
+        "url": "/photographs/people-getting-married/item/112-lesley-david",
+        "weight": 14
+      },
+      "content": {
+        "full_text": "Lesley and David are one of those couples that make even the most hardened cynic’s heart get a little warm and fuzzy. They celebrated their wedding on their seventh anniversary, surrounded by happy family and friends.\n\nLynda, Lesley’s aunt, was the officiator of the non-religious ceremony, and her words captured Lesley and David’s relationship wonderfully. Helped by Mr Shakespeare’s sonnet, ‘Let me not to the marriage of true minds admit impediment’, it was a lovely service.\n\nIt turns out that winter in Kwa-Zulu Natal is not actually Winter at all. The weather was absolutely beautiful, and played its part perfectly for the sunny outdoor wedding on David’s family’s sugar cane farm.\n\nLesley was simply beautiful. I’ve been searching for the right phrase to describe how exquisite she looked, but I don’t think that the words actually exist. As she walked down the garden aisle to Bob Dylan’s ‘Make me Feel your Love’, sung by friend Lizzie, everything was just right. Royal blue and yellow were the colours of the day – sunflowers and shweshwe were perfectly joyful.\n\nLesley’s mother, Penny’s words were powerful and eloquent (as always) and Best Man Paddy had everyone in hysterics. David, however, made it impossible for any man to ever live up to the new standard set for wedding speeches. When he broke out in song (Lou Reed’s ‘Take a Walk on the Wild Side’), accompanied by musician friends in the audience, I think every guest there, including Lesley, was lost for words.\n\nPerhaps it was the full moon, but I think that it was the infectious happiness overflowing that made Lesley and David’s wedding so special. Dancing and merry-making continued long into the clear Zululand night, and I don’t think that any of us guests will remember that day without an enormous smile.\n\nPostscript. bridesmaid and photographer duties were tricky to juggle, but I’m grateful to [Adrian Jennings](http://www.ady-jennings-photography.com) and some delicious Steenberg 1682 MCC, who made it manageable and incredibly fun.",
+        "intro_text": "Lesley and David are one of those couples that make even the most hardened cynic’s heart get a little warm and fuzzy."
+      },
+      "url": "/photographs/people-getting-married/item/112-lesley-david"
+    }
+  ],
+  "menus": {
+    "menu": {
+      "main": [
+        {
+          "url": "/",
+          "name": "Home",
+          "weight": 1
+        },
+        {
+          "identifier": "photographs",
+          "name": "Photographs",
+          "weight": 2
+        },
+        {
+          "url": "/photographs/airbnb",
+          "name": "Airbnb",
+          "parent": "photographs",
+          "weight": 10
+        },
+        {
+          "url": "/photographs/food",
+          "name": "Food",
+          "parent": "photographs",
+          "weight": 11
+        },
+        {
+          "url": "/photographs/people-getting-married",
+          "name": "People getting married",
+          "parent": "photographs",
+          "weight": 12
+        },
+        {
+          "url": "/photographs/portraits",
+          "name": "Portraits",
+          "parent": "photographs",
+          "weight": 13
+        },
+        {
+          "url": "/photographs/photo-stories",
+          "name": "Photo stories",
+          "parent": "photographs",
+          "weight": 14
+        },
+        {
+          "url": "/photographs/travel",
+          "name": "Travel",
+          "parent": "photographs",
+          "weight": 15
+        },
+        {
+          "url": "/photographs/product",
+          "name": "Product",
+          "parent": "photographs",
+          "weight": 16
+        },
+        {
+          "url": "/photographs/lifestyle",
+          "name": "Lifestyle",
+          "parent": "photographs",
+          "weight": 17
+        },
+        {
+          "url": "/photographs/on-stage",
+          "name": "On Stage",
+          "parent": "photographs",
+          "weight": 18
+        },
+        {
+          "url": "/about-sarah",
+          "name": "Sarah",
+          "weight": 3
+        },
+        {
+          "url": "/contact",
+          "name": "Contact",
+          "weight": 4
+        }
+      ],
+      "footer": [
+        {
+          "name": "© 2019 Sarah Schäfer",
+          "weight": 1
+        },
+        {
+          "name": "",
+          "weight": 2
+        },
+        {
+          "name": "+27 73 307 0637",
+          "weight": 3
+        },
+        {
+          "url": "http://www.classcastle.com",
+          "name": "Class Castle",
+          "weight": 4
+        }
+      ]
+    }
+  }
+}

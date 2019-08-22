@@ -18,18 +18,6 @@ var isUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-
 var parseString = require('xml2js').parseString;
 
 module.exports = {
-  contentItemWeight: function(url, frontMatterObject, pageOrdering) {
-    var pageOrderingSection = pageOrdering.find(section => {
-      return url.indexOf(section.sectionUrl) > -1;
-    });
-    if (!pageOrderingSection) { return; }
-    var pageOrderingItem = pageOrderingSection.items.find(item => {
-      return item.matchValue === frontMatterObject[pageOrderingSection.matchKey];
-    });
-    if (!pageOrderingItem) { return; }
-    return pageOrderingItem.weight;
-  },
-
   loadDom: function(html) {
     var dom = new JSDOM(html).window.document;
     var window = dom.defaultView;
@@ -44,11 +32,10 @@ module.exports = {
     });
   },
 
-  parseContentItem: function(object, elementsMap, $, pageOrdering) {
-    // var pathname = nodeUrl.parse(url).pathname;
+  parseContentItem: function(object, contentMap, $, pageOrdering) {
     var frontMatterObject = {};
     var contentObject = {};
-    elementsMap.items.forEach(item => {
+    contentMap.forEach(item => {
       var element = $(object.html).find(item.selector);
       if (element.length === 0) { return; }
       var text = element.text().trim();
@@ -66,7 +53,7 @@ module.exports = {
         frontMatterObject[item.key] = text;
       }
     });
-    // frontMatterObject.url = object.url;
+    frontMatterObject.url = object.url;
     if (object.weight) {
       frontMatterObject.weight = object.weight;
     }
@@ -80,7 +67,6 @@ module.exports = {
   createMDFile: function(object, fileOutPutPath) {
     var frontMatter = object.frontMatter || {};
     var content = object.content || {};
-    var url = object.url;
     return new Promise((resolve, reject) => { 
       var frontMatterDelimiter;
       if (frontMatterFormat === 'toml') {
@@ -119,6 +105,13 @@ module.exports = {
         final += '<!--more-->\n';
       }
       if (content.full_text) {
+        if (object.frontMatter.url === '/photographs/people-getting-married/item/112-lesley-david') {
+          console.log(content.intro_text);
+          console.log('-------------------------------');
+          console.log((content.full_text).replace((content.intro_text).trim(), ''));
+          console.log('-------------------------------');
+        }
+        
         final += content.full_text;
       }
       var directoryOutPutPath = path.dirname(fileOutPutPath);
@@ -139,59 +132,6 @@ module.exports = {
     return `${directory}${fullPath}.md`;
   },
 
-  // getElementOrder: function(object) {
-  //   return new Promise((resolve, reject) => { 
-  //     this.fetchHTML(object.url).then((body) => {
-  //       var $ = this.loadDom(body);
-  //       var elements = $(object.itemsSelector);
-  //       var links = [];
-  //       $(elements).each((index, element) => {
-  //         var matchValue;
-  //         if (object.frontMatterKey === 'url') {
-  //           matchValue = $(element).attr('href').trim();
-  //         } else {
-  //           matchValue = $(element).text().trim();
-  //         }
-  //         links.push({
-  //           matchValue: matchValue,
-  //           weight: index
-  //         });
-  //       });
-  //       resolve({sectionUrl: object.url, matchKey: object.frontMatterKey, items: links});
-  //     }).catch(err => {
-  //       reject(err);
-  //     });
-  //   });
-  // },
-
-  // oneToManyPage: function(object, oneToMany) {
-  //   return new Promise((resolve, reject) => { 
-  //     this.fetchHTML(object.url).then((body) => {
-  //       var elementsMap = oneToMany.find(item => {
-  //         return item.url === object.url;
-  //       });
-  //       // Return an array of html elements, with the object.
-  //       var $ = this.loadDom(body);
-  //       var elements = $(object.itemSelector);
-  //       var items = [];
-  //       $(elements).each((index, item) => {
-  //         var html = $(item).html();
-  //         var filename = $(item).find(object.fileNameSelector).text().trim().replace(/[^a-zA-Z\d]/g, '-').replace(/(-)\1+/g, '-').toLowerCase();
-  //         var itemUrl = `${object.url}/${filename}`;
-  //         if ($(item).find(object.ignoreIfSelector).length > 0) {
-  //           // Does not create an md file from an item that contains this- eg don't create if title contains a link.
-  //           console.log(chalk.cyan(`${filename} was skipped because it contained the ignoreIfSelector.`));
-  //           return true; //Don't do anything.
-  //         }
-  //         items.push(this.parseContentItem(html, elementsMap, itemUrl, $));
-  //       });
-  //       resolve(items);
-  //     }).catch(err => {
-  //       reject(err);
-  //     });
-  //   });
-  // },
-
   fetchHTML2: function(url) {
     return new Promise((resolve, reject) => { 
       if (!url.match(isUrl)) {
@@ -199,7 +139,6 @@ module.exports = {
       }
       request({uri: url}, (err, response, body) => { 
         if (response.statusCode === 200) {
-
           resolve({
             url: nodeUrl.parse(url).pathname,
             html: body
@@ -383,8 +322,7 @@ module.exports = {
     });
   },
 
-  doListItems: function(htmlMap, listItemSelectors, oneToOne) {
-   
+  doListItems: function(htmlMap, listItemSelectors, contentMap, ignoreSelectors) {
     var listItems = [];
     htmlMap.forEach(item => {
       var baseUrl = item.url.split('?')[0];
@@ -426,9 +364,13 @@ module.exports = {
     // return htmlMap;
     var parsed = [];
     htmlMap.forEach(item => {
-      var elementsMap = oneToOne;
       var $ = this.loadDom(item.html);
-      parsed.push(this.parseContentItem(item, elementsMap, $));
+      
+      ignoreSelectors.forEach(selector => {
+        $(selector).remove();
+      });
+      item.html = $('html').wrap('<div class="temp"></div>').parent().html();
+      parsed.push(this.parseContentItem(item, contentMap, $));
     });
     return parsed;
   }
